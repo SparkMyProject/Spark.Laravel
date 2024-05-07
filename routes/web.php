@@ -7,6 +7,7 @@ use App\Http\Controllers\pages\Page2;
 use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
+use App\Http\Controllers\FrontPages\FrontPages;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ use App\Http\Controllers\authentications\RegisterBasic;
 */
 
 // Main Page Route
-Route::get('/', [HomePage::class, 'index'])->name('pages-home');
+Route::get('/', [FrontPages::class, 'index'])->name('routes.content.pages.landing-page');
+Route::get('/dashboard', [FrontPages::class, 'index'])->name('routes.content.pages.landing-page');
 Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
 
 // locale

@@ -2,6 +2,7 @@
 $currentRouteName = Route::currentRouteName();
 $activeRoutes = ['front-pages-pricing', 'front-pages-payment', 'front-pages-checkout', 'front-pages-help-center'];
 $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
+use Illuminate\Support\Facades\Auth;
 @endphp
 <!-- Navbar: Start -->
 <nav class="layout-navbar shadow-none py-0">
@@ -57,8 +58,13 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
         <!-- / Style Switcher-->
         @endif
         <!-- navbar button: Start -->
+
         <li>
-          <a href="javascript:;" class="btn btn-primary" target="_blank"><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">Login/Register</span></a>
+          @if(!Auth::check())
+            <a href="{{ route('login') }}" class="btn btn-primary"><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">Login/Register</span></a>
+            @else
+            <a href="{{ route('routes.content.pages.landing-page') }}" class="btn btn-primary" ><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">Dashboard</span></a>
+          @endif
         </li>
         <!-- navbar button: End -->
       </ul>
