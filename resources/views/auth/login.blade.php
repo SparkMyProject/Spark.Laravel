@@ -106,7 +106,8 @@ $configData = Helper::appClasses();
           <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
             <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
           </a>
-
+          <a href="{{route('auth.discord.redirect')}}" class="btn btn-icon btn-label-discord me-3">
+            <i class="tf-icons fa-brands fa-discord fs-5"></i>
           <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
             <i class="tf-icons fa-brands fa-google fs-5"></i>
           </a>

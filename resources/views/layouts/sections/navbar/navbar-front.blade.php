@@ -63,7 +63,7 @@ use Illuminate\Support\Facades\Auth;
           @if(!Auth::check())
             <a href="{{ route('login') }}" class="btn btn-primary"><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">Login/Register</span></a>
             @else
-            <a href="{{ route('routes.content.pages.landing-page') }}" class="btn btn-primary" ><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">Dashboard</span></a>
+            <a href="{{ route('routes.content.dashboard.index') }}" class="btn btn-primary" ><span class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span class="d-none d-md-block">Dashboard</span></a>
           @endif
         </li>
         <!-- navbar button: End -->
