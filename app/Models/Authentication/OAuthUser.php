@@ -2,9 +2,11 @@
 
 namespace App\Models\Authentication;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 class OAuthUser extends Model
 {
+  use HasUuids;
   protected $table = 'oauth_users';
   protected $fillable = [
     'user_id',
