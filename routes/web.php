@@ -67,7 +67,7 @@ Route::get('/auth/discord/callback', function () {
     ]);
     $user->update([
       'email' => $discordUser->email,
-      'profile_photo_url' => Storage::url($avatarPath),
+      'profile_photo_path' => $avatarPath,
 
     ]);
     $user->userOAuths()->save($oauthUser);
@@ -77,7 +77,7 @@ Route::get('/auth/discord/callback', function () {
       'name' => $discordUser->name,
       'email' => $discordUser->email,
       'username' => $discordUser->nickname,
-      'profile_photo_url' => Storage::url($avatarPath),
+      'profile_photo_path' => $avatarPath,
       'password' => bcrypt(Str::random(24)),
     ]);
 

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,7 @@ class User extends Authenticatable
     'display_name',
     'email',
     'password',
-    'profile_photo_url',
+    'profile_photo_path',
 
   ];
 
@@ -70,8 +71,13 @@ class User extends Authenticatable
 
   public function getProfilePhotoUrlAttribute()
   {
-    return $this->attributes['profile_photo_url']
-      ? $this->attributes['profile_photo_url']
-      : asset('assets/img/avatars/1.png');
+    $path = $this->attributes['profile_photo_path'];
+
+    if (Storage::exists($path)) {
+      return Storage::url($path);
+    }
+
+    return asset('assets/img/avatars/1.png'); // default avatar, just in case of a missing file
   }
+
 }
