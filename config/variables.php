@@ -1,9 +1,9 @@
 <?php
 // Variables
 return [
-  "creatorName" => "Pixinvent",
+  "creatorName" => "Violet Lauro",
   "creatorUrl" => "https://pixinvent.com",
-  "templateName" => "Vuexy",
+  "templateName" => "Spark.Laravel",
   "templateSuffix" => "Bootstrap Admin Template",
   "templateVersion" => "1.0.0",
   "templateFree" => false,
