@@ -8,6 +8,15 @@
       "permissions": [
         "view content.dashboard.index"
       ]
+    },
+    {
+      "url": "/admin/users",
+      "name": "Manage Users",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "routes.content.admin.users.index",
+      "permissions": [
+        "view content.admin.users.index"
+      ]
     }
   ]
 }

@@ -33,7 +33,8 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 // pages
 Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
 
-
+// Admin/Users
+Route::get('/admin/users', [\App\Http\Controllers\Admin\Users\UsersController::class, 'index'])->name('routes.admin.users.index');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -25,9 +25,12 @@ class AuthenticationSeeder extends Seeder
       'password' => Hash::make('Admin123!'),
     ]);
 
-    $adminRole = Role::create(['name' => 'admin']);
-    $admin->assignRole($adminRole);
-    $permission = \Spatie\Permission\Models\Permission::create(['name' => 'view content.dashboard.index']);
-    $adminRole->givePermissionTo($permission);
+//    $adminRole = Role::create(['name' => 'admin']);
+//    $admin->assignRole($adminRole);
+//    $permission = \Spatie\Permission\Models\Permission::create(['name' => 'view content.dashboard.index']);
+//    $adminRole->givePermissionTo($permission);
+
+    $webmasterRole = Role::findByName('Webmaster');
+    $admin->assignRole($webmasterRole);
   }
 }
