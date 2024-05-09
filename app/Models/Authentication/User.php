@@ -65,7 +65,7 @@ class User extends Authenticatable
     'profile_photo_url',
   ];
 
-  public function userOAuths()
+  public function oauthUser()
   {
     return $this->hasOne(OAuthUser::class, 'user_id', 'id');
   }
