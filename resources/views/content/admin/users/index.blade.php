@@ -45,8 +45,7 @@
             <div class="content-left">
               <span>Session</span>
               <div class="d-flex align-items-center my-2">
-                <h3 class="mb-0 me-2">0</h3>
-                <p class="text-success mb-0">(+29%)</p>
+                <h3 class="mb-0 me-2">{{$users->count()}}</h3>
               </div>
               <p class="mb-0">Total Users</p>
             </div>
