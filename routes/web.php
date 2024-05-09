@@ -34,7 +34,7 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
 
 // Admin/Users
-Route::get('/admin/users', [\App\Http\Controllers\Admin\Users\UsersController::class, 'index'])->name('routes.content.admin.users.manage');
+Route::get('/admin/users', [\App\Http\Controllers\Admin\Users\UsersController::class, 'index'])->name('routes.content.admin.users.index');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -80,7 +80,7 @@ Route::get('/auth/discord/callback', function () {
       'username' => $discordUser->nickname,
       'profile_photo_path' => $avatarPath,
       'password' => bcrypt(Str::random(24)),
-    ]);
+    ])->assignRole('User');
 
     $oauthUser = OAuthUser::create([
       'user_id' => $user->id,
