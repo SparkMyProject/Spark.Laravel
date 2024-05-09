@@ -1,3 +1,9 @@
+@php
+  use App\Models\Authentication\User;use App\Models\Role;
+  $Auth = Auth::user();
+  $users = User::with('oauthUser')->get();
+
+@endphp
 @extends('layouts.layoutMaster')
 
 @section('title', 'User List - Pages')
@@ -25,9 +31,9 @@
   ])
 @endsection
 
-@section('page-script')
-  @vite('resources/assets/js/app-user-list.js')
-@endsection
+{{--@section('page-script')--}}
+{{--  @vite('resources/assets/js/app-user-list.js')--}}
+{{--@endsection--}}
 
 @section('content')
 
@@ -39,7 +45,7 @@
             <div class="content-left">
               <span>Session</span>
               <div class="d-flex align-items-center my-2">
-                <h3 class="mb-0 me-2">21,459</h3>
+                <h3 class="mb-0 me-2">0</h3>
                 <p class="text-success mb-0">(+29%)</p>
               </div>
               <p class="mb-0">Total Users</p>
@@ -131,15 +137,96 @@
       <table class="datatables-users table">
         <thead class="border-top">
         <tr>
-          <th></th>
           <th>User</th>
           <th>Role</th>
-          <th>Plan</th>
-          <th>Billing</th>
+          <th>Discord</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
         </thead>
+
+        <tbody>
+        @foreach($users as $user)
+          <tr>
+            <td class="sorting_1">
+              <div class="d-flex justify-content-start align-items-center user-name">
+                <div class="avatar-wrapper">
+                  <div class="avatar me-3">
+                    <img src="{{$user->profile_photo_url}}" alt="Avatar" class="rounded-circle">
+                  </div>
+                </div>
+                <div class="d-flex flex-column">
+                  <a href="app-user-view-account.html" class="text-body text-truncate">
+                    <span class="fw-medium">{{$user->username}}</span>
+                  </a><small class="text-muted">{{$user->email}}</small>
+                </div>
+              </div>
+            </td>
+
+            <td>
+                        <span class="text-truncate d-flex align-items-center">
+                            <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                                <i class="ti ti-chart-pie-2 ti-sm"></i>
+                            </span>{{$user->roles->first()->name}}
+                        </span>
+            </td>
+
+            <td>
+            <span class="text-truncate d-flex align-items-center">
+              <div class="avatar-wrapper">
+                @if($user->oauthUser)
+                  <div class="d-flex justify-content-start align-items-center user-name">
+                    <div class="avatar-wrapper">
+                        <div class="avatar me-3">
+                          <img src="{{$user->oauthUser->avatar}}" alt="Avatar"
+                               class="rounded-circle" />
+
+                        </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="app-user-view-account.html" class="text-body text-truncate">
+                                <span class="fw-medium">{{$user->oauthUser->username}}</span>
+                            </a><small class="text-muted">{{$user->oauthUser->email}}</small>
+                        </div>
+                    </div>
+                @else
+                  <div class=" d-flex flex-column">
+                  <a href="app-user-view-account.html" class="text-body text-truncate">
+                    <span class="fw-medium">N/A</span>
+                  </a>
+                 </div>
+                @endif
+              </div>
+            </span></td>
+            <td>
+              
+            </td>
+            <td>
+
+              <div class="d-flex align-items-center">
+                <a href="javascript:" class="text-body">
+                  <i class="ti ti-edit ti-sm me-2"></i>
+                </a>
+
+                <a href="javascript:" class="text-body delete-record">
+                  <i class="ti ti-trash ti-sm mx-2"></i>
+                </a>
+
+                <a href="javascript:" class="text-body dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                  <i class="ti ti-dots-vertical ti-sm mx-1"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-end m-0">
+
+                  <a href="" class="dropdown-item">View</a>
+                  <button class="disable-user-button dropdown-item button" data-user-id="@user.Id">Disable</button>
+
+                </div>
+              </div>
+            </td>
+          </tr>
+        @endforeach
+
       </table>
     </div>
     <!-- Offcanvas to add new user -->

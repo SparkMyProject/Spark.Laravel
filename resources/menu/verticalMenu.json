@@ -13,9 +13,9 @@
       "url": "/admin/users",
       "name": "Manage Users",
       "icon": "menu-icon tf-icons ti ti-user",
-      "slug": "routes.content.admin.users.manage",
+      "slug": "routes.content.admin.users.index",
       "permissions": [
-        "view content.admin.users.manage"
+        "view content.admin.users.index"
       ]
     }
   ]
