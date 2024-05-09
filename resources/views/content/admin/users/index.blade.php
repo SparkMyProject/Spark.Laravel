@@ -38,7 +38,7 @@
 @section('content')
 
   <div class="row g-4 mb-4">
-    <div class="col-sm-6 col-xl-3">
+    <div class="col-sm-3 col-xl-4">
       <div class="card">
         <div class="card-body">
           <div class="d-flex align-items-start justify-content-between">
@@ -58,67 +58,36 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex align-items-start justify-content-between">
-            <div class="content-left">
-              <span>Paid Users</span>
-              <div class="d-flex align-items-center my-2">
-                <h3 class="mb-0 me-2">4,567</h3>
-                <p class="text-success mb-0">(+18%)</p>
-              </div>
-              <p class="mb-0">Last week analytics </p>
-            </div>
-            <div class="avatar">
-            <span class="avatar-initial rounded bg-label-danger">
-              <i class="ti ti-user-plus ti-sm"></i>
-            </span>
-            </div>
-          </div>
-        </div>
+    <div class="col-sm-3 col-xl-2">
+      <div class="card card-body d-flex align-items-start justify-content-between">
+        <h5>UTC Time Now:</h5>
+        <iframe
+          src="https://www.clocklink.com/html5embed.php?clock=043&timezone=GMT&color=black&size=180&Title=&Message=&Target=&From=2019,1,1,0,0,0&Color=black"
+          frameborder="0" allowTransparency="true"></iframe>
       </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex align-items-start justify-content-between">
-            <div class="content-left">
-              <span>Active Users</span>
-              <div class="d-flex align-items-center my-2">
-                <h3 class="mb-0 me-2">19,860</h3>
-                <p class="text-danger mb-0">(-14%)</p>
-              </div>
-              <p class="mb-0">Last week analytics</p>
-            </div>
-            <div class="avatar">
-            <span class="avatar-initial rounded bg-label-success">
-              <i class="ti ti-user-check ti-sm"></i>
-            </span>
-            </div>
-          </div>
-        </div>
+    <div class="col-sm-3 col-xl-2">
+      <div class="card card-body d-flex align-items-start justify-content-between">
+        <h5>Eastern Time Now:</h5>
+        <iframe
+          src="https://www.clocklink.com/html5embed.php?clock=043&timezone=EST&color=black&size=180&Title=&Message=&Target=&From=2019,1,1,0,0,0&Color=black"
+          frameborder="0" allowTransparency="true"></iframe>
       </div>
     </div>
-    <div class="col-sm-6 col-xl-3">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex align-items-start justify-content-between">
-            <div class="content-left">
-              <span>Pending Users</span>
-              <div class="d-flex align-items-center my-2">
-                <h3 class="mb-0 me-2">237</h3>
-                <p class="text-success mb-0">(+42%)</p>
-              </div>
-              <p class="mb-0">Last week analytics</p>
-            </div>
-            <div class="avatar">
-            <span class="avatar-initial rounded bg-label-warning">
-              <i class="ti ti-user-exclamation ti-sm"></i>
-            </span>
-            </div>
-          </div>
-        </div>
+    <div class="col-sm-3 col-xl-2">
+      <div class="card card-body d-flex align-items-start justify-content-between">
+        <h5>Central Time Now:</h5>
+        <iframe
+          src="https://www.clocklink.com/html5embed.php?clock=043&timezone=CST&color=black&size=180&Title=&Message=&Target=&From=2019,1,1,0,0,0&Color=black"
+          frameborder="0" allowTransparency="true"></iframe>
+      </div>
+    </div>
+    <div class="col-sm-3 col-xl-2">
+      <div class="card card-body d-flex align-items-start justify-content-between">
+        <h5>Pacific Time Now:</h5>
+        <iframe
+          src="https://www.clocklink.com/html5embed.php?clock=043&timezone=PST&color=black&size=180&Title=&Message=&Target=&From=2019,1,1,0,0,0&Color=black"
+          frameborder="0" allowTransparency="true"></iframe>
       </div>
     </div>
   </div>
