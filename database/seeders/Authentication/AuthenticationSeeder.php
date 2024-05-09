@@ -16,10 +16,7 @@ class AuthenticationSeeder extends Seeder
   {
 //    \App\Models\Authentication\User::factory(10)->create();
 
-    \App\Models\Authentication\User::factory()->create([
-      'username' => 'Test User',
-      'email' => 'test@example.com',
-    ]);
+
     $admin = \App\Models\Authentication\User::factory()->create([
       'username' => 'admin',
       'password' => Hash::make('Admin123!'),

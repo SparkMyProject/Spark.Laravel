@@ -9,6 +9,7 @@ class RoleSeeder extends Seeder
   public function run(): void
   {
     //
+    $user = \Spatie\Permission\Models\Role::create(['name' => 'User']);
     $webmaster = \Spatie\Permission\Models\Role::create(['name' => 'Webmaster']);
   }
 }
