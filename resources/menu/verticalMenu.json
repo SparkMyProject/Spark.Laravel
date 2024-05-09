@@ -4,7 +4,10 @@
       "url": "/dashboard",
       "name": "Dashboard",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "routes.content.dashboard.index"
+      "slug": "routes.content.dashboard.index",
+      "permissions": [
+        "view content.dashboard.index"
+      ]
     }
   ]
 }

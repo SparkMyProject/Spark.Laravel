@@ -26,7 +26,10 @@ $configData = Helper::appClasses();
 
   <ul class="menu-inner py-1">
     @foreach ($menuData[0]->menu as $menu)
+      @canany($menu->permissions)
+      {{-- adding active and open class if child is active --}}
 
+      {{-- menu headers --}}
     {{-- adding active and open class if child is active --}}
 
     {{-- menu headers --}}
@@ -81,6 +84,7 @@ $configData = Helper::appClasses();
       @endisset
     </li>
     @endif
+    @endcanany
     @endforeach
   </ul>
 
