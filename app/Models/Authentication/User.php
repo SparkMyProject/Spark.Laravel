@@ -32,7 +32,9 @@ class User extends Authenticatable
     'email',
     'password',
     'profile_photo_path',
-
+    'status',
+    'timezone',
+    'account_status',
   ];
 
   /**

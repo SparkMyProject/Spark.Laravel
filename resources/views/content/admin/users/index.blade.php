@@ -140,7 +140,8 @@
           <th>User</th>
           <th>Role</th>
           <th>Discord</th>
-          <th>Status</th>
+          <th>Account Status</th>
+          <th>Timezone</th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -199,7 +200,29 @@
               </div>
             </span></td>
             <td>
-              
+              <span class="text-truncate d-flex align-items-center">
+                @if($user->account_status == 'Active')
+                  <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
+                    <i class="ti ti-check ti-sm"></i>
+                  </span>Active
+                @elseif($user->account_status == 'Disabled')
+                  <span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2">
+                    <i class="ti ti-x ti-sm"></i>
+                  </span>Disabled
+                @else
+                  <span class="badge badge-center rounded-pill bg-label-danger w-px-30 h-px-30 me-2">
+                  <i class="ti ti-x ti-sm"></i>
+                </span>Banned
+                @endif
+              </span>
+            </td>
+
+            <td>
+              <span class="text-truncate d-flex align-items-center">
+                <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
+                  <i class="ti ti-world ti-sm"></i>
+                </span>{{$user->timezone}}
+              </span>
             </td>
             <td>
 
