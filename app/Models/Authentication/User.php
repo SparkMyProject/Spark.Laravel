@@ -18,6 +18,7 @@ class User extends Authenticatable
   use HasProfilePhoto;
   use Notifiable;
   use TwoFactorAuthenticatable;
+  use \Spatie\Permission\Traits\HasRoles;
 
   /**
    * The attributes that are mass assignable.
