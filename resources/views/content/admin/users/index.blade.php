@@ -4,7 +4,7 @@
   $users = User::with('oauthUser')->get();
 
 @endphp
-@extends('layouts.layoutMaster')
+@extends('components.layouts.layoutMaster')
 
 @section('title', 'User List - Pages')
 

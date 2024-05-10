@@ -1,4 +1,4 @@
-@extends('layouts/layoutMaster')
+@extends('components/layouts/layoutMaster')
 
 @section('title', 'Analytics')
 

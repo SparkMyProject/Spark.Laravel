@@ -29,11 +29,11 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
 
   <!-- Include Styles -->
   <!-- $isFront is used to append the front layout styles only on the front layout otherwise the variable will be blank -->
-  @include('layouts/sections/styles' . $isFront)
+  @include('components/layouts/sections/styles' . $isFront)
 
   <!-- Include Scripts for customizer, helper, analytics, config -->
   <!-- $isFront is used to append the front layout scriptsIncludes only on the front layout otherwise the variable will be blank -->
-  @include('layouts/sections/scriptsIncludes' . $isFront)
+  @include('components/layouts/sections/scriptsIncludes' . $isFront)
 </head>
 
 <body>
@@ -47,7 +47,7 @@ $contentLayout = (isset($container) ? (($container === 'container-xxl') ? "layou
 
   <!-- Include Scripts -->
   <!-- $isFront is used to append the front layout scripts only on the front layout otherwise the variable will be blank -->
-  @include('layouts/sections/scripts' . $isFront)
+  @include('components/layouts/sections/scripts' . $isFront)
 
 </body>
 

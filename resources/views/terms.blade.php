@@ -1,6 +1,6 @@
 @php
-$configData = Helper::appClasses();
-$customizerHidden = 'customizer-hide';
+    $configData = Helper::appClasses();
+    $customizerHidden = 'customizer-hide';
 @endphp
 
 @extends('layouts/blankLayout')
@@ -8,25 +8,25 @@ $customizerHidden = 'customizer-hide';
 @section('title', 'Login')
 
 @section('page-style')
-<!-- Page -->
-@vite('resources/assets/vendor/scss/pages/page-auth.scss')
+    <!-- Page -->
+    @vite('resources/assets/vendor/scss/pages/page-auth.scss')
 @endsection
 
 @section('content')
-<div class="authentication-wrapper authentication-basic px-4">
-  <div class="authentication-inner py-4">
-    <!-- Logo -->
-    <div class="app-brand mb-4">
-      <a href="{{url('/')}}" class="app-brand-link gap-2">
-        <span class="app-brand-logo demo">@include('_partials.macros',["height"=>20,"withbg"=>'fill: #fff;'])</span>
-      </a>
+    <div class="authentication-wrapper authentication-basic px-4">
+        <div class="authentication-inner py-4">
+            <!-- Logo -->
+            <div class="app-brand mb-4">
+                <a href="{{url('/')}}" class="app-brand-link gap-2">
+                    <span class="app-brand-logo demo">@include('components._partials.macros',["height"=>20,"withbg"=>'fill: #fff;'])</span>
+                </a>
+            </div>
+            <!-- /Logo -->
+            <div class="card">
+                <div class="card-body">
+                    {!! $terms !!}
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /Logo -->
-    <div class="card">
-      <div class="card-body">
-       {!! $terms !!}
-      </div>
-    </div>
-  </div>
-</div>
 @endsection

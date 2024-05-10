@@ -4,7 +4,7 @@
 @php
 $configData = Helper::appClasses();
 @endphp
-@extends('layouts/commonMaster' )
+@extends('components.layouts/commonMaster' )
 
 @php
 /* Display elements */
@@ -36,7 +36,7 @@ $container = (isset($configData['contentLayout']) && $configData['contentLayout'
   <div class="layout-container">
 
     @if ($isMenu)
-    @include('layouts/sections/menu/verticalMenu')
+    @include('components/layouts/sections/menu/verticalMenu')
     @endif
 
 
@@ -48,7 +48,7 @@ $container = (isset($configData['contentLayout']) && $configData['contentLayout'
 
       <!-- BEGIN: Navbar-->
       @if ($isNavbar)
-      @include('layouts/sections/navbar/navbar')
+      @include('components/layouts/sections/navbar/navbar')
       @endif
       <!-- END: Navbar-->
 
@@ -70,7 +70,7 @@ $container = (isset($configData['contentLayout']) && $configData['contentLayout'
 
           <!-- Footer -->
           @if ($isFooter)
-          @include('layouts/sections/footer/footer')
+          @include('components/layouts/sections/footer/footer')
           @endif
           <!-- / Footer -->
           <div class="content-backdrop fade"></div>

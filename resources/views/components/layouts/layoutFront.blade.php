@@ -5,13 +5,13 @@ $isFront = true;
 
 @section('layoutContent')
 
-@extends('layouts/commonMaster' )
+@extends('components/layouts/commonMaster' )
 
-@include('layouts/sections/navbar/navbar-front')
+@include('components/layouts/sections/navbar/navbar-front')
 
 <!-- Sections:Start -->
 @yield('content')
 <!-- / Sections:End -->
 
-@include('layouts/sections/footer/footer-front')
+@include('components/layouts/sections/footer/footer-front')
 @endsection
