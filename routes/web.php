@@ -71,7 +71,7 @@ Route::get('/auth/discord/callback', function () {
       'profile_photo_path' => $avatarPath,
 
     ]);
-    $user->userOAuths()->save($oauthUser);
+    $user->oauthUser()->save($oauthUser);
     $user->save();
   } else {
     $user = User::create([
