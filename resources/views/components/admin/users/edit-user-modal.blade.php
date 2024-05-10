@@ -2,7 +2,7 @@
 
 @endphp
 <!-- Edit User Modal -->
-<div class="modal fade"  id="editUserModal-{{$user->id}}" tabindex="-1" aria-hidden="true">
+<div class="modal fade"  id="editUserModal-{{$user->id}}" tabindex="-1" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-lg modal-simple">
     <div class="modal-content p-3 p-md-5">
       <div class="modal-body">
@@ -11,7 +11,8 @@
           <h3 class="mb-2">Edit User Information</h3>
           <p class="text-muted">Updating user details will receive a privacy audit.</p>
         </div>
-        <form id="editUserForm" class="row g-3" onsubmit="return false">
+        <form id="editUserForm" class="row g-3" action="{{route('routes.content.admin.users.edit')}}" method="POST" href="javascript;">
+          @csrf
           <div class="col-12 col-md-6">
             <label class="form-label" for="first_name">First Name</label>
             <input type="text" id="first_name" name="first_name" class="form-control" placeholder={{$user->username}} />
@@ -37,9 +38,9 @@
             <label class="form-label" for="account_status">Account Status</label>
 
             <select id="account_status" name="account_status" class="select2 form-select" aria-label="Default select example">
-              <option {{$user->account_status == "Active" ? 'selected' : ''}} value="1">Active</option>
-              <option {{$user->account_status == "Disabled" ? 'selected' : ''}} value="2">Disabled</option>
-              <option {{$user->account_status == "Banned" ? 'selected' : ''}} value="3">Banned</option>
+              <option {{$user->account_status == "Active" ? 'selected' : ''}} value="Active">Active</option>
+              <option {{$user->account_status == "Disabled" ? 'selected' : ''}} value="Disabled">Disabled</option>
+              <option {{$user->account_status == "Banned" ? 'selected' : ''}} value="Banned">Banned</option>
             </select>
           </div>
 {{--          <div class="col-12 col-md-6">--}}
