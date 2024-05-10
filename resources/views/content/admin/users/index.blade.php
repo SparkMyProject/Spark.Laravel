@@ -1,7 +1,9 @@
 @php
   use App\Models\Authentication\User;use App\Models\Role;
   $Auth = Auth::user();
-  $users = User::with('oauthUser')->get();
+    $users = User::with(['roles' => function ($query) {
+    $query->orderBy('priority', 'desc');
+  }])->with("oauthUser")->get();
 
 @endphp
 @extends('components.layouts.layoutMaster')
@@ -135,7 +137,8 @@
             <td>
                         <span class="text-truncate d-flex align-items-center">
                             <span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30 me-2">
-                                <i class="ti ti-chart-pie-2 ti-sm"></i>
+
+                                <i class="{{$user->roles->first()->icon}}"></i>
                             </span>{{$user->roles->first()->name}}
                         </span>
             </td>
