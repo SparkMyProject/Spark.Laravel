@@ -27,7 +27,6 @@ class AuthenticationSeeder extends Seeder
 //    $permission = \Spatie\Permission\Models\Permission::create(['name' => 'view content.dashboard.index']);
 //    $adminRole->givePermissionTo($permission);
 
-    $webmasterRole = Role::findByName('Webmaster');
-    $admin->assignRole($webmasterRole);
+    $admin->assignRole('Webmaster', 'User');
   }
 }
