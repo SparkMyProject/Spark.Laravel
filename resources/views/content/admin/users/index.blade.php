@@ -16,7 +16,10 @@
     'resources/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.scss',
     'resources/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.scss',
     'resources/assets/vendor/libs/select2/select2.scss',
-    'resources/assets/vendor/libs/@form-validation/form-validation.scss'
+    'resources/assets/vendor/libs/@form-validation/form-validation.scss',
+    'resources/assets/vendor/libs/animate-css/animate.css',
+    'resources/assets/vendor/libs/sweetalert2/sweetalert2.scss'
+
   ])
 @endsection
 
@@ -29,7 +32,8 @@
     'resources/assets/vendor/libs/@form-validation/bootstrap5.js',
     'resources/assets/vendor/libs/@form-validation/auto-focus.js',
     'resources/assets/vendor/libs/cleavejs/cleave.js',
-    'resources/assets/vendor/libs/cleavejs/cleave-phone.js'
+    'resources/assets/vendor/libs/cleavejs/cleave-phone.js',
+    'resources/assets/vendor/libs/sweetalert2/sweetalert2.js',
   ])
 @endsection
 
@@ -213,7 +217,9 @@
                 <div class="dropdown-menu dropdown-menu-end m-0">
 
                   <a href="" class="dropdown-item">View</a>
-                  <button class="disable-user-button dropdown-item button" data-user-id="@user.Id">Disable</button>
+                  <button class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"
+                          data-user-id={{$user->id}}>{{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
+                  </button>
 
                 </div>
               </div>
@@ -307,4 +313,6 @@
     </div>
   </div>
 
+
+@include('content.admin.users.index_helper')
 @endsection
