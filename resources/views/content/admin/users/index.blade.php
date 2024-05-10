@@ -42,7 +42,7 @@
 {{--@endsection--}}
 
 @section('content')
-
+  @include('components/_partials/alert-handling')
   <div class="row g-4 mb-4">
     <div class="col-sm-3 col-xl-4">
       <div class="card">
@@ -202,10 +202,12 @@
             <td>
 
               <div class="d-flex align-items-center">
-                <a data-bs-toggle="modal" data-bs-target="#editUserModal-{{$user->id}}" href="javascript:" class="text-body">
+                <a data-bs-toggle="modal" data-bs-target="#editUserModal-{{$user->id}}" href="javascript:"
+                   class="text-body">
                   <i class="ti ti-edit ti-sm me-2"></i>
-                    @include('components.admin.users.edit-user-modal', ['user' => $user])
                 </a>
+                @include('components.admin.users.edit-user-modal', ['user' => $user])
+
 
                 <a href="javascript:" class="text-body delete-record">
                   <i class="ti ti-trash ti-sm mx-2"></i>
@@ -227,6 +229,8 @@
               </div>
             </td>
           </tr>
+
+
         @endforeach
 
       </table>
