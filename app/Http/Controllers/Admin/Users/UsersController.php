@@ -60,4 +60,29 @@ class UsersController extends Controller
     }
     return response()->json($response);
   }
+
+  public function edit_user(Request $request) {
+    $user = \App\Models\Authentication\User::find($request->userId);
+    $current_user = auth()->user();
+    $response = ["message" => "error"];
+
+    if ($user == null) {
+      $response = ["message" => "user_not_found", "code" => 404];
+    }
+
+    if ($current_user->cannot('actions.admin.users.edit')) {
+      return response()->json(["message" => "insufficient_permissions", "code" => 403]);
+    } else {
+      $user->update([
+        'username' => $request->username,
+        'email' => $request->email,
+        'first_name' => $request->first_name,
+        'last_name' => $request->last_name,
+        'account_status' => $request->account_status
+      ]);
+      $user->save();
+      $response = ["message" => "success", "code" => 200];
+    }
+    return response()->json($response);
+  }
 }

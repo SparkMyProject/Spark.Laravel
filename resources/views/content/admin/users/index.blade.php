@@ -202,8 +202,9 @@
             <td>
 
               <div class="d-flex align-items-center">
-                <a href="javascript:" class="text-body">
+                <a data-bs-toggle="modal" data-bs-target="#editUserModal-{{$user->id}}" href="javascript:" class="text-body">
                   <i class="ti ti-edit ti-sm me-2"></i>
+                    @include('components.admin.users.edit-user-modal', ['user' => $user])
                 </a>
 
                 <a href="javascript:" class="text-body delete-record">
@@ -217,8 +218,9 @@
                 <div class="dropdown-menu dropdown-menu-end m-0">
 
                   <a href="" class="dropdown-item">View</a>
-                  <button class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"
-                          data-user-id={{$user->id}}>{{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
+                  <button
+                    class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"
+                    data-user-id={{$user->id}}>{{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
                   </button>
 
                 </div>
@@ -313,6 +315,5 @@
     </div>
   </div>
 
-
-@include('content.admin.users.index_helper')
+  @include('components.admin.users.toggle-acct-status-alert')
 @endsection
