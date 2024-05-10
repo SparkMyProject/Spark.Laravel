@@ -26,7 +26,6 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $fillable = [
-    'name',
     'username',
     'display_name',
     'email',
@@ -35,6 +34,8 @@ class User extends Authenticatable
     'status',
     'timezone',
     'account_status',
+    'first_name',
+    'last_name'
   ];
 
   /**
@@ -82,5 +83,11 @@ class User extends Authenticatable
 
     return asset('assets/img/avatars/1.png'); // default avatar, just in case of a missing file
   }
+
+  public function getFullNameAttribute()
+  {
+    return $this->first_name . ' ' . $this->last_name;
+  }
+
 
 }

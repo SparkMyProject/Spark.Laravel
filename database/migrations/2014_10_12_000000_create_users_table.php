@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 128)->nullable();
+            $table->string('first_name', 128)->nullable();
+            $table->string('last_name', 128)->nullable();
             $table->string('email', 128)->unique()->nullable();
             $table->string('username', 20)->unique();
             $table->string('display_name', 30)->nullable();
