@@ -10,12 +10,50 @@
       ]
     },
     {
-      "url": "/admin/users",
-      "name": "Manage Users",
-      "icon": "menu-icon tf-icons ti ti-user",
-      "slug": "routes.content.admin.users.index",
+      "url": "/admin",
+      "name": "Administration",
+      "icon": "menu-icon tf-icons ti ti-lock",
+      "slug": "routes.content.admin",
       "permissions": [
-        "view content.admin.users.index"
+        "view content.admin.roles.index"
+      ],
+      "submenu": [
+        {
+          "url": "/admin/roles",
+          "name": "Manage Roles",
+          "icon": "menu-icon tf-icons ti ti-lock",
+          "slug": "routes.content.admin.roles.index",
+          "permissions": [
+            "view content.admin.roles.index"
+          ]
+        },
+        {
+          "url": "/admin/permissions",
+          "name": "Manage Permissions",
+          "icon": "menu-icon tf-icons ti ti-lock",
+          "slug": "routes.content.admin.permissions.index",
+          "permissions": [
+            "view content.admin.permissions.index"
+          ]
+        },
+        {
+          "url": "/admin/users",
+          "name": "Manage Users",
+          "icon": "menu-icon tf-icons ti ti-user",
+          "slug": "routes.content.admin.users.index",
+          "permissions": [
+            "view content.admin.users.index"
+          ]
+        },
+        {
+          "url": "/admin/settings/auditlog",
+          "name": "Audit Log",
+          "icon": "menu-icon tf-icons ti ti-clipboard",
+          "slug": "routes.content.admin.settings.auditlog",
+          "permissions": [
+            "actions.admin.settings.auditlog.view"
+          ]
+        }
       ]
     }
   ]

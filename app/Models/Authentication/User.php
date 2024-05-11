@@ -98,7 +98,9 @@ class User extends Authenticatable
   public function getActivitylogOptions(): LogOptions
   {
     return LogOptions::defaults()
-      ->logFillable()->dontSubmitEmptyLogs()->logOnlyDirty();
+      ->logFillable()->dontSubmitEmptyLogs()->logOnlyDirty()->setDescriptionForEvent(function (string $eventName) {
+        return "User Model {$eventName}";
+      });
     // Chain fluent methods for configuration options
   }
 

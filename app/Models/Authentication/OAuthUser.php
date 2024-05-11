@@ -29,6 +29,8 @@ class OAuthUser extends Model
   public function getActivitylogOptions(): LogOptions
   {
     return LogOptions::defaults()
-      ->logFillable()->dontSubmitEmptyLogs()->logOnlyDirty();;
+      ->logFillable()->dontSubmitEmptyLogs()->logOnlyDirty()->setDescriptionForEvent(function (string $eventName) {
+        return "OAuthUser Model {$eventName}";
+      });
   }
 }

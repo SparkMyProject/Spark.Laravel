@@ -42,6 +42,7 @@ use App\Models\Authentication\User as User;
 
   <!-- DataTable with Buttons -->
   <div class="card">
+    <input type="text" id="auditlog-search" placeholder="Search">
     <div class="card-datatable table-responsive pt-0">
       <table class="datatables-basic table">
         <thead>
@@ -68,11 +69,10 @@ use App\Models\Authentication\User as User;
             <td>{{ $auditlog->created_at }}</td>
             <td>{{ $auditlog->status }}</td>
             <td>
-              <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#add-new-record" data-bs-trigger="focus">Edit</button>
-              <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+              <a type="button" class="btn btn-sm btn-outline-primary" href={{route('routes.content.admin.settings.auditlog.view', ['id' => $auditlog->id])}}>View</a>
+              <button type="button" class="btn btn-sm btn-outline-danger disabled">Delete</button>
             </td>
           </tr>
-{{--          <tr class="odd"><td class="  control" tabindex="0" style="display: none;"></td><td class="  dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes form-check-input"></td><td><div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar me-2"><span class="avatar-initial rounded-circle bg-label-success">GG</span></div></div><div class="d-flex flex-column"><span class="emp_name text-truncate">Glyn Giacoppo</span><small class="emp_post text-truncate text-muted">Software Test Engineer</small></div></div></td><td>ggiacoppo2r@apache.org</td><td>04/15/2021</td><td>$24973.48</td><td><span class="badge  bg-label-success">Professional</span></td><td><div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a><ul class="dropdown-menu dropdown-menu-end m-0"><li><a href="javascript:;" class="dropdown-item">Details</a></li><li><a href="javascript:;" class="dropdown-item">Archive</a></li><div class="dropdown-divider"></div><li><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></li></ul></div><a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a></td></tr>--}}
         @endforeach
         </tbody>
       </table>
@@ -134,4 +134,13 @@ use App\Models\Authentication\User as User;
   </div>
   <!--/ DataTable with Buttons -->
 
+  <script>
+    $(document).ready(function() {
+      var table = $('.datatables-basic').DataTable();
+
+      $('#auditlog-search').on('keyup', function() {
+        table.search(this.value).draw();
+      });
+    });
+  </script>
 @endsection

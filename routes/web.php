@@ -43,7 +43,7 @@ Route::post('/admin/users/edit', [\App\Http\Controllers\Admin\Users\UsersControl
 
 // Admin/Settings
 Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'auditlog'])->name('routes.content.admin.settings.auditlog')->can("actions.admin.settings.auditlog.view");
-
+Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'viewlog'])->name('routes.content.admin.settings.auditlog.view')->can("routes.content.admin.settings.auditlog.view");
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

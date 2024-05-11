@@ -15,4 +15,9 @@ class AuditLogController extends Controller
     $audits = Activity::all()->sortByDesc('created_at');
     return view('content.admin.settings.auditlog', ['auditlogs' => $audits]);
   }
+  public function viewlog($id)
+  {
+    $audit = Activity::find($id);
+    return view('content.admin.settings.viewlog', ['audit' => $audit]);
+  }
 }

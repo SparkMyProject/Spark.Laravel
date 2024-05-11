@@ -82,7 +82,7 @@
 
                         {{-- submenu --}}
                         @isset($menu->submenu)
-                            @include('layouts.sections.menu.submenu',['menu' => $menu->submenu])
+                            @include('components.layouts.sections.menu.submenu',['menu' => $menu->submenu])
                         @endisset
                     </li>
                 @endif
