@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Users;
 
+use App\Helpers\PermissionsHelper;
+use App\Helpers\ModelHelper;
 use App\Http\Controllers\Controller;
-use function MongoDB\BSON\toJSON;
-
+use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
   public function index()
@@ -61,28 +62,22 @@ class UsersController extends Controller
     return response()->json($response);
   }
 
-  public function edit_user(Request $request) {
-    $user = \App\Models\Authentication\User::find($request->userId);
-    $current_user = auth()->user();
-    $response = ["message" => "error"];
+
+  public function edit_user() {
+    $user = \App\Models\Authentication\User::find(request('userId'));
+    $current_user = Auth::user()->load('roles');
 
     if ($user == null) {
-      $response = ["message" => "user_not_found", "code" => 404];
+      session()->flash('error', 'User not found.');
     }
-
-    if ($current_user->cannot('actions.admin.users.edit')) {
-      return response()->json(["message" => "insufficient_permissions", "code" => 403]);
+    if ($current_user->cannot('actions.admin.users.edit') || !PermissionsHelper::highestRoleCompare($current_user, $user)) {
+      session()->flash('error', 'User does not have permission.');
     } else {
-      $user->update([
-        'username' => $request->username,
-        'email' => $request->email,
-        'first_name' => $request->first_name,
-        'last_name' => $request->last_name,
-        'account_status' => $request->account_status
-      ]);
+      $fields = ['username', 'display_name', 'email', 'status', 'timezone', 'account_status', 'first_name', 'last_name'];
+      $user = ModelHelper::updateModel($fields, $user, request()->all());
       $user->save();
-      $response = ["message" => "success", "code" => 200];
     }
-    return response()->json($response);
+    session()->flash('success', 'User updated successfully.');
+    return view('content.admin.users.index');
   }
 }
