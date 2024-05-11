@@ -30,6 +30,7 @@ class RolesController extends Controller
       'icon' => 'nullable|string|max:30',
       'priority' => 'nullable|integer',
     ]);
+
     $role->update(array_filter($validated));
     session()->flash('success', 'Role updated');
     return redirect()->route('routes.content.admin.settings.roles');
