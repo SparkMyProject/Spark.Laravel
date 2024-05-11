@@ -81,10 +81,12 @@ class User extends Authenticatable
 
   public function getProfilePhotoUrlAttribute()
   {
-    $path = $this->attributes['profile_photo_path'];
+    if (isset($this->attributes['profile_photo_path'])) {
+      $path = $this->attributes['profile_photo_path'];
 
-    if (Storage::exists($path)) {
-      return Storage::url($path);
+      if (Storage::exists($path)) {
+        return Storage::url($path);
+      }
     }
 
     return asset('assets/img/avatars/1.png'); // default avatar, just in case of a missing file
