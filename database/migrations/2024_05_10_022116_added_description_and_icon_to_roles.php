@@ -15,8 +15,8 @@ return new class extends Migration
         $table->string('description')->nullable();
       });
       Schema::table('roles', function (Blueprint $table) {
-        $table->string('description')->nullable();
-        $table->string('icon')->default('fa-regular fa-user');
+        $table->string('description', 30)->nullable();
+        $table->string('icon', 30)->default('fa-regular fa-user');
         $table->integer('priority')->default(1);
       });
     }

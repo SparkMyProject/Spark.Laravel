@@ -45,7 +45,7 @@ Route::post('/admin/users/edit', [\App\Http\Controllers\Admin\Users\UsersControl
 Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'index'])->name('routes.content.admin.settings.auditlog.index')->can("actions.admin.settings.auditlog.view");
 Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'view'])->name('routes.content.admin.settings.auditlog.view')->can("routes.content.admin.settings.auditlog.view");
 Route::get('/admin/settings/roles', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'index'])->name('routes.content.admin.settings.roles')->can("actions.admin.settings.roles.view");
-
+Route::post('/admin/settings/roles/edit/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit'])->name('routes.content.admin.settings.roles.edit')->can("actions.admin.settings.roles.edit");
 
 Route::middleware([
     'auth:sanctum',

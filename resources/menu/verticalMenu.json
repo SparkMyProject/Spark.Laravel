@@ -19,12 +19,12 @@
       ],
       "submenu": [
         {
-          "url": "/admin/roles",
+          "url": "/admin/settings/roles",
           "name": "Manage Roles",
           "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.content.admin.roles.index",
+          "slug": "routes.content.admin.settings.roles.index",
           "permissions": [
-            "view content.admin.roles.index"
+            "actions.admin.settings.roles.view"
           ]
         },
         {

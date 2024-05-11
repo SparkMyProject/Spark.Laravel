@@ -76,9 +76,16 @@ class UsersController extends Controller
     if (!PermissionsHelper::highestRoleCompare($current_user, $user)) {
       session()->flash('error', 'User does not have permission.');
     } else {
-      $fields = ['username', 'display_name', 'email', 'timezone', 'account_status', 'first_name', 'last_name'];
-      $user = ModelHelper::updateModel($fields, $user, request()->all());
-      $user->save();
+      $validated = request()->validate([
+        'username' => 'nullable|string|max:20',
+        'display_name' => 'nullable|string|max:20',
+        'email' => 'nullable|email',
+        'timezone' => 'nullable|string|max:30',
+        'account_status' => 'nullable|string|max:30',
+        'first_name' => 'nullable|string|max:30',
+        'last_name' => 'nullable|string|max:30',
+      ]);
+      $user->update(array_filter($validated));
     }
     session()->flash('success', 'User updated successfully.');
     // refresh current page
