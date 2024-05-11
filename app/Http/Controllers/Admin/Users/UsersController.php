@@ -81,7 +81,8 @@ class UsersController extends Controller
       $user->save();
     }
     session()->flash('success', 'User updated successfully.');
-    return view('content.admin.users.index');
+    // refresh current page
+    return redirect()->back();
   }
 
   public function view_user($id)
@@ -93,7 +94,6 @@ class UsersController extends Controller
     if ($user == null) {
       session()->flash('error', 'User not found.');
       return view('content.admin.users.index');
-
     }
 
     $user->load(['roles' => function ($query) {

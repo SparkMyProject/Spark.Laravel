@@ -37,13 +37,6 @@
   ])
 @endsection
 
-@section('page-script')
-  @vite([
-    'resources/assets/js/modal-edit-user.js',
-    'resources/assets/js/app-user-view.js',
-    'resources/assets/js/app-user-view-account.js'
-  ])
-@endsection
 
 @section('content')
   <h4 class="py-3 mb-4">
@@ -57,11 +50,11 @@
         <div class="card-body">
           <div class="user-avatar-section">
             <div class=" d-flex align-items-center flex-column">
-              <img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('assets/img/avatars/15.png') }}" height="100"
+              <img class="img-fluid rounded-circle mb-3 pt-1 mt-4" src="{{ Auth::user()->profile_photo_url }}" height="100"
                    width="100" alt="User avatar" />
               <div class="user-info text-center">
 
-                <h4 class="mb-2">{{empty($user->full_name) ? $user->display_name : $user->full_name}}</h4>
+                <h4 class="mb-2">{{$user->display_name ? : $user->username}}</h4>
                 <p class="mb-0 text-muted">{{$user->status}}</p>
                 <span class="badge bg-label-secondary mt-1">{{$user->roles->first()->name}}</span>
               </div>
@@ -94,9 +87,13 @@
                 <span class="fw-medium me-1">Display Name:</span>
                 <span>{{$user->display_name ? : 'N/A'}}</span>
               </li>
+              <li class="mb-2">
+                <span class="fw-medium me-1">Full Name:</span>
+                <span>{{$user->full_name ? : 'N/A'}}</span>
+              </li>
               <li class="mb-2 pt-1">
                 <span class="fw-medium me-1">Email:</span>
-                <span>{{$user->email}}</span>
+                <span>{{$user->email ? : 'N/A'}}</span>
               </li>
               <li class="mb-2 pt-1">
                 <span class="fw-medium me-1">Account Status:</span>
@@ -108,9 +105,8 @@
               </li>
             </ul>
             <div class="d-flex justify-content-center">
-              <a href="javascript:;" class="btn btn-primary me-3"  data-bs-target="#editUserModal-{{$user->id}}"
-                 data-bs-toggle="modal">Edit</a>
-              @include('components/admin/users/edit-user-modal')
+              <a href="javascript:" class="btn btn-primary me-3"  data-bs-toggle="modal" data-bs-target="#editUserModal-{{$user->id}}">Edit</a>
+              @include('components.admin.users.edit-user-modal', ['user' => $user])
             </div>
 
           </div>

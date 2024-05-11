@@ -124,6 +124,7 @@
         @foreach($users as $user)
           <tr>
             <td class="sorting_1">
+
               <div class="d-flex justify-content-start align-items-center user-name">
                 <div class="avatar-wrapper">
                   <div class="avatar me-3">
@@ -184,7 +185,7 @@
                   <span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2">
                     <i class="ti ti-x ti-sm"></i>
                   </span>Disabled
-                @else
+                @elseif($user->account_status == 'Banned')
                   <span class="badge badge-center rounded-pill bg-label-danger w-px-30 h-px-30 me-2">
                   <i class="ti ti-x ti-sm"></i>
                 </span>Banned
@@ -198,7 +199,9 @@
                   <i class="ti ti-world ti-sm"></i>
                 </span>{{$user->timezone}}
               </span>
+
             </td>
+
             <td>
 
               <div class="d-flex align-items-center">
@@ -207,6 +210,7 @@
                   <i class="ti ti-edit ti-sm me-2"></i>
                 </a>
                 @include('components.admin.users.edit-user-modal', ['user' => $user])
+
 
 
                 <a href="javascript:" class="text-body delete-record">
@@ -219,7 +223,7 @@
 
                 <div class="dropdown-menu dropdown-menu-end m-0">
 
-                  <a href="" class="dropdown-item">View</a>
+                  <a href="{{route("routes.content.admin.users.view", ['id' => $user->id])}}" class="dropdown-item">View</a>
                   <button
                     class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"
                     data-user-id={{$user->id}}>{{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
