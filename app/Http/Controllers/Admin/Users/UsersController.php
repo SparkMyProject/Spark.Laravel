@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Users;
 
-use App\Helpers\PermissionsHelper;
 use App\Helpers\ModelHelper;
+use App\Helpers\PermissionsHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 class UsersController extends Controller
 {
   public function index()
@@ -37,6 +38,7 @@ class UsersController extends Controller
     }
     return response()->json($response);
   }
+
   public function enable_user()
   {
     $user = \App\Models\Authentication\User::find(request('userId'));
@@ -63,14 +65,15 @@ class UsersController extends Controller
   }
 
 
-  public function edit_user() {
+  public function edit_user()
+  {
     $user = \App\Models\Authentication\User::find(request('userId'));
     $current_user = Auth::user()->load('roles');
 
     if ($user == null) {
       session()->flash('error', 'User not found.');
     }
-    if ($current_user->cannot('actions.admin.users.edit') || !PermissionsHelper::highestRoleCompare($current_user, $user)) {
+    if (!PermissionsHelper::highestRoleCompare($current_user, $user)) {
       session()->flash('error', 'User does not have permission.');
     } else {
       $fields = ['username', 'display_name', 'email', 'timezone', 'account_status', 'first_name', 'last_name'];
@@ -83,17 +86,19 @@ class UsersController extends Controller
 
   public function view_user($id)
   {
+    // Route is protected by the permission
     $user = \App\Models\Authentication\User::find($id);
     $current_user = Auth::user()->load('roles');
 
     if ($user == null) {
       session()->flash('error', 'User not found.');
+      return view('content.admin.users.index');
+
     }
-    if ($current_user->cannot('actions.admin.users.view')) {
-      session()->flash('error', 'User does not have permission.');
-    } else {
-      return view('content.admin.users.view', ['user' => $user]);
-    }
-    return view('content.admin.users.index');
+
+    $user->load(['roles' => function ($query) {
+      $query->orderBy('priority', 'desc');
+    }]);
+    return view('content.admin.users.view', ['user' => $user]);
   }
 }
