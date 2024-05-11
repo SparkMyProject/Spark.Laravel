@@ -133,7 +133,7 @@
                 <div class="d-flex flex-column">
                   <a href="app-user-view-account.html" class="text-body text-truncate">
                     <span class="fw-medium">{{$user->username}}</span>
-                  </a><small class="text-muted">{{$user->email}}</small>
+                  </a><small class="text-muted">{{$user->full_name}}</small>
                 </div>
               </div>
             </td>
