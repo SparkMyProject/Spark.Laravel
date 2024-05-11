@@ -49,7 +49,7 @@
           "url": "/admin/settings/auditlog",
           "name": "Audit Log",
           "icon": "menu-icon tf-icons ti ti-clipboard",
-          "slug": "routes.content.admin.settings.auditlog",
+          "slug": "routes.content.admin.settings.auditlog.index",
           "permissions": [
             "actions.admin.settings.auditlog.view"
           ]

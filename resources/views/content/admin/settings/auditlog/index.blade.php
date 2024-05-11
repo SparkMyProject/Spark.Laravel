@@ -1,7 +1,7 @@
 @php
-use App\Models\Authentication\User as User;
+  use App\Models\Authentication\User as User;
 @endphp
-@extends('components/layouts/layoutMaster')
+@extends('components.layouts.layoutMaster')
 
 @section('title', 'DataTables - Tables')
 
@@ -69,7 +69,8 @@ use App\Models\Authentication\User as User;
             <td>{{ $auditlog->created_at }}</td>
             <td>{{ $auditlog->status }}</td>
             <td>
-              <a type="button" class="btn btn-sm btn-outline-primary" href={{route('routes.content.admin.settings.auditlog.view', ['id' => $auditlog->id])}}>View</a>
+              <a type="button" class="btn btn-sm btn-outline-primary"
+                 href={{route('routes.content.admin.settings.auditlog.view', ['id' => $auditlog->id])}}>View</a>
               <button type="button" class="btn btn-sm btn-outline-danger disabled">Delete</button>
             </td>
           </tr>
@@ -90,21 +91,24 @@ use App\Models\Authentication\User as User;
           <label class="form-label" for="basicFullname">Full Name</label>
           <div class="input-group input-group-merge">
             <span id="basicFullname2" class="input-group-text"><i class="ti ti-user"></i></span>
-            <input type="text" id="basicFullname" class="form-control dt-full-name" name="basicFullname" placeholder="John Doe" aria-label="John Doe" aria-describedby="basicFullname2" />
+            <input type="text" id="basicFullname" class="form-control dt-full-name" name="basicFullname"
+                   placeholder="John Doe" aria-label="John Doe" aria-describedby="basicFullname2" />
           </div>
         </div>
         <div class="col-sm-12">
           <label class="form-label" for="basicPost">Post</label>
           <div class="input-group input-group-merge">
             <span id="basicPost2" class="input-group-text"><i class='ti ti-briefcase'></i></span>
-            <input type="text" id="basicPost" name="basicPost" class="form-control dt-post" placeholder="Web Developer" aria-label="Web Developer" aria-describedby="basicPost2" />
+            <input type="text" id="basicPost" name="basicPost" class="form-control dt-post" placeholder="Web Developer"
+                   aria-label="Web Developer" aria-describedby="basicPost2" />
           </div>
         </div>
         <div class="col-sm-12">
           <label class="form-label" for="basicEmail">Email</label>
           <div class="input-group input-group-merge">
             <span class="input-group-text"><i class="ti ti-mail"></i></span>
-            <input type="text" id="basicEmail" name="basicEmail" class="form-control dt-email" placeholder="john.doe@example.com" aria-label="john.doe@example.com" />
+            <input type="text" id="basicEmail" name="basicEmail" class="form-control dt-email"
+                   placeholder="john.doe@example.com" aria-label="john.doe@example.com" />
           </div>
           <div class="form-text">
             You can use letters, numbers & periods
@@ -114,14 +118,16 @@ use App\Models\Authentication\User as User;
           <label class="form-label" for="basicDate">Joining Date</label>
           <div class="input-group input-group-merge">
             <span id="basicDate2" class="input-group-text"><i class='ti ti-calendar'></i></span>
-            <input type="text" class="form-control dt-date" id="basicDate" name="basicDate" aria-describedby="basicDate2" placeholder="MM/DD/YYYY" aria-label="MM/DD/YYYY" />
+            <input type="text" class="form-control dt-date" id="basicDate" name="basicDate"
+                   aria-describedby="basicDate2" placeholder="MM/DD/YYYY" aria-label="MM/DD/YYYY" />
           </div>
         </div>
         <div class="col-sm-12">
           <label class="form-label" for="basicSalary">Salary</label>
           <div class="input-group input-group-merge">
             <span id="basicSalary2" class="input-group-text"><i class='ti ti-currency-dollar'></i></span>
-            <input type="number" id="basicSalary" name="basicSalary" class="form-control dt-salary" placeholder="12000" aria-label="12000" aria-describedby="basicSalary2" />
+            <input type="number" id="basicSalary" name="basicSalary" class="form-control dt-salary" placeholder="12000"
+                   aria-label="12000" aria-describedby="basicSalary2" />
           </div>
         </div>
         <div class="col-sm-12">

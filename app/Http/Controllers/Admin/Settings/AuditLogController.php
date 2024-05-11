@@ -10,14 +10,14 @@ use Spatie\Activitylog\Models\Activity;
 
 class AuditLogController extends Controller
 {
-  public function auditlog()
+  public function index()
   {
     $audits = Activity::all()->sortByDesc('created_at');
-    return view('content.admin.settings.auditlog', ['auditlogs' => $audits]);
+    return view('content.admin.settings.auditlog.index', ['auditlogs' => $audits]);
   }
-  public function viewlog($id)
+  public function view($id)
   {
     $audit = Activity::find($id);
-    return view('content.admin.settings.viewlog', ['audit' => $audit]);
+    return view('content.admin.settings.auditlog.view', ['audit' => $audit]);
   }
 }

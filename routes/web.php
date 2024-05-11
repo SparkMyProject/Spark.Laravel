@@ -42,8 +42,11 @@ Route::post('/admin/users/enable', [\App\Http\Controllers\Admin\Users\UsersContr
 Route::post('/admin/users/edit', [\App\Http\Controllers\Admin\Users\UsersController::class, 'edit_user'])->name('routes.content.admin.users.edit')->can("actions.admin.users.edit");
 
 // Admin/Settings
-Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'auditlog'])->name('routes.content.admin.settings.auditlog')->can("actions.admin.settings.auditlog.view");
-Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'viewlog'])->name('routes.content.admin.settings.auditlog.view')->can("routes.content.admin.settings.auditlog.view");
+Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'index'])->name('routes.content.admin.settings.auditlog.index')->can("actions.admin.settings.auditlog.view");
+Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'view'])->name('routes.content.admin.settings.auditlog.view')->can("routes.content.admin.settings.auditlog.view");
+Route::get('/admin/settings/roles', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'index'])->name('routes.content.admin.settings.roles')->can("actions.admin.settings.roles.view");
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
