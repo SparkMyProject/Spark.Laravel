@@ -29,7 +29,6 @@ class User extends Authenticatable
     'username',
     'display_name',
     'email',
-    'password',
     'profile_photo_path',
     'status',
     'timezone',

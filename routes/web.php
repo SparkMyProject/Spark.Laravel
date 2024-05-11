@@ -78,13 +78,14 @@ Route::get('/auth/discord/callback', function () {
     $user->oauthUser()->save($oauthUser);
     $user->save();
   } else {
-    $user = User::create([
+    $user = User::make([
       'name' => $discordUser->name,
       'email' => $discordUser->email,
       'username' => $discordUser->nickname,
       'profile_photo_path' => $avatarPath,
-      'password' => bcrypt(Str::random(24)),
     ])->assignRole('User');
+    $user->password = bcrypt(Str::random(16));
+    $user->save();
 
     $oauthUser = OAuthUser::create([
       'user_id' => $user->id,
