@@ -34,10 +34,13 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
 
 // Admin/Users
+Route::get('/admin/users/view/{id}', [\App\Http\Controllers\Admin\Users\UsersController::class, 'view_user'])->name('routes.content.users.view')->can("content.users.view");
+
 Route::get('/admin/users', [\App\Http\Controllers\Admin\Users\UsersController::class, 'index'])->name('routes.content.admin.users.index')->can("actions.admin.users.view");
 Route::post('/admin/users/disable', [\App\Http\Controllers\Admin\Users\UsersController::class, 'disable_user'])->name('routes.content.admin.users.disable')->can("actions.admin.users.disable");
 Route::post('/admin/users/enable', [\App\Http\Controllers\Admin\Users\UsersController::class, 'enable_user'])->name('routes.content.admin.users.enable')->can("actions.admin.users.enable");
 Route::post('/admin/users/edit', [\App\Http\Controllers\Admin\Users\UsersController::class, 'edit_user'])->name('routes.content.admin.users.edit')->can("actions.admin.users.edit");
+
 
 Route::middleware([
     'auth:sanctum',

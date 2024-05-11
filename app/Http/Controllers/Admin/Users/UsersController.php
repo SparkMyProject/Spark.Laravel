@@ -80,4 +80,20 @@ class UsersController extends Controller
     session()->flash('success', 'User updated successfully.');
     return view('content.admin.users.index');
   }
+
+  public function view_user($id)
+  {
+    $user = \App\Models\Authentication\User::find($id);
+    $current_user = Auth::user()->load('roles');
+
+    if ($user == null) {
+      session()->flash('error', 'User not found.');
+    }
+    if ($current_user->cannot('actions.admin.users.view')) {
+      session()->flash('error', 'User does not have permission.');
+    } else {
+      return view('content.admin.users.view', ['user' => $user]);
+    }
+    return view('content.admin.users.index');
+  }
 }
