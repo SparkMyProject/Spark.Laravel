@@ -52,7 +52,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-  Route::get('/dashboard', [\App\Http\Controllers\Dashboard\HomePage::class, 'index'])->can("content.dashboard.index.view")->name('routes.content.dashboard.index');
+  Route::get('/dashboard', [\App\Http\Controllers\Dashboard\HomePage::class, 'index'])->can("actions.dashboard.index.view")->name('routes.content.dashboard.index');
 });
 
 Route::get('/auth/discord/redirect', function () {
