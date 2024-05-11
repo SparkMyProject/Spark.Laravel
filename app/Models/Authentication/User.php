@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\CausesActivity;
 
 class User extends Authenticatable
 {
@@ -19,6 +22,10 @@ class User extends Authenticatable
   use Notifiable;
   use TwoFactorAuthenticatable;
   use \Spatie\Permission\Traits\HasRoles;
+  use CausesActivity;
+
+
+  use LogsActivity;
 
   /**
    * The attributes that are mass assignable.
@@ -88,5 +95,11 @@ class User extends Authenticatable
     return $this->first_name . ' ' . $this->last_name;
   }
 
+  public function getActivitylogOptions(): LogOptions
+  {
+    return LogOptions::defaults()
+      ->logFillable()->dontSubmitEmptyLogs()->logOnlyDirty();
+    // Chain fluent methods for configuration options
+  }
 
 }
