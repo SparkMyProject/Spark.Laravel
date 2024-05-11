@@ -63,9 +63,9 @@ use App\Models\Authentication\User as User;
         @foreach($auditlogs as $auditlog)
           <tr>
             <td>{{ $auditlog->id }}</td>
-            <td>{{ User::find($auditlog->causer_id)->display_name }}</td>
+            <td>{{optional(User::find($auditlog->causer_id))->display_name ? : 'SYSTEM'}}</td>
             <td>{{ $auditlog->description }}</td>
-            <td>{{ User::find($auditlog->subject_id)->display_name }}</td>
+            <td>{{optional(User::find($auditlog->subject_id))->display_name ? : 'SYSTEM'}}</td>
             <td>{{ $auditlog->created_at }}</td>
             <td>{{ $auditlog->status }}</td>
             <td>

@@ -11,8 +11,8 @@
 @section('content')
   <h1>View Audit Log</h1>
   <h4>Date: {{$audit->created_at}}</h4>
-  <h4>Causing User: {{User::find($audit->causer_id)->display_name}}</h4>
-  <h4>Affected User: {{User::find($audit->subject_id)->display_name}}</h4>
+  <h4>Causing User: {{optional(User::find($audit->causer_id))->display_name ? : 'SYSTEM'}}</h4>
+  <h4>Affected User: {{optional(User::find($audit->subject_id))->display_name ? : 'SYSTEM'}}</h4>
   <h5>Description: {{$audit->description}}</h5>
   <div class="card">
     <h5 class="card-header">Fields Changed</h5>
