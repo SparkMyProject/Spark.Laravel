@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->default('assets/img/avatars/1.png')->nullable();
             $table->string('status, 30')->default('Relaxing...')->nullable();
-            $table->string('timezone', 30)->default('UTC');
+            $table->string('timezone', ['EST', 'UTC', 'AEST', 'CST', 'PST'])->default('UTC');
             $table->enum('account_status', ['Active', 'Disabled', 'Banned'])->default('Active');
             $table->timestamps();
         });

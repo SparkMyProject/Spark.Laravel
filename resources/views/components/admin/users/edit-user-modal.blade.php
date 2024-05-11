@@ -44,6 +44,20 @@
               <option {{$user->account_status == "Banned" ? 'selected' : ''}} value="Banned">Banned</option>
             </select>
           </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label" for="account_status">Timezone</label>
+
+            <select id="timezone" name="timezone" class="select2 form-select" aria-label="Default select example">
+              <option {{$user->timezone == "AEST" ? 'selected' : ''}} value="AEST">AEST (Australian Eastern Standard Time)</option>
+              <option {{$user->timezone == "CST" ? 'selected' : ''}} value="CST">CST (Central Standard Time)</option>
+              <option {{$user->timezone == "EST" ? 'selected' : ''}} value="EST">EST (Eastern Standard Time)</option>
+              <option {{$user->timezone == "PST" ? 'selected' : ''}} value="PST">PST (Pacific Standard Time)</option>
+              <option {{$user->timezone == "UTC" ? 'selected' : ''}} value="UTC">UTC (Coordinated Universal Time)</option>
+
+
+            </select>
+          </div>
 {{--          <div class="col-12 col-md-6">--}}
 {{--            <label class="form-label" for="modalEditUserPhone">Phone Number</label>--}}
 {{--            <div class="input-group">--}}

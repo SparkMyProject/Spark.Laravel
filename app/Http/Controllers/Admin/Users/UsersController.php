@@ -73,7 +73,7 @@ class UsersController extends Controller
     if ($current_user->cannot('actions.admin.users.edit') || !PermissionsHelper::highestRoleCompare($current_user, $user)) {
       session()->flash('error', 'User does not have permission.');
     } else {
-      $fields = ['username', 'display_name', 'email', 'status', 'timezone', 'account_status', 'first_name', 'last_name'];
+      $fields = ['username', 'display_name', 'email', 'timezone', 'account_status', 'first_name', 'last_name'];
       $user = ModelHelper::updateModel($fields, $user, request()->all());
       $user->save();
     }
