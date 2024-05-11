@@ -102,4 +102,9 @@ class User extends Authenticatable
     // Chain fluent methods for configuration options
   }
 
+  public function getDisplayNameAttribute()
+  {
+    return $this->attributes['display_name'] ?: $this->attributes['username'];
+  }
+
 }

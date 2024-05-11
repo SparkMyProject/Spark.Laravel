@@ -41,6 +41,8 @@ Route::post('/admin/users/disable', [\App\Http\Controllers\Admin\Users\UsersCont
 Route::post('/admin/users/enable', [\App\Http\Controllers\Admin\Users\UsersController::class, 'enable_user'])->name('routes.content.admin.users.enable')->can("actions.admin.users.enable");
 Route::post('/admin/users/edit', [\App\Http\Controllers\Admin\Users\UsersController::class, 'edit_user'])->name('routes.content.admin.users.edit')->can("actions.admin.users.edit");
 
+// Admin/Settings
+Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'auditlog'])->name('routes.content.admin.settings.auditlog')->can("actions.admin.settings.auditlog.view");
 
 Route::middleware([
     'auth:sanctum',
