@@ -10,7 +10,7 @@ class RolesController extends Controller
   public function index()
   {
     $roles = Role::withCount('users')->orderBy('name')->get();
-    return view('content.admin.settings.roles', ['roles' => $roles]);
+    return view('content.admin.settings.roles.index', ['roles' => $roles]);
   }
 
   public function edit($id)
@@ -18,11 +18,11 @@ class RolesController extends Controller
     $role = Role::find($id);
     if (!$role) {
       session()->flash('error', 'Role not found');
-      return redirect()->route('routes.content.admin.settings.roles');
+      return redirect()->route('routes.content.admin.settings.roles.index');
     }
     if ($role->name == 'User') {
       session()->flash('error', 'Cannot edit the User role');
-      return redirect()->route('routes.content.admin.settings.roles');
+      return redirect()->route('routes.content.admin.settings.roles.index');
     }
     $validated = request()->validate([
       'name' => 'nullable|string|max:20',
@@ -33,6 +33,6 @@ class RolesController extends Controller
 
     $role->update(array_filter($validated));
     session()->flash('success', 'Role updated');
-    return redirect()->route('routes.content.admin.settings.roles');
+    return redirect()->route('routes.content.admin.settings.roles.index');
   }
 }

@@ -2,7 +2,7 @@
   $configData = Helper::appClasses();
 @endphp
 
-@extends('components/layouts/layoutMaster')
+@extends('components.layouts.layoutMaster')
 
 @section('title', 'Roles - Apps')
 
