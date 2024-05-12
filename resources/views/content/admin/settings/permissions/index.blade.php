@@ -46,7 +46,7 @@
           <tr>
             <td>{{ $permission->name }}</td>
             <td>{{ $permission->description }}</td>
-            <td>{{ $permission->assigned_to }}</td>
+            <td>{{ $permission->roles_count }} Roles, {{$permission->users_count}} Users</td>
             <td>{{ $permission->created_at }}</td>
             <td>
 {{--              <a href="{{ route('routes.content.admin.settings.permissions.edit', $permission->id) }}" class="btn btn-sm btn-primary">Edit</a>--}}

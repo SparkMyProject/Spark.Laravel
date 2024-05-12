@@ -10,7 +10,7 @@ class PermissionsController extends Controller
 {
   public function index()
   {
-    $permissions = Permission::all();
+    $permissions = Permission::withCount(['roles', 'users'])->get();
     return view('content.admin.settings.permissions.index', ['permissions' => $permissions]);
   }
 }
