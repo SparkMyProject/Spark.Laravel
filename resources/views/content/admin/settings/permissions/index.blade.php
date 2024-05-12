@@ -26,6 +26,7 @@
 
   <p class="mb-4">Each category (Basic, Professional, and Business) includes the four predefined roles shown below.</p>
 
+  @include('components/_partials/alert-handling')
 
   <!-- Permission Table -->
   <div class="card">
@@ -49,7 +50,11 @@
             <td>{{ $permission->roles_count }} Roles, {{$permission->users_count}} Users</td>
             <td>{{ $permission->created_at }}</td>
             <td>
-{{--              <a href="{{ route('routes.content.admin.settings.permissions.edit', $permission->id) }}" class="btn btn-sm btn-primary">Edit</a>--}}
+              <a data-bs-toggle="modal" data-bs-target="#editPermissionModal-{{$permission->id}}" href="javascript:"
+                 class="text-body">
+                <i class="ti ti-edit ti-sm me-2"></i>
+              </a>
+              @include('components/admin/settings/permissions/edit-permission-modal', ['permission' => $permission])
 {{--              <a href="{{ route('routes.content.admin.settings.permissions.delete', $permission->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
             </td>
           </tr>

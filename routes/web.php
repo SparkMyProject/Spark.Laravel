@@ -47,6 +47,7 @@ Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Se
 Route::get('/admin/settings/roles', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'index'])->name('routes.content.admin.settings.roles.index')->can("actions.admin.settings.roles.view");
 Route::post('/admin/settings/roles/edit/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit'])->name('routes.content.admin.settings.roles.edit')->can("actions.admin.settings.roles.edit");
 Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("actions.admin.settings.permissions.view");
+Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("actions.admin.settings.permissions.edit");
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -143,7 +143,7 @@
             <div class="role-heading">
               <h4 class="mb-1">Users</h4>
               <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
-                 class="role-edit-modal"><span>Edit Role</span></a>
+                 class="editRoleModal"><span>Edit Role</span></a>
             </div>
             <a href="javascript:void(0);" class="text-muted"><i class="ti ti-copy ti-md"></i></a>
           </div>

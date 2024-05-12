@@ -33,7 +33,7 @@
           "icon": "menu-icon tf-icons ti ti-lock",
           "slug": "routes.content.admin.settings.permissions.index",
           "permissions": [
-            "view content.admin.permissions.index"
+            "actions.admin.settings.permissions.view"
           ]
         },
         {
@@ -42,7 +42,7 @@
           "icon": "menu-icon tf-icons ti ti-user",
           "slug": "routes.content.admin.users.index",
           "permissions": [
-            "view content.admin.users.index"
+            "actions.admin.users.view"
           ]
         },
         {
