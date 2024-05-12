@@ -17,7 +17,7 @@ class PermissionsController extends Controller
   {
     $permission = Permission::find($id);
     if (!$permission) {
-      session()->flash('error', 'Permission not found');
+      session()->flash('error', 'Permission not found.');
       return redirect()->route('routes.content.admin.settings.permissions.index');
     }
 
@@ -27,7 +27,7 @@ class PermissionsController extends Controller
     ]);
 
     $permission->update(array_filter($validated));
-    session()->flash('success', 'Permission updated');
+    session()->flash('success', 'Permission updated.');
 
     return redirect()->route('routes.content.admin.settings.permissions.index');
   }
@@ -46,7 +46,7 @@ class PermissionsController extends Controller
     ])->withCount(['roles', 'users'])->find($id); // Getting the count of roles and users with the permission
 
     if (!$permission) {
-      session()->flash('error', 'Permission not found');
+      session()->flash('error', 'Permission not found.');
       return redirect()->route('routes.content.admin.settings.permissions.index');
     }
 

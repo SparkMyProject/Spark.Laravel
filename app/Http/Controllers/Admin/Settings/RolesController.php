@@ -17,11 +17,15 @@ class RolesController extends Controller
   {
     $role = Role::find($id);
     if (!$role) {
-      session()->flash('error', 'Role not found');
+      session()->flash('error', 'Role not found.');
       return redirect()->route('routes.content.admin.settings.roles.index');
     }
     if ($role->name == 'User') {
-      session()->flash('error', 'Cannot edit the User role');
+      session()->flash('error', 'Cannot edit the User role.');
+      return redirect()->route('routes.content.admin.settings.roles.index');
+    }
+    if ($role->name == 'Webmaster') {
+      session()->flash('error', 'Cannot edit the Webmaster role.');
       return redirect()->route('routes.content.admin.settings.roles.index');
     }
     $validated = request()->validate([
@@ -32,7 +36,7 @@ class RolesController extends Controller
     ]);
 
     $role->update(array_filter($validated));
-    session()->flash('success', 'Role updated');
+    session()->flash('success', 'Role updated.');
     return redirect()->route('routes.content.admin.settings.roles.index');
   }
 }

@@ -74,7 +74,7 @@ class UsersController extends Controller
       session()->flash('error', 'User not found.');
     }
     if (!PermissionsHelper::highestRoleCompare($current_user, $user)) {
-      session()->flash('error', 'User does not have permission.');
+      session()->flash('error', 'User does not have permission or is trying to edit themselves.');
     } else {
       $validated = request()->validate([
         'username' => 'nullable|string|max:20',
@@ -86,8 +86,8 @@ class UsersController extends Controller
         'last_name' => 'nullable|string|max:30',
       ]);
       $user->update(array_filter($validated));
+      session()->flash('success', 'User updated successfully.');
     }
-    session()->flash('success', 'User updated successfully.');
     // refresh current page
     return redirect()->back();
   }

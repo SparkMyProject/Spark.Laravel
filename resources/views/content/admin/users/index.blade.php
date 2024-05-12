@@ -42,6 +42,9 @@
 {{--@endsection--}}
 
 @section('content')
+  <h4 class="mb-4">Users List</h4>
+
+  <p class="mb-4">Manage users from here.</p>
   @include('components/_partials/alert-handling')
   <div class="row g-4 mb-4">
     <div class="col-sm-3 col-xl-4">
