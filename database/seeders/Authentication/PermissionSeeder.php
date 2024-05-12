@@ -14,7 +14,7 @@ class PermissionSeeder extends Seeder
    */
   public function run(): void
   {
-    $dashboardPermission = \Spatie\Permission\Models\Permission::create(['name' => 'actions.dashboard.index.view']);
+    $dashboardPermission = \Spatie\Permission\Models\Permission::create(['name' => 'actions.dashboard.index.view', 'description' => 'View the dashboard']);
     $userRole = Role::findByName('User');
     $userRole->givePermissionTo($dashboardPermission);
   }
