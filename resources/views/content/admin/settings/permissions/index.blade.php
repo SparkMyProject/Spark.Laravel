@@ -1,4 +1,4 @@
-@extends('layouts/layoutMaster')
+@extends('components/layouts/layoutMaster')
 
 @section('title', 'Permission - Apps')
 
@@ -20,13 +20,6 @@
     ])
 @endsection
 
-@section('page-script')
-  @vite([
-    'resources/assets/js/app-access-permission.js',
-    'resources/assets/js/modal-add-permission.js',
-    'resources/assets/js/modal-edit-permission.js',
-    ])
-@endsection
 
 @section('content')
   <h4 class="mb-4">Permissions List</h4>
@@ -40,21 +33,31 @@
       <table class="datatables-permissions table border-top">
         <thead>
         <tr>
-          <th></th>
-          <th></th>
           <th>Name</th>
+          <th>Description</th>
           <th>Assigned To</th>
           <th>Created Date</th>
           <th>Actions</th>
         </tr>
         </thead>
+
+        <tbody>
+        @foreach($permissions as $permission)
+          <tr>
+            <td>{{ $permission->name }}</td>
+            <td>{{ $permission->description }}</td>
+            <td>{{ $permission->assigned_to }}</td>
+            <td>{{ $permission->created_at }}</td>
+            <td>
+{{--              <a href="{{ route('routes.content.admin.settings.permissions.edit', $permission->id) }}" class="btn btn-sm btn-primary">Edit</a>--}}
+{{--              <a href="{{ route('routes.content.admin.settings.permissions.delete', $permission->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
+            </td>
+          </tr>
+        @endforeach
+        </tbody>
       </table>
     </div>
   </div>
   <!--/ Permission Table -->
 
-  <!-- Modal -->
-  @include('_partials/_modals/modal-add-permission')
-  @include('_partials/_modals/modal-edit-permission')
-  <!-- /Modal -->
 @endsection

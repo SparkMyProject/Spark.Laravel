@@ -28,10 +28,10 @@
           ]
         },
         {
-          "url": "/admin/permissions",
+          "url": "/admin/settings/permissions",
           "name": "Manage Permissions",
           "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.content.admin.permissions.index",
+          "slug": "routes.content.admin.settings.permissions.index",
           "permissions": [
             "view content.admin.permissions.index"
           ]
