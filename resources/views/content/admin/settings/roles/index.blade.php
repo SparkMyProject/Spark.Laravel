@@ -11,6 +11,7 @@
     'resources/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.scss',
     'resources/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.scss',
     'resources/assets/vendor/libs/@form-validation/form-validation.scss',
+      'resources/assets/vendor/libs/select2/select2.scss',
     ])
 @endsection
 
@@ -20,6 +21,7 @@
     'resources/assets/vendor/libs/@form-validation/popular.js',
     'resources/assets/vendor/libs/@form-validation/bootstrap5.js',
     'resources/assets/vendor/libs/@form-validation/auto-focus.js',
+      'resources/assets/vendor/libs/select2/select2.js',
     ])
 @endsection
 
@@ -257,6 +259,7 @@
             <tr>
               <th>Role</th>
               <th>Description</th>
+              <th>Permissions Count</th>
               <th>User Count</th>
               <th>Priority</th>
               <th>Actions</th>
@@ -277,6 +280,7 @@
                   </div>
                 </td>
                 <td>{{$role->description}}</td>
+                <td>{{$role->permissions_count}}</td>
                 <td>{{$role->users_count}}</td>
                 <td>{{$role->priority}}</td>
                 <td>
@@ -287,6 +291,11 @@
                     </a>
                     @include('components.admin.settings.roles.edit-role-modal', ['role' => $role])
 
+                    <a data-bs-toggle="modal" data-bs-target="#editRolePermissionsModal-{{$role->id}}" href="javascript:"
+                       class="text-body">
+                      <i class="ti ti-lock ti-sm me-2"></i>
+                    </a>
+                    @include('components.admin.settings.roles.edit-role-permissions-modal', ['role' => $role], ['permissions' => $permissions])
                   </div>
                 </td>
             @endforeach
