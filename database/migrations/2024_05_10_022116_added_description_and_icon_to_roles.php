@@ -13,11 +13,13 @@ return new class extends Migration
     {
       Schema::table('permissions', function (Blueprint $table) {
         $table->string('description')->nullable();
+        $table->boolean('is_system')->default(false);
       });
       Schema::table('roles', function (Blueprint $table) {
         $table->string('description', 30)->nullable();
         $table->string('icon', 30)->default('fa-regular fa-user');
         $table->integer('priority')->default(1);
+        $table->boolean('is_system')->default(false);
       });
     }
 
