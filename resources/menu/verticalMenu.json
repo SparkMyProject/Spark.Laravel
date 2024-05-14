@@ -6,7 +6,7 @@
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "routes.content.dashboard.index",
       "permissions": [
-        "view content.dashboard.index"
+        "actions.dashboard.index.view"
       ]
     },
     {
@@ -15,7 +15,7 @@
       "icon": "menu-icon tf-icons ti ti-lock",
       "slug": "routes.content.admin",
       "permissions": [
-        "view content.admin.roles.index"
+        "actions.admin.settings.view"
       ],
       "submenu": [
         {
