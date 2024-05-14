@@ -1,5 +1,5 @@
 <!-- Edit User Modal -->
-<div class="modal fade" id="editUsersRolesModal-{{$user->id}}" tabindex="-1" aria-hidden="true"
+<div class="modal fade" id="editUserRolesModal-{{$user->id}}" tabindex="-1" aria-hidden="true"
      data-backdrop="static">
   <div class="modal-dialog modal-lg modal-simple">
     <div class="modal-content p-3 p-md-5">
@@ -9,7 +9,7 @@
           <h3 class="mb-2">Edit User's Roles</h3>
           <p class="text-muted">Updating user's roles will receive a privacy audit.</p>
         </div>
-        <form id="editUsersRolesForm" class="row g-3"
+        <form id="editUserRolesForm" class="row g-3"
               action="{{route('routes.content.admin.users.edit-roles', ['id' => $user->id])}}"
               method="POST">
           @csrf

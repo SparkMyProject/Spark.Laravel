@@ -229,12 +229,12 @@
                           class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"
                           data-user-id={{$user->id}}>{{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
                   </button>
-                  <a data-bs-toggle="modal" data-bs-target="#editUsersRolesModal-{{$user->id}}" href="javascript:"
+                  <a data-bs-toggle="modal" data-bs-target="#editUserRolesModal-{{$user->id}}" href="javascript:"
                      class="dropdown-item">Edit Roles</a>
 
                 </div>
                 {{--                Cannot be in the div because that is a drop down menu--}}
-                @include('components.admin.users.edit-users-roles-modal', ['user' => $user], ['roles' => $roles])
+                @include('components.admin.users.edit-user-roles-modal', ['user' => $user], ['roles' => $roles])
 
               </div>
             </td>
