@@ -1,4 +1,4 @@
-@extends('layouts.layoutMaster')
+@extends('components.layouts.layoutMaster')
 
 @php
 $breadcrumbs = [['link' => 'home', 'name' => 'Home'], ['link' => 'javascript:void(0)', 'name' => 'User'], ['name' => 'Profile']];
