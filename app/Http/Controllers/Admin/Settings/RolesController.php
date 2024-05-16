@@ -22,12 +22,8 @@ class RolesController extends Controller
       session()->flash('error', 'Role not found.');
       return redirect()->route('routes.content.admin.settings.roles.index');
     }
-    if ($role->name == 'User') {
-      session()->flash('error', 'Cannot edit the User role.');
-      return redirect()->route('routes.content.admin.settings.roles.index');
-    }
-    if ($role->name == 'Webmaster') {
-      session()->flash('error', 'Cannot edit the Webmaster role.');
+    if ($role->is_system) {
+      session()->flash('error', 'Cannot edit system roles.');
       return redirect()->route('routes.content.admin.settings.roles.index');
     }
     $validated = request()->validate([
@@ -49,8 +45,8 @@ class RolesController extends Controller
       session()->flash('error', 'Role not found.');
       return redirect()->route('routes.content.admin.settings.roles.index');
     }
-    if ($role->name == 'Webmaster') {
-      session()->flash('error', 'Cannot edit the Webmaster role.');
+    if ($role->is_system) {
+      session()->flash('error', 'Cannot edit system roles.');
       return redirect()->route('routes.content.admin.settings.roles.index');
     }
     $validated = request()->validate([
@@ -63,5 +59,30 @@ class RolesController extends Controller
     $role->syncPermissions($permissions);
     session()->flash('success', 'Role permissions updated.');
     return redirect()->route('routes.content.admin.settings.roles.index');
+  }
+
+  public function delete($id)
+  {
+    $role = Role::find($id);
+    $current_user = auth()->user()->load('roles');
+    $response = ["message" => "error"];
+
+    if (!$role) {
+      return response()->json($response);
+    }
+    if ($role->is_system) {
+      $response = ["message" => "Cannot delete system roles.", "code" => 403];
+      return response()->json($response);
+    }
+
+    // Check if role is higher or lower than current highest role
+    if ($role->priority >= $current_user->roles->sortByDesc('priority')->first()->priority) {
+      $response = ["message" => "insufficient_permissions", "code" => 403];
+      return response()->json($response);
+    } else {
+      $role->delete();
+      $response = ["message" => "success", "code" => 200];
+    }
+    return response()->json($response);
   }
 }

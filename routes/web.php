@@ -45,8 +45,11 @@ Route::post('/admin/users/edit-roles/{id}', [\App\Http\Controllers\Admin\Users\U
 // Admin/Settings
 Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'index'])->name('routes.content.admin.settings.auditlog.index')->can("actions.admin.settings.auditlog.view");
 Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'view'])->name('routes.content.admin.settings.auditlog.view')->can("actions.admin.settings.auditlog.view");
+
 Route::get('/admin/settings/roles', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'index'])->name('routes.content.admin.settings.roles.index')->can("actions.admin.settings.roles.view");
 Route::post('/admin/settings/roles/edit/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit'])->name('routes.content.admin.settings.roles.edit')->can("actions.admin.settings.roles.edit");
+Route::post('/admin/settings/roles/delete/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'delete'])->name('routes.content.admin.settings.roles.delete')->can("actions.admin.settings.roles.delete");
+
 Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("actions.admin.settings.permissions.view");
 Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("actions.admin.settings.permissions.edit");
 Route::get('/admin/settings/permissions/view/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'view'])->name('routes.content.admin.settings.permissions.view')->can("actions.admin.settings.permissions.view");

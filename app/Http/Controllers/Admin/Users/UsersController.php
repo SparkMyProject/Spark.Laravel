@@ -33,13 +33,11 @@ class UsersController extends Controller
       $response = ["message" => "already_banned", "code" => 400];
     }
 
-    if ($current_user->can('actions.admin.users.disable')) {
-      if ($current_user->roles->sortByDesc('priority')->first()->priority > $user->roles->sortByDesc('priority')->first()->priority) {
-        $user->update(['account_status' => 'Disabled']);
-        $response = ["message" => "success", "code" => 200];
-      } else {
-        $response = ["message" => "insufficient_permissions", "code" => 403];
-      }
+    if (PermissionsHelper::highestRoleCompare($current_user, $user)) {
+      $user->update(['account_status' => 'Disabled']);
+      $response = ["message" => "success", "code" => 200];
+    } else {
+      $response = ["message" => "insufficient_permissions", "code" => 403];
     }
     return response()->json($response);
   }
@@ -58,13 +56,11 @@ class UsersController extends Controller
       $response = ["message" => "already_banned", "code" => 400];
     }
 
-    if ($current_user->can('actions.admin.users.disable')) {
-      if ($current_user->roles->sortByDesc('priority')->first()->priority > $user->roles->sortByDesc('priority')->first()->priority) {
-        $user->update(['account_status' => 'Active']);
-        $response = ["message" => "success", "code" => 200];
-      } else {
-        $response = ["message" => "insufficient_permissions", "code" => 403];
-      }
+    if (PermissionsHelper::highestRoleCompare($current_user, $user)) {
+      $user->update(['account_status' => 'Disabled']);
+      $response = ["message" => "success", "code" => 200];
+    } else {
+      $response = ["message" => "insufficient_permissions", "code" => 403];
     }
     return response()->json($response);
   }

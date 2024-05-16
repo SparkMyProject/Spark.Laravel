@@ -227,7 +227,8 @@
                      class="dropdown-item">View</a>
                   <button {{-- Needs to be button because it is javascript --}}
                           class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"
-                          data-user-id={{$user->id}}>{{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
+                          data-user-id={{$user->id}}>
+                    {{$user->account_status == 'Active' ? 'Disable' : 'Enable'}}
                   </button>
                   <a data-bs-toggle="modal" data-bs-target="#editUserRolesModal-{{$user->id}}" href="javascript:"
                      class="dropdown-item">Edit Roles</a>
