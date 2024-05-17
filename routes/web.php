@@ -50,17 +50,18 @@ Route::get('/admin/settings/roles', [\App\Http\Controllers\Admin\Settings\RolesC
 Route::post('/admin/settings/roles/edit/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit'])->name('routes.content.admin.settings.roles.edit')->can("actions.admin.settings.roles.edit");
 Route::post('/admin/settings/roles/delete/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'delete'])->name('routes.content.admin.settings.roles.delete')->can("actions.admin.settings.roles.delete");
 Route::post('/admin/settings/roles/create', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'create'])->name('routes.content.admin.settings.roles.create')->can("actions.admin.settings.roles.create");
+Route::post('admin/settings/roles/edit-permissions/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit_permissions'])->name('routes.content.admin.settings.roles.edit-permissions')->can("actions.admin.settings.roles.edit-permissions");
+
 
 Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("actions.admin.settings.permissions.view");
 Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("actions.admin.settings.permissions.edit");
 Route::get('/admin/settings/permissions/view/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'view'])->name('routes.content.admin.settings.permissions.view')->can("actions.admin.settings.permissions.view");
-Route::post('admin/settings/roles/edit-permissions/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit_permissions'])->name('routes.content.admin.settings.roles.edit-permissions')->can("actions.admin.settings.roles.edit-permissions");
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-  Route::get('/dashboard', [\App\Http\Controllers\Dashboard\HomePage::class, 'index'])->can("actions.dashboard.index.view")->name('routes.content.dashboard.index');
+  Route::get('/dashboard', [\App\Http\Controllers\Dashboard\HomePage::class, 'index'])->name('routes.content.dashboard.index')->can("actions.dashboard.index.view");
 });
 
 Route::get('/auth/discord/redirect', function () {
