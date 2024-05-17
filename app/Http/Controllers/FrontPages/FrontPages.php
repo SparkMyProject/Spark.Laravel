@@ -6,6 +6,6 @@ class FrontPages extends \App\Http\Controllers\Controller
     public function index()
     {
 
-        return view('content.pages.landing-page');
+        return view('misc.landing-page');
     }
 }
