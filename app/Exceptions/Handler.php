@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -42,6 +43,8 @@ class Handler extends ExceptionHandler
   {
     if ($e instanceof AuthorizationException) {
       return redirect()->route('routes.misc.errors.not-authorized');
+    } else if ($e instanceof NotFoundHttpException) {
+      return redirect()->route('routes.misc.errors.not-found');
     }
 
     return parent::render($request, $e);

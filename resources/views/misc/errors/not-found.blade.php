@@ -3,7 +3,7 @@ $customizerHidden = 'customizer-hide';
 $configData = Helper::appClasses();
 @endphp
 
-@extends('layouts/layoutMaster')
+@extends('components/layouts/blankLayout')
 
 @section('title', 'Error - Pages')
 

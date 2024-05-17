@@ -33,9 +33,10 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 Route::get('/misc/errors/not-authorized', function () {
   return view('misc.errors.not-authorized');
 })->name('routes.misc.errors.not-authorized');
-//Route::get('/pages/not-authorized', function () {
-//  return view('pages.not-authorized');
-//})->name('routes.content.pages.not-authorized');
+
+Route::get('/misc/errors/not-found', function () {
+  return view('misc.errors.not-found');
+})->name('routes.misc.errors.not-found');
 
 // Admin/Users
 Route::get('/admin/users/view/{id}', [\App\Http\Controllers\Admin\Users\UsersController::class, 'view_user'])->name('routes.content.admin.users.view')->can("actions.admin.users.view");
