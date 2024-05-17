@@ -85,4 +85,22 @@ class RolesController extends Controller
     }
     return response()->json($response);
   }
+
+  public function create() {
+    $validated = request()->validate([
+      'name' => 'required|string|max:20',
+      'description' => 'nullable|string|max:30',
+      'icon' => 'nullable|string|max:30',
+      'priority' => 'nullable|integer',
+    ]);
+
+    if (Role::where('name', $validated['name'])->exists()) {
+      session()->flash('error', 'Role already exists.');
+      return redirect()->route('routes.content.admin.settings.roles.index');
+    }
+
+    $role = Role::create(array_filter($validated));
+    session()->flash('success', 'Role created.');
+    return redirect()->route('routes.content.admin.settings.roles.index');
+  }
 }

@@ -38,6 +38,12 @@
         administrator can have access to what user needs.</p>
     @include('components._partials.alert-handling')
     @csrf
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRoleModal">
+            Create Role
+        </button>
+        @include('components.admin.settings.roles.create-role-modal')
+    </div>
     <!-- Role cards -->
     <div class="row g-4">
         <div class="col-12">
