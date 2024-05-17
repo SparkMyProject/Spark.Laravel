@@ -92,9 +92,7 @@
                           <div class="flex-grow-1">
                       <span class="fw-medium d-block">
                         @if (Auth::check())
-                          {{ Auth::user()->full_name }}
-                        @else
-                          John Doe
+                          {{ Auth::user()->display_name }}
                         @endif
                       </span>
                             <small class="text-muted">Admin</small>
