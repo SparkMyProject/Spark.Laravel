@@ -25,6 +25,14 @@ use Illuminate\Support\Facades\Storage;
 // Main Page Route
 Route::get('/', [FrontPages::class, 'index'])->name('routes.content.pages.landing-page');
 
+// Email
+Route::get('/test', function () {
+  Mail::raw('Hi, welcome user!', function ($message) {
+    $message->to('vinniehat@gmail.com')
+    ->subject('Free 123');
+});
+  return 'Email Sent';
+});
 
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);

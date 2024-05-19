@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Authentication\User;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Kernel as HttpKernel;
 use App\Console\Kernel as ConsoleKernel;
@@ -40,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
         ];
       }
       return [];
+    });
+
+    Gate::define('viewPulse', function (User $user) {
+      return $user->can('actions.webmaster.viewPulse');
     });
   }
 }
