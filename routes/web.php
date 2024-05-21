@@ -66,8 +66,8 @@ Route::post('/admin/settings/roles/create', [\App\Http\Controllers\Admin\Setting
 Route::post('admin/settings/roles/edit-permissions/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit_permissions'])->name('routes.content.admin.settings.roles.edit-permissions')->can("admin.settings.roles.edit-permissions");
 
 
-Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("actions.admin.settings.permissions.view");
-Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("actions.admin.settings.permissions.edit");
+Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("admin.settings.permissions.view");
+Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("admin.settings.permissions.edit");
 Route::get('/admin/settings/permissions/view/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'view'])->name('routes.content.admin.settings.permissions.view')->can("admin.settings.permissions.view");
 Route::middleware([
     'auth:sanctum',
