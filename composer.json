@@ -17,7 +17,7 @@
     "laravel/sanctum": "^4.0",
     "laravel/socialite": "^5.14",
     "laravel/tinker": "^2.8",
-    "livewire/livewire": "^3.0",
+    "livewire/livewire": "^3.5",
     "sentry/sentry-laravel": "^4.5",
     "socialiteproviders/discord": "^4.2",
     "socialiteproviders/manager": "^4.6",
