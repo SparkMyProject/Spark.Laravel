@@ -15,7 +15,10 @@
       "icon": "menu-icon tf-icons ti ti-lock",
       "slug": "routes.content.admin",
       "permissions": [
-        "admin.settings.view"
+        "admin.settings.roles.view",
+        "admin.settings.permissions.view",
+        "admin.users.view",
+        "admin.settings.auditlog.view"
       ],
       "submenu": [
         {
@@ -62,16 +65,16 @@
       "icon": "menu-icon tf-icons ti ti-lock",
       "slug": "routes.content.admin",
       "permissions": [
-        "actions.webmaster"
+        "webmaster.settings.view"
       ],
       "submenu": [
         {
-          "url": "/admin/settings/roles",
-          "name": "Manage Roles",
-          "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.content.admin.settings.roles.index",
+          "url": "/webmaster/pulse",
+          "name": "Laravel Pulse",
+          "icon": "menu-icon tf-icons ti ti-bolt",
+          "slug": "N/A",
           "permissions": [
-            "actions.admin.settings.roles.view"
+            "webmaster.settings.roles.view"
           ]
         }
       ]

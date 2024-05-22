@@ -12,6 +12,7 @@ use App\Http\Kernel as HttpKernel;
 use App\Console\Kernel as ConsoleKernel;
 use App\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Vite;
+use Laravel\Pulse\Facades\Pulse;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -44,8 +45,14 @@ class AppServiceProvider extends ServiceProvider
       return [];
     });
 
+    // Pulse
     Gate::define('viewPulse', function (User $user) {
-      return $user->can('actions.webmaster.viewPulse');
+      return $user->can('webmaster.pulse.view');
     });
+    Pulse::user(fn ($user) => [
+      'name' => $user->username,
+      'extra' => $user->email,
+      'avatar' => $user->profile_photo_url,
+    ]);
   }
 }
