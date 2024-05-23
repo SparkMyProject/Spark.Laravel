@@ -111,4 +111,10 @@ class User extends Authenticatable
     return $this->attributes['display_name'] ?: $this->attributes['username'];
   }
 
+  public function getHighestRole()
+  {
+    // Greater the number, the higher the priority
+    return $this->roles->sortBy('priority')->first();
+  }
+
 }
