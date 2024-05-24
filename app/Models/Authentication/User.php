@@ -33,15 +33,15 @@ class User extends Authenticatable
    * @var array<int, string>
    */
   protected $fillable = [
-    'username',
-    'display_name',
-    'email',
-    'profile_photo_path',
-    'status',
-    'timezone',
-    'account_status',
-    'first_name',
-    'last_name'
+    'username', // Unique, max:20
+    'display_name', // nullable, max:30
+    'email', // Unique, nullable, max:128
+    'profile_photo_path', // default: 'assets/img/avatars/1.png', max:2048
+    'status', // default: 'Relaxing...', nullable, max:30
+    'timezone', // default: 'UTC', enum: ['EST', 'UTC', 'AEST', 'CST', 'PST']
+    'account_status', // default: 'Active', enum: ['Active', 'Disabled', 'Banned']
+    'first_name', // nullable, max:128
+    'last_name' // nullable, max:128
   ];
 
   /**
