@@ -16,23 +16,23 @@
           <input type="hidden" name="userId" value="{{$user->id}}">
           <div class="col-12 col-md-6">
             <label class="form-label" for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" class="form-control" placeholder={{$user->first_name}} />
+            <input type="text" id="first_name" name="first_name" class="form-control" value="{{$user->first_name}}" />
           </div>
           <div class="col-12 col-md-6">
             <label class="form-label" for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" class="form-control" placeholder={{$user->last_name}} />
+            <input type="text" id="last_name" name="last_name" class="form-control" value="{{$user->last_name}}" />
           </div>
           <div class="col-12 col-md-6">
             <label class="form-label" for="username">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder={{$user->username}} />
+            <input type="text" id="username" name="username" class="form-control" value="{{$user->username}}" />
           </div>
           <div class="col-12 col-md-6">
             <label class="form-label" for="display_name">Display Name</label>
-            <input type="text" id="display_name" name="display_name" class="form-control" placeholder={{$user->display_name}} />
+            <input type="text" id="display_name" name="display_name" class="form-control" value="{{$user->display_name}}" />
           </div>
           <div class="col-12">
             <label class="form-label" for="email">Email</label>
-            <input type="text" id="email" name="email" class="form-control" placeholder={{$user->email}} />
+            <input type="text" id="email" name="email" class="form-control" value="{{$user->email}}" />
           </div>
 
           <div class="col-12 col-md-6">

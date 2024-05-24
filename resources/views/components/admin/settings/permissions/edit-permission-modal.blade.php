@@ -16,11 +16,11 @@
 {{--          <input type="hidden" name="permissionId" value="{{permission->id}}">--}}
           <div class="col-12 col-md-6">
             <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="{{$permission->name}}" />
+            <input type="text" id="name" name="name" class="form-control" value="{{$permission->name}}" />
           </div>
           <div class="col-12 col-md-6">
             <label class="form-label" for="description">Description</label>
-            <input type="text" id="description" name="description" class="form-control" placeholder="{{$permission->description}}" />
+            <input type="text" id="description" name="description" class="form-control" value="{{$permission->description}}" />
           </div>
 
 

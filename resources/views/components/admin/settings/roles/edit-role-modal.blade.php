@@ -16,19 +16,19 @@
 {{--          <input type="hidden" name="roleId" value="{{$role->id}}">--}}
           <div class="col-12 col-md-6">
             <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="{{$role->name}}" />
+            <input type="text" id="name" name="name" class="form-control" value="{{$role->name}}" />
           </div>
           <div class="col-12 col-md-6">
             <label class="form-label" for="description">Description</label>
-            <input type="text" id="description" name="description" class="form-control" placeholder="{{$role->description}}" />
+            <input type="text" id="description" name="description" class="form-control" value="{{$role->description}}" />
           </div>
           <div class="col-12 col-md-6">
             <label class="form-label" for="icon">Icon</label>
-            <input type="text" id="icon" name="icon" class="form-control" placeholder="{{$role->icon}}" />
+            <input type="text" id="icon" name="icon" class="form-control" value="{{$role->icon}}" />
           </div>
           <div class="col-12 col-md-6">
             <label for="html5-number-input">Number</label>
-            <input type="number" id="priority" name="priority" class="form-control" placeholder="{{$role->priority}}" />
+            <input type="number" id="priority" name="priority" class="form-control" value="{{$role->priority}}" />
           </div>
 
 
