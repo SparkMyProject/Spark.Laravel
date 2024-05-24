@@ -65,7 +65,8 @@
       "icon": "menu-icon tf-icons ti ti-lock",
       "slug": "routes.content.admin",
       "permissions": [
-        "webmaster.settings.view"
+        "webmaster.pulse.view",
+        "webmaster.horizon.view"
       ],
       "submenu": [
         {
@@ -74,7 +75,16 @@
           "icon": "menu-icon tf-icons ti ti-bolt",
           "slug": "N/A",
           "permissions": [
-            "webmaster.settings.roles.view"
+            "webmaster.pulse.view"
+          ]
+        },
+        {
+          "url": "/webmaster/horizon/dashboard",
+          "name": "Laravel Horizon",
+          "icon": "menu-icon tf-icons ti ti-bolt",
+          "slug": "N/A",
+          "permissions": [
+            "webmaster.horizon.view"
           ]
         }
       ]
