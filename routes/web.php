@@ -34,6 +34,10 @@ Route::get('/test', function () {
   return 'Email Sent';
 });
 
+Route::get('/exception', function () {
+  throw new Exception('This is a test exception.');
+});
+
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
