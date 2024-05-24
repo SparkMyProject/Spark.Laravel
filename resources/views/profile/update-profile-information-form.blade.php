@@ -1,3 +1,6 @@
+<div>
+  @include('components/_partials/alert-handling')
+
 <x-form-section submit="updateProfileInformation">
   <x-slot name="title">
     {{ __('Profile Information') }}
@@ -44,13 +47,19 @@
       </div>
     @endif
 
-    <!-- Name -->
+    <!-- First Name -->
     <div class="mb-3">
-      <x-label class="form-label" for="name" value="{{ __('Name') }}" />
-      <x-input id="name" type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }}"
-        wire:model="state.name" autocomplete="name" />
-      <x-input-error for="name" />
+      <x-label class="form-label" for="first_name" value="{{ __('first_name') }}" />
+      <x-input id="first_name" type="text" class="{{ $errors->has('first_name') ? 'is-invalid' : '' }}"
+        wire:model="state.first_name" autocomplete="first_name" />
+      <x-input-error for="first_name" />
+
+      <x-label class="form-label" for="last_name" value="{{ __('last_name') }}" />
+      <x-input id="last_name" type="text" class="{{ $errors->has('last_name') ? 'is-invalid' : '' }}"
+               wire:model="state.last_name" autocomplete="last_name" />
+      <x-input-error for="last_name" />
     </div>
+
 
     <!-- Email -->
     <div class="mb-3">
@@ -69,3 +78,4 @@
     </div>
   </x-slot>
 </x-form-section>
+</div>
