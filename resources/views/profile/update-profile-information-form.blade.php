@@ -84,6 +84,14 @@
                  wire:model="state.email"/>
         <x-input-error for="email"/>
       </div>
+
+      <!-- Status -->
+      <div class="mb-3">
+        <x-label class="form-label" for="status" value="{{ __('Status') }}"/>
+        <x-input id="status" type="status" class="{{ $errors->has('status') ? 'is-invalid' : '' }}"
+                 wire:model="state.status"/>
+        <x-input-error for="status"/>
+      </div>
     </x-slot>
 
     <x-slot name="actions">
