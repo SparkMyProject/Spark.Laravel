@@ -82,7 +82,7 @@ class UsersController extends Controller
         'display_name' => 'nullable|string|max:20',
         'email' => 'nullable|email',
         'timezone' => 'nullable|string|max:30',
-        'account_status' => 'nullable|string|max:30',
+        'account_status' => 'nullable|string|max:30|in:Active,On Hold,Disabled,Banned',
         'first_name' => 'nullable|string|max:30',
         'last_name' => 'nullable|string|max:30',
       ]);

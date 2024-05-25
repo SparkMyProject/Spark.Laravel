@@ -62,7 +62,8 @@ $container = (isset($configData['contentLayout']) && $configData['contentLayout'
           @else
           <div class="{{$container}} flex-grow-1 container-p-y">
             @endif
-
+            @include('components/_partials/alert-handling')
+            @include('components/_partials/on-hold-alert')
             @yield('content')
 
           </div>

@@ -40,6 +40,7 @@
 
             <select id="account_status" name="account_status" class="select2 form-select" aria-label="Default select example">
               <option {{$user->account_status == "Active" ? 'selected' : ''}} value="Active">Active</option>
+              <option {{$user->account_status == "On Hold" ? 'selected' : ''}} value="On Hold">On Hold</option>
               <option {{$user->account_status == "Disabled" ? 'selected' : ''}} value="Disabled">Disabled</option>
               <option {{$user->account_status == "Banned" ? 'selected' : ''}} value="Banned">Banned</option>
             </select>
