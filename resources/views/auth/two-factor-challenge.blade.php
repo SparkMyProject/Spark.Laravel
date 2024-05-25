@@ -3,7 +3,7 @@
     $configData = Helper::appClasses();
 @endphp
 
-@extends('layouts/blankLayout')
+@extends('components/layouts/blankLayout')
 
 @section('title', '2 Factor Challenge')
 
