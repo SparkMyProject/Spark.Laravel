@@ -95,7 +95,7 @@
                           {{ Auth::user()->display_name }}
                         @endif
                       </span>
-                            <small class="text-muted">Admin</small>
+                            <small class="text-muted">{{Auth::user()->full_name}}</small>
                           </div>
                         </div>
                       </a>
