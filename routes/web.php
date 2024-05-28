@@ -76,6 +76,13 @@ Route::post('admin/settings/roles/edit-permissions/{id}', [\App\Http\Controllers
 Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("admin.settings.permissions.view");
 Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("admin.settings.permissions.edit");
 Route::get('/admin/settings/permissions/view/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'view'])->name('routes.content.admin.settings.permissions.view')->can("admin.settings.permissions.view");
+
+// Authentication Routes, overriding Jetstream routes
+Route::get('login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [\App\Http\Controllers\Auth\LoginController::class, 'authenticate']);
+Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -100,6 +107,14 @@ Route::get('/auth/discord/callback', function () {
 
 
   if ($user) {
+
+    // Check the user's status
+    switch ($user->account_status) {
+      case 'Disabled':
+        return redirect()->route('login')->with('error', 'Your account has been disabled. Please contact an administrator.');
+      case 'Banned':
+        return redirect()->route('login')->with('error', 'Your account has been banned. Please contact an administrator.');
+    }
 
     $oauthUser->update([
       'username' => $discordUser->nickname,
