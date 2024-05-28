@@ -26,7 +26,7 @@
 
     <ul class="menu-inner py-1">
         @foreach ($menuData[0]->menu as $menu)
-            @canany($menu->permissions)
+            @canany($menu->permissions && Auth::user()->account_status === 'Active' && )
                 {{-- adding active and open class if child is active --}}
 
                 {{-- menu headers --}}

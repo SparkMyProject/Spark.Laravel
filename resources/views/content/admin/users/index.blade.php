@@ -43,7 +43,6 @@
     <h4 class="mb-4">Users List</h4>
 
     <p class="mb-4">Manage users from here.</p>
-    @include('components/_partials/alert-handling')
     <div class="row g-4 mb-4">
         <div class="col-sm-3 col-xl-4">
             <div class="card">
@@ -182,10 +181,6 @@
                       <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30 me-2">
                     <i class="ti ti-check ti-sm"></i>
                   </span>Active
-                  @elseif($user->account_status == 'On Hold')
-                      <span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2">
-                    <i class="ti ti-player-pause ti-sm"></i>
-                  </span>On Hold
                   @elseif($user->account_status == 'Disabled')
                       <span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30 me-2">
                     <i class="ti ti-x ti-sm"></i>

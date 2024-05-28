@@ -50,6 +50,9 @@ Route::get('/misc/errors/not-found', function () {
   return view('misc.errors.not-found');
 })->name('routes.misc.errors.not-found');
 
+Route::get('/misc/errors/acct-banned', function () {
+  return view('misc.errors.acct-banned');
+})->name('routes.misc.errors.acct-banned');
 // Admin/Users
 Route::get('/admin/users/view/{id}', [\App\Http\Controllers\Admin\Users\UsersController::class, 'view_user'])->name('routes.content.admin.users.view')->can("admin.users.view");
 
@@ -78,7 +81,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-  Route::get('/dashboard', [\App\Http\Controllers\Dashboard\HomePage::class, 'index'])->name('routes.content.dashboard.index')->can("dashboard.view");
+  Route::get('/dashboard', [\App\Http\Controllers\Dashboard\HomePage::class, 'index'])->name('routes.content.dashboard.index')->middleware("canCustom:dashboard.view");
 });
 
 Route::get('/auth/discord/redirect', function () {
