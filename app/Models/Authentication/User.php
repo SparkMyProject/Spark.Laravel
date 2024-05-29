@@ -117,4 +117,7 @@ class User extends Authenticatable
     return $this->roles->sortBy('priority')->first();
   }
 
+  public function timeline() {
+    return $this->hasOne(UserTimeline::class, 'user_id', 'id');
+  }
 }

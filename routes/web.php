@@ -25,15 +25,6 @@ use Illuminate\Support\Facades\Storage;
 // Main Page Route
 Route::get('/', [FrontPages::class, 'index'])->name('routes.content.pages.landing-page');
 
-// Email
-Route::get('/test', function () {
-  Mail::raw('Hi, welcome user!', function ($message) {
-    $message->to('vinniehat@gmail.com')
-    ->subject('Free 123');
-});
-  return 'Email Sent';
-});
-
 Route::get('/exception', function () {
   throw new Exception('This is a test exception.');
 });
@@ -78,9 +69,9 @@ Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admi
 Route::get('/admin/settings/permissions/view/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'view'])->name('routes.content.admin.settings.permissions.view')->can("admin.settings.permissions.view");
 
 // Authentication Routes, overriding Jetstream routes
-Route::get('login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::post('login', [\App\Http\Controllers\Auth\LoginController::class, 'authenticate']);
-Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('login', [\App\Http\Controllers\Authentication\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [\App\Http\Controllers\Authentication\LoginController::class, 'authenticate']);
+Route::post('logout', [\App\Http\Controllers\Authentication\LoginController::class, 'logout'])->name('logout');
 
 
 Route::middleware([

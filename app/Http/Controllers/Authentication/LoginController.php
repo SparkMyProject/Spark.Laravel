@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -48,7 +48,6 @@ class LoginController extends Controller
           return back()->with('error', 'Your account has been banned. Please contact an administrator.')->onlyInput('username');
       }
     }
-    dd($credentials['remember']);
     return back()->withErrors([
       'username' => 'The provided credentials do not match our records.',
     ])->onlyInput('username');
