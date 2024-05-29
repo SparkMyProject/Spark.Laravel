@@ -44,29 +44,7 @@ Route::get('/misc/errors/not-found', function () {
 Route::get('/misc/errors/acct-banned', function () {
   return view('misc.errors.acct-banned');
 })->name('routes.misc.errors.acct-banned');
-// Admin/Users
-Route::get('/admin/users/view/{id}', [\App\Http\Controllers\Admin\Users\UsersController::class, 'view_user'])->name('routes.content.admin.users.view')->can("admin.users.view");
 
-Route::get('/admin/users', [\App\Http\Controllers\Admin\Users\UsersController::class, 'index'])->name('routes.content.admin.users.index')->can("admin.users.view");
-Route::post('/admin/users/disable', [\App\Http\Controllers\Admin\Users\UsersController::class, 'disable_user'])->name('routes.content.admin.users.disable')->can("admin.users.disable");
-Route::post('/admin/users/enable', [\App\Http\Controllers\Admin\Users\UsersController::class, 'enable_user'])->name('routes.content.admin.users.enable')->can("actions.admin.users.enable");
-Route::post('/admin/users/edit', [\App\Http\Controllers\Admin\Users\UsersController::class, 'edit_user'])->name('routes.content.admin.users.edit')->can("admin.users.edit");
-Route::post('/admin/users/edit-roles/{id}', [\App\Http\Controllers\Admin\Users\UsersController::class, 'edit_roles'])->name('routes.content.admin.users.edit-roles')->can("admin.settings.users.edit-roles");
-
-// Admin/Settings
-Route::get('/admin/settings/auditlog', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'index'])->name('routes.content.admin.settings.auditlog.index')->can("admin.settings.auditlog.view");
-Route::get('/admin/settings/auditlog/view/{id}', [\App\Http\Controllers\Admin\Settings\AuditLogController::class, 'view'])->name('routes.content.admin.settings.auditlog.view')->can("admin.settings.auditlog.view");
-
-Route::get('/admin/settings/roles', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'index'])->name('routes.content.admin.settings.roles.index')->can("admin.settings.roles.view");
-Route::post('/admin/settings/roles/edit/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit'])->name('routes.content.admin.settings.roles.edit')->can("admin.settings.roles.edit");
-Route::post('/admin/settings/roles/delete/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'delete'])->name('routes.content.admin.settings.roles.delete')->can("admin.settings.roles.delete");
-Route::post('/admin/settings/roles/create', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'create'])->name('routes.content.admin.settings.roles.create')->can("admin.settings.roles.create");
-Route::post('admin/settings/roles/edit-permissions/{id}', [\App\Http\Controllers\Admin\Settings\RolesController::class, 'edit_permissions'])->name('routes.content.admin.settings.roles.edit-permissions')->can("admin.settings.roles.edit-permissions");
-
-
-Route::get('/admin/settings/permissions', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'index'])->name('routes.content.admin.settings.permissions.index')->can("admin.settings.permissions.view");
-Route::post('/admin/settings/permissions/edit/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'edit'])->name('routes.content.admin.settings.permissions.edit')->can("admin.settings.permissions.edit");
-Route::get('/admin/settings/permissions/view/{id}', [\App\Http\Controllers\Admin\Settings\PermissionsController::class, 'view'])->name('routes.content.admin.settings.permissions.view')->can("admin.settings.permissions.view");
 
 // Authentication Routes, overriding Jetstream routes
 Route::get('login', [\App\Http\Controllers\Authentication\LoginController::class, 'showLoginForm'])->name('login');
