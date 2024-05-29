@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -19,12 +20,20 @@ class LoginController extends Controller
    */
   public function authenticate(Request $request): RedirectResponse
   {
+    // TODO: Fix remember me
     $credentials = $request->validate([
       'username' => ['required', 'max:20'],
       'password' => ['required'],
+      'remember' => ['nullable', "in:on,off"],
     ]);
+
+    $remember = isset($credentials['remember']) && $credentials['remember'] === 'on';
+    Log::info($remember);
+
     // Attempt to authenticate the user
-    if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+    $attempt = Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']], $remember);
+    if ($attempt) {
+      Log::info("User authenticated");
       $user = Auth::user();
 
       // Check the user's status
@@ -34,16 +43,12 @@ class LoginController extends Controller
           $request->session()->regenerate();
           return redirect()->intended('dashboard');
         case 'Disabled':
-          return back()->withErrors([
-            'email' => 'Your account has been disabled. Please contact an administrator.',
-          ])->onlyInput('username');
+          return back()->with('error', 'Your account has been disabled. Please contact an administrator.')->onlyInput('username');
         case 'Banned':
-          return back()->withErrors([
-            'email' => 'Your account has been banned. Please contact an administrator.',
-          ])->onlyInput('username');
+          return back()->with('error', 'Your account has been banned. Please contact an administrator.')->onlyInput('username');
       }
     }
-
+    dd($credentials['remember']);
     return back()->withErrors([
       'username' => 'The provided credentials do not match our records.',
     ])->onlyInput('username');
