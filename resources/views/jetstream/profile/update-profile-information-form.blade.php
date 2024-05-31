@@ -1,6 +1,4 @@
 <div>
-  @include('components/_partials/alert-handling')
-
   <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
       {{ __('Profile Information') }}

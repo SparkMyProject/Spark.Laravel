@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\Jetstream\Profile\UpdatePasswordForm;
 use App\Models\Authentication\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Jetstream\Http\Livewire\UpdatePasswordForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 

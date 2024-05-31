@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\Authentication\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Http\Livewire\UpdateProfileInformationForm;
 use Livewire\Livewire;
 use Tests\TestCase;
+use UpdateProfileInformationForm;
 
 class ProfileInformationTest extends TestCase
 {

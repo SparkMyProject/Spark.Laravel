@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\Jetstream\Profile\DeleteUserForm;
 use App\Models\Authentication\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;
-use Laravel\Jetstream\Http\Livewire\DeleteUserForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\Jetstream\Profile\LogoutOtherBrowserSessionsForm;
 use App\Models\Authentication\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Http\Livewire\LogoutOtherBrowserSessionsForm;
 use Livewire\Livewire;
 use Tests\TestCase;
 
