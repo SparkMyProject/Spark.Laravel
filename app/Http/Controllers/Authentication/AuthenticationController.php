@@ -31,7 +31,6 @@ class AuthenticationController extends Controller
   {
     return view('auth.register');
   }
-  // TODO: Add registration functionality
 
   /**
    * Handle a registration attempt.
@@ -70,19 +69,11 @@ class AuthenticationController extends Controller
    * Discord OAuth Callback
    */
   public function discordCallback()
-    // TODO: Fix Discord PFPs
   {
     $discordUser = Socialite::driver('discord')->stateless()->user();
 
     $oauthUser = OAuthUser::where('provider_id', $discordUser->id)->first();
     $user = $oauthUser ? $oauthUser->user : null;
-
-//    $avatarContent = file_get_contents($discordUser->avatar);
-//    $idHash = md5($discordUser->id);
-//    $avatarPath = 'avatars/' . $idHash . '.png'; // must match services.php
-////    Storage::put($avatarPath, $avatarContent);
-//
-//// ...
 
 
     if ($user) {
