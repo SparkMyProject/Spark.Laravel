@@ -105,7 +105,7 @@
                     </li>
                     <li>
                       <a class="dropdown-item"
-                         href="{{ Route::has('jetstream.rofile.show') ? route('jetstream.profile.show') : 'javascript:void(0);' }}">
+                         href="{{ Route::has('jetstream.profile.show') ? route('jetstream.profile.show') : 'javascript:void(0);' }}">
                         <i class="ti ti-user-check me-2 ti-sm"></i>
                         <span class="align-middle">My Profile</span>
                       </a>

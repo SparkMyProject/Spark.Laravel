@@ -3,8 +3,10 @@
 namespace App\Models\Authentication;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -36,7 +38,7 @@ class User extends Authenticatable
     'username', // Unique, max:20
     'display_name', // nullable, max:30
     'email', // Unique, nullable, max:128
-    'profile_photo_path', // default: 'assets/img/avatars/1.png', max:2048
+    'profile_photo_path', // default determined by Eloquent, max:2048
     'status', // default: 'Relaxing...', nullable, max:30
     'timezone', // default: 'UTC', enum: ['EST', 'UTC', 'AEST', 'CST', 'PST']
     'account_status', // default: 'Active', enum: ['Active', 'Disabled', 'Banned']
@@ -79,19 +81,6 @@ class User extends Authenticatable
     return $this->hasOne(OAuthUser::class, 'user_id', 'id');
   }
 
-  public function getProfilePhotoUrlAttribute()
-  {
-    if (isset($this->attributes['profile_photo_path'])) {
-      $path = $this->attributes['profile_photo_path'];
-
-      if (Storage::exists($path)) {
-        return Storage::url($path);
-      }
-    }
-
-    return asset('assets/img/avatars/1.png'); // default avatar, just in case of a missing file
-  }
-
   public function getFullNameAttribute()
   {
     return $this->first_name . ' ' . $this->last_name;
@@ -119,5 +108,37 @@ class User extends Authenticatable
 
   public function timeline() {
     return $this->hasOne(UserTimeline::class, 'user_id', 'id');
+  }
+
+  public function updateProfilePhoto(UploadedFile $photo, $storagePath = 'avatars')
+  {
+    // TODO: Implement updateProfilePhoto() method.
+    tap($this->profile_photo_path, function ($previous) use ($photo, $storagePath) {
+      $this->forceFill([
+        'profile_photo_path' => $photo->storePublicly(
+          $storagePath, ['disk' => $this->profilePhotoDisk()]
+        ),
+      ])->save();
+
+      if ($previous) {
+        Storage::disk($this->profilePhotoDisk())->delete($previous);
+      }
+    });
+  }
+
+  // Have to override default use HasProfilePhoto methods, because we don't have 'name' anymore.
+  public function profilePhotoUrl(): Attribute
+  {
+    return Attribute::get(function (): string {
+      return $this->profile_photo_path
+        ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
+        : $this->defaultProfilePhotoUrl();
+    });
+  }
+  protected function defaultProfilePhotoUrl()
+  {
+    $name = $this->getFullNameAttribute() ?? $this->getDisplayNameAttribute();
+
+    return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
   }
 }

@@ -17,7 +17,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
    */
   public function update(User $user, array $input): void
   {
-
     $validator = Validator::make($input, [
       'display_name' => ['nullable', 'string', 'max:30'],
       'first_name' => ['nullable', 'string', 'max:128'],
@@ -25,17 +24,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
       'status' => ['nullable', 'string', 'max:30'],
       'timezone' => ['nullable', 'string', Rule::in(['EST', 'UTC', 'AEST', 'CST', 'PST'])],
       'email' => ['nullable', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-      'profile_photo_url' => ['nullable', 'max:1024'],
     ]);
+
 
     $validator->validateWithBag('updateProfileInformation');
 
     $validated = $validator->validated();
 
-//    if (isset($validated['profile_photo_url'])) {
-//      $user->updateProfilePhoto($validated['profile_photo_url']);
-//    }
+    if (isset($input['photo'])) {
+      $user->updateProfilePhoto($input['photo']);
+    }
 
+    // TODO: Implement updateProfilePhoto method and check the Livevwire component
     $filtered = array_filter($validated);
 
 
@@ -43,7 +43,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
       $user instanceof MustVerifyEmail) {
       $this->updateVerifiedUser($user, $input);
     } else {
-      $user->update($filtered);
+      $user->forceFill($filtered);
     }
   }
 

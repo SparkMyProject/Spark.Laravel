@@ -76,8 +76,9 @@ class AuthenticationController extends Controller
     $user = $oauthUser ? $oauthUser->user : null;
 
     $avatarContent = file_get_contents($discordUser->avatar);
-    $avatarPath = 'avatars/' . $discordUser->id . '.png'; // must match services.php
-    Storage::put($avatarPath, $avatarContent);
+    $idHash = md5($discordUser->id);
+    $avatarPath = 'avatars/' . $idHash . '.png'; // must match services.php
+//    Storage::put($avatarPath, $avatarContent);
 
 
     if ($user) {
@@ -98,9 +99,9 @@ class AuthenticationController extends Controller
       ]);
       $user->update([
         'email' => $discordUser->email,
-        'profile_photo_path' => $avatarPath,
 
       ]);
+      $user->updateProfilePhoto($avatarPath);
       $user->oauthUser()->save($oauthUser);
       $user->save();
     } else {
