@@ -97,7 +97,9 @@ class User extends Authenticatable
 
   public function getDisplayNameAttribute()
   {
-    return $this->attributes['display_name'] ?: $this->attributes['username'];
+    return array_key_exists('display_name', $this->attributes) && $this->attributes['display_name']
+      ? $this->attributes['display_name']
+      : $this->attributes['username'];
   }
 
   public function getHighestRole()
@@ -126,6 +128,7 @@ class User extends Authenticatable
     });
   }
 
+
   // Have to override default use HasProfilePhoto methods, because we don't have 'name' anymore.
   public function profilePhotoUrl(): Attribute
   {
@@ -140,5 +143,18 @@ class User extends Authenticatable
     $name = $this->getFullNameAttribute() ?? $this->getDisplayNameAttribute();
 
     return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
+  }
+
+  public function setDiscordAvatar()
+  {
+    if (!$this->oauthUser) {
+      return;
+    }
+    $avatarContent = file_get_contents($this->oauthUser->avatar);
+    $tempPath = tempnam(sys_get_temp_dir(), 'avatars-temp');
+    file_put_contents($tempPath, $avatarContent);
+
+    $avatarFile = new UploadedFile($tempPath, 'avatar.png', 'image/png', null, true);
+    $this->updateProfilePhoto($avatarFile);
   }
 }

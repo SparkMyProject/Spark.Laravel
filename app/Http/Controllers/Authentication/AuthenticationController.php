@@ -7,6 +7,7 @@ use App\Models\Authentication\OAuthUser;
 use App\Models\Authentication\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -69,16 +70,23 @@ class AuthenticationController extends Controller
    * Discord OAuth Callback
    */
   public function discordCallback()
+    // TODO: Fix Discord PFPs
   {
     $discordUser = Socialite::driver('discord')->stateless()->user();
 
     $oauthUser = OAuthUser::where('provider_id', $discordUser->id)->first();
     $user = $oauthUser ? $oauthUser->user : null;
 
-    $avatarContent = file_get_contents($discordUser->avatar);
-    $idHash = md5($discordUser->id);
-    $avatarPath = 'avatars/' . $idHash . '.png'; // must match services.php
-//    Storage::put($avatarPath, $avatarContent);
+//    $avatarContent = file_get_contents($discordUser->avatar);
+//    $idHash = md5($discordUser->id);
+//    $avatarPath = 'avatars/' . $idHash . '.png'; // must match services.php
+////    Storage::put($avatarPath, $avatarContent);
+//
+//// ...
+
+
+
+
 
 
     if ($user) {
@@ -101,18 +109,20 @@ class AuthenticationController extends Controller
         'email' => $discordUser->email,
 
       ]);
-      $user->updateProfilePhoto($avatarPath);
       $user->oauthUser()->save($oauthUser);
       $user->save();
+
+      $user->setDiscordAvatar(); // this automatically saves
+
     } else {
       $user = User::make([
         'name' => $discordUser->name,
         'email' => $discordUser->email,
         'username' => $discordUser->nickname,
-        'profile_photo_path' => $avatarPath,
       ])->assignRole('User');
       $user->password = bcrypt(Str::random(16));
       $user->save();
+
 
       $oauthUser = OAuthUser::create([
         'user_id' => $user->id,
@@ -121,6 +131,7 @@ class AuthenticationController extends Controller
         'username' => $discordUser->nickname,
         'avatar' => $discordUser->avatar,
       ]);
+      $user->setDiscordAvatar(); // this automatically saves
     }
 
     Auth::login($user);

@@ -35,15 +35,14 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
       $user->updateProfilePhoto($input['photo']);
     }
 
-    // TODO: Implement updateProfilePhoto method and check the Livevwire component
-    $filtered = array_filter($validated);
+
 
 
     if ($input['email'] !== $user->email &&
       $user instanceof MustVerifyEmail) {
       $this->updateVerifiedUser($user, $input);
     } else {
-      $user->forceFill($filtered);
+      $user->forceFill($validated)->save();
     }
   }
 
