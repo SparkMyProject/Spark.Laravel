@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-slot name="description">
-      {{ __('Update your account\'s profile information and email address. If you pull your Discord profile picture and it is outdated, please log back in first.') }}
+      {{ __('Update your account\'s profile information and email address. If you sync your Discord profile picture and it is outdated, please log back in first.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -37,7 +37,7 @@
 
           @if ($this->user->oauthUser)
             <x-secondary-button class="mt-2 me-2" type="button" wire:click="setDiscordAvatar">
-              {{ __('Pull Discord Photo') }}
+              {{ __('Sync Discord Photo') }}
             </x-secondary-button>
           @endif
 
