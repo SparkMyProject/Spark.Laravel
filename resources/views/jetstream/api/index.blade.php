@@ -1,4 +1,4 @@
-@extends('layouts/layoutMaster')
+@extends('components/layouts/layoutMaster')
 
 @php
 $breadcrumbs = [['link' => 'home', 'name' => 'Home'], ['name' => 'API Tokens']];
@@ -14,5 +14,5 @@ $breadcrumbs = [['link' => 'home', 'name' => 'Home'], ['name' => 'API Tokens']];
 @endsection
 
 @section('content')
-  @livewire('api.api-token-manager')
+  @livewire('jetstream.api.api-token-manager')
 @endsection

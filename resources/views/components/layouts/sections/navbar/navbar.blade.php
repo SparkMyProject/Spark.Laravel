@@ -112,7 +112,7 @@
                     </li>
                     @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
                       <li>
-                        <a class="dropdown-item" href="{{ route('jetstream.api-tokens.index') }}">
+                        <a class="dropdown-item" href="{{ route('jetstream.api.index') }}">
                           <i class='ti ti-key me-2 ti-sm'></i>
                           <span class="align-middle">API Tokens</span>
                         </a>

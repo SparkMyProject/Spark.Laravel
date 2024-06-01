@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Jetstream\Profile;
+namespace App\Http\Livewire\Jetstream\Api;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

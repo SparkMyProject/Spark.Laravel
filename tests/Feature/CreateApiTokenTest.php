@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\Jetstream\Profile\ApiTokenManager;
+use App\Http\Livewire\Jetstream\Api\ApiTokenManager;
 use App\Models\Authentication\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;

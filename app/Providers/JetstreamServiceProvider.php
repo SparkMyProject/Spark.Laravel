@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Jetstream\DeleteUser;
-use App\Http\Livewire\Jetstream\Profile\ApiTokenManager;
+use App\Http\Livewire\Jetstream\Api\ApiTokenManager;
 use App\Http\Livewire\Jetstream\Profile\CreateTeamForm;
 use App\Http\Livewire\Jetstream\Profile\DeleteTeamForm;
 use App\Http\Livewire\Jetstream\Profile\DeleteUserForm;

@@ -36,13 +36,12 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         Route::group(['middleware' => 'verified'], function () {
             // API...
             if (Jetstream::hasApiFeatures()) {
-                Route::get('/user/api-tokens', [ApiTokenController::class, 'index'])->name('api-tokens.index');
                 Route::get('/user/api-tokens', function () {
-                  return view('jetstream.api-tokens.index', [
+                  return view('jetstream.api.index', [
                     'request' => request(),
                     'user' => request()->user(),
                   ]);
-                })->name('jetstream.api-tokens.index');
+                })->name('jetstream.api.index');
             }
 
             // Teams...
