@@ -7,10 +7,8 @@ use App\Models\Authentication\OAuthUser;
 use App\Models\Authentication\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -39,7 +37,8 @@ class AuthenticationController extends Controller
    * Handle a registration attempt.
    */
 
-  public function register(Request $request): RedirectResponse {
+  public function register(Request $request): RedirectResponse
+  {
     $credentials = $request->validate([
       'username' => ['required', 'max:20'],
       'password' => ['required', 'confirmed'],
@@ -62,7 +61,8 @@ class AuthenticationController extends Controller
   /**
    * Discord OAuth Redirect
    */
-  public function discordRedirect() {
+  public function discordRedirect()
+  {
     return Socialite::driver('discord')->stateless()->redirect();
   }
 
@@ -83,10 +83,6 @@ class AuthenticationController extends Controller
 ////    Storage::put($avatarPath, $avatarContent);
 //
 //// ...
-
-
-
-
 
 
     if ($user) {
@@ -112,7 +108,8 @@ class AuthenticationController extends Controller
       $user->oauthUser()->save($oauthUser);
       $user->save();
 
-      $user->setDiscordAvatar(); // this automatically saves
+      // Uncomment this line to update the user's avatar each login
+      // $user->setDiscordAvatar(); // this automatically saves
 
     } else {
       $user = User::make([

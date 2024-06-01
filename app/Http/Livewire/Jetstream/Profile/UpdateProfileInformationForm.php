@@ -72,6 +72,8 @@ class UpdateProfileInformationForm extends Component
     $this->dispatch('saved');
 
     $this->dispatch('refresh-navigation-menu');
+    $this->redirect(route('jetstream.profile.show'));
+
   }
 
   /**
@@ -84,6 +86,10 @@ class UpdateProfileInformationForm extends Component
     Auth::user()->deleteProfilePhoto();
 
     $this->dispatch('refresh-navigation-menu');
+    $this->dispatch('saved');
+    $this->redirect(route('jetstream.profile.show'));
+
+
   }
 
   /**
@@ -116,5 +122,18 @@ class UpdateProfileInformationForm extends Component
   public function render()
   {
     return view('jetstream.profile.update-profile-information-form');
+  }
+
+  public function setDiscordAvatar()
+  {
+    // Call the setDiscordAvatar method on the user model
+    $this->user->setDiscordAvatar();
+
+    // Refresh the component to show the updated profile photo
+    // Refresh page
+    $this->dispatch('refresh-navigation-menu');
+    $this->dispatch('saved');
+    $this->redirect(route('jetstream.profile.show'));
+
   }
 }

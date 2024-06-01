@@ -5,7 +5,7 @@
     </x-slot>
 
     <x-slot name="description">
-      {{ __('Update your account\'s profile information and email address.') }}
+      {{ __('Update your account\'s profile information and email address. If you pull your Discord profile picture and it is outdated, please log back in first.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -34,6 +34,12 @@
           <x-secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.photo.click()">
             {{ __('Select A New Photo') }}
           </x-secondary-button>
+
+          @if ($this->user->oauthUser)
+            <x-secondary-button class="mt-2 me-2" type="button" wire:click="setDiscordAvatar">
+              {{ __('Pull Discord Photo') }}
+            </x-secondary-button>
+          @endif
 
           @if ($this->user->profile_photo_path)
             <button type="button" class="btn btn-danger text-uppercase mt-2" wire:click="deleteProfilePhoto">
