@@ -50,11 +50,9 @@
             <label class="form-label" for="account_status">Timezone</label>
 
             <select id="timezone" name="timezone" class="select2 form-select" aria-label="Default select example">
-              <option {{$user->timezone == "AEST" ? 'selected' : ''}} value="AEST">AEST (Australian Eastern Standard Time)</option>
-              <option {{$user->timezone == "CST" ? 'selected' : ''}} value="CST">CST (Central Standard Time)</option>
-              <option {{$user->timezone == "EST" ? 'selected' : ''}} value="EST">EST (Eastern Standard Time)</option>
-              <option {{$user->timezone == "PST" ? 'selected' : ''}} value="PST">PST (Pacific Standard Time)</option>
-              <option {{$user->timezone == "UTC" ? 'selected' : ''}} value="UTC">UTC (Coordinated Universal Time)</option>
+              @foreach(DateTimeZone::listIdentifiers(DateTimeZone::ALL) as $timezone)
+                <option {{$user->timezone == $timezone ? 'selected' : ''}} value="{{$timezone}}">{{$timezone}}</option>
+              @endforeach
 
 
             </select>

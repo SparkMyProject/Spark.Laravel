@@ -3,18 +3,22 @@
 namespace App\Models\Authentication;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use DateTimeZone;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Storage;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\CausesActivity;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
@@ -108,7 +112,8 @@ class User extends Authenticatable
     return $this->roles->sortBy('priority')->first();
   }
 
-  public function timeline() {
+  public function timeline()
+  {
     return $this->hasOne(UserTimeline::class, 'user_id', 'id');
   }
 
@@ -137,11 +142,12 @@ class User extends Authenticatable
         : $this->defaultProfilePhotoUrl();
     });
   }
+
   protected function defaultProfilePhotoUrl()
   {
     $name = $this->getFullNameAttribute() ?? $this->getDisplayNameAttribute();
 
-    return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF';
+    return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
   }
 
   public function setDiscordAvatar()
@@ -155,5 +161,30 @@ class User extends Authenticatable
 
     $avatarFile = new UploadedFile($tempPath, 'avatar.png', 'image/png', null, true);
     $this->updateProfilePhoto($avatarFile);
+  }
+
+  protected static function booted()
+  {
+    static::saving(function ($user) {
+      if ($user->isDirty('timezone')) {
+        $validator = Validator::make($user->attributes, [
+          'timezone' => ['required', Rule::in(DateTimeZone::listIdentifiers(DateTimeZone::ALL))],
+        ]);
+
+        if ($validator->fails()) {
+          throw new ValidationException($validator);
+        }
+      }
+    });
+    static::created(function ($user) {
+      UserTimeline::create([
+        'user_id' => $user->id,
+      ]);
+      UserTimelineEvent::create([
+        'title' => 'User created.',
+        'description' => 'The user has signed up.',
+        'timeline_id' => $user->timeline->id,
+      ]);
+    });
   }
 }

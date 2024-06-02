@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Authentication\User;
+use Carbon\Carbon;
 use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
@@ -54,5 +55,10 @@ class AppServiceProvider extends ServiceProvider
       'extra' => $user->email,
       'avatar' => $user->profile_photo_url,
     ]);
+
+    // User Timezones
+    Carbon::macro('inUserTimezone', function () {
+      return $this->tz(auth()->user()->timezone ?? config('app.display_timezone'));
+  });
   }
 }

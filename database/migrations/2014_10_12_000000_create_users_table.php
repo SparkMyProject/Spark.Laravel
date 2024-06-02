@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable(); // Default value is assigned through Eloquent
             $table->string('status', 30)->default('Relaxing...')->nullable();
-            $table->enum('timezone', ['EST', 'UTC', 'AEST', 'CST', 'PST'])->default('UTC');
+            $table->string('timezone')->default('UTC'); // Rules for this column are defined in the User model
             $table->enum('account_status', ['Active', 'Disabled', 'Banned'])->default('Active');
             $table->timestamps();
         });
