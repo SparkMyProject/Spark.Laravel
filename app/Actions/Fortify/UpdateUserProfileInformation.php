@@ -6,6 +6,7 @@ use App\Models\Authentication\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
@@ -17,19 +18,24 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
    */
   public function update(User $user, array $input): void
   {
+    // This validator uses current values, because the blade view input fields are prefilled with the current values
     $validator = Validator::make($input, [
       'display_name' => ['nullable', 'string', 'max:30'],
       'first_name' => ['nullable', 'string', 'max:128'],
       'last_name' => ['nullable', 'string', 'max:128'],
       'status' => ['nullable', 'string', 'max:30'],
-      'timezone' => ['nullable', 'string', Rule::in(['EST', 'UTC', 'AEST', 'CST', 'PST'])],
+      'timezone' => [], // Validation rule pulls from User model
       'email' => ['nullable', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
     ]);
 
 
-    $validator->validateWithBag('updateProfileInformation');
+//    $validator->validateWithBag('updateProfileInformation');
 
+    if ($validator->fails()) {
+      throw new ValidationException($validator);
+    }
     $validated = $validator->validated();
+
 
     if (isset($input['photo'])) {
       $user->updateProfilePhoto($input['photo']);

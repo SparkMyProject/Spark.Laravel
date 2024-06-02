@@ -80,7 +80,7 @@
         </div>
       </div>
 
-
+      <br>
       <!-- Email -->
       <div class="mb-3">
         <x-label class="form-label" for="email" value="{{ __('Email') }}"/>
@@ -89,13 +89,28 @@
         <x-input-error for="email"/>
       </div>
 
-      <!-- Status -->
-      <div class="mb-3">
-        <x-label class="form-label" for="status" value="{{ __('Status') }}"/>
-        <x-input id="status" type="status" class="{{ $errors->has('status') ? 'is-invalid' : '' }}"
-                 wire:model="state.status"/>
-        <x-input-error for="status"/>
+      <div class="row">
+
+        <!-- Status -->
+        <div class="col-12 col-md-6">
+          <x-label class="form-label" for="status" value="{{ __('Status') }}"/>
+          <x-input id="status" type="status" class="{{ $errors->has('status') ? 'is-invalid' : '' }}"
+                   wire:model="state.status"/>
+          <x-input-error for="status"/>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label" for="account_status">Timezone</label>
+          <select id="timezone" wire:model="state.timezone" class="select2 form-select" aria-label="Default select example">
+            <option value="test">Select a timezone</option>
+            @foreach(DateTimeZone::listIdentifiers(DateTimeZone::ALL) as $tz)
+              <option {{ $state['timezone'] == $tz ? 'selected' : '' }} value="{{ $tz }}">{{ $tz }}</option>
+            @endforeach
+          </select>
+          <x-input-error for="timezone"/>
+        </div>
       </div>
+      <br>
     </x-slot>
 
     <x-slot name="actions">
