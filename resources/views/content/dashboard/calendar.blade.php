@@ -30,7 +30,7 @@
 
 @section('page-script')
 @vite([
-'resources/assets/js/app-calendar-events.js',
+//'resources/assets/js/app-calendar-events.js',
 'resources/assets/js/app-calendar.js',
 ])
 @endsection
@@ -48,6 +48,7 @@
           </button>
         </div>
       </div>
+
       <div class="p-3">
         <!-- inline calendar (flatpicker) -->
         <div class="inline-calendar"></div>
@@ -176,4 +177,8 @@
     <!-- /Calendar & Modal -->
   </div>
 </div>
+
 @endsection
+<script>
+  window.events = {!! json_encode($events) !!};
+</script>
