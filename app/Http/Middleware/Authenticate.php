@@ -2,10 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 
-class Authenticate extends Middleware
+class Authenticate extends \Illuminate\Auth\Middleware\Authenticate
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
