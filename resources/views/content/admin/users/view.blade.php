@@ -190,6 +190,9 @@
         <h5 class="card-header">User Activity Timeline</h5>
         <div class="card-body pb-0">
           <ul class="timeline mb-0">
+            @foreach($user->timeline->events as $event)
+              <h1>{{$event}}</h1>
+            @endforeach
             <li class="timeline-item timeline-item-transparent">
               <span class="timeline-point timeline-point-primary"></span>
               <div class="timeline-event">
