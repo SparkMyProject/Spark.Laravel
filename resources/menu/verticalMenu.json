@@ -10,6 +10,15 @@
       ]
     },
     {
+      "url": "/dashboard/calendar",
+      "name": "Calendar",
+      "icon": "menu-icon tf-icons ti ti-calendar",
+      "slug": "routes.content.dashboard.calendar",
+      "permissions": [
+        "dashboard.calendar.view"
+      ]
+    },
+    {
       "url": "/admin",
       "name": "Administration",
       "icon": "menu-icon tf-icons ti ti-lock",
