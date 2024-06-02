@@ -56,7 +56,7 @@ class Helpers
       'headerType' => ['fixed', 'static'],
       'navbarType' => ['fixed', 'static', 'hidden'],
       'myStyle' => ['light', 'dark', 'system'],
-      'myTheme' => ['theme-default', 'theme-bordered', 'theme-semi-dark', 'theme-raspberry', 'theme-raspberry-dark'],
+      'myTheme' => ['theme-default', 'theme-bordered', 'theme-semi-dark', 'theme-raspberry'],
       'myRTLSupport' => [true, false],
       'myRTLMode' => [true, false],
       'menuFixed' => [true, false],

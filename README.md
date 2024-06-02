@@ -24,6 +24,17 @@ Spark.Laravel is a Laravel boilerplate that provides many features for your next
 - Built-in administrative permission management
 - Laravel Pulse integration
 
+
+## Creating/Updating Themes
+To update a theme and allow users to select them, do the following:
+- Create the files "theme-[NAME].scss" and "theme-[NAME]-dark.scss" in the resources/assets/vendor/scss directory
+- Do NOT include the dark version when listing the themes. The light/dark mode system is separate.
+- Update the "theme-customizer.js" file in the resources/assets/vendor/js directory to include the new theme (around line 1214)
+- Update the "helpers.php" file in the app/Helpers directory to include the new theme (line 51)
+- Update the "scriptsIncludes.blade.php" in the resources/views/layouts/sections directory to include the new theme (line 34). The theme names must have "theme-" removed 
+  from the name. For example, "theme-default" is "default".
+
+- For organizational purposes, comment in the new options in the "custom.php" file in the config folder.
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
