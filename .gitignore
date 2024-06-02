@@ -28,3 +28,4 @@ yarn-error.log
 /public/js
 !/.env
 .env
+/storage/debugbar/
