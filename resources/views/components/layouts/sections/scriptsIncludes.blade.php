@@ -31,7 +31,7 @@ $menuCollapsed = ($configData['menuCollapsed'] === 'layout-menu-collapsed') ? js
         @endforeach
 
         // Themes
-        @foreach (['default', 'bordered', 'semi-dark'] as $name)
+        @foreach (['default', 'bordered', 'semi-dark', 'raspberry', 'raspberry-dark'] as $name)
           'theme-{{ $name }}.scss': '{{ Vite::asset('resources/assets/vendor/scss'.$configData["rtlSupport"].'/theme-'.$name.'.scss') }}',
           'theme-{{ $name }}-dark.scss': '{{ Vite::asset('resources/assets/vendor/scss'.$configData["rtlSupport"].'/theme-'.$name.'-dark.scss') }}',
         @endforeach

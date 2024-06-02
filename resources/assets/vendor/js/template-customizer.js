@@ -1223,6 +1223,14 @@ TemplateCustomizer.THEMES = [
   {
     name: 'theme-semi-dark',
     title: 'Semi Dark'
+  },
+  {
+    name: 'theme-raspberry',
+    title: 'Raspberry'
+  },
+  {
+    name: 'theme-raspberry-dark',
+    title: 'Raspberry Dark'
   }
 ]
 
