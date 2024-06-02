@@ -24,7 +24,7 @@ return new class extends Migration
         $table->foreignId('timeline_id');
         $table->string('title', 128);
         $table->string('description', 128);
-        $table->string('color', 128);
+        $table->string('color', 128)->default('success');
         $table->json('data')->nullable()->change();
         $table->timestamps();
       });

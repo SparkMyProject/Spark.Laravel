@@ -191,85 +191,17 @@
         <div class="card-body pb-0">
           <ul class="timeline mb-0">
             @foreach($user->timeline->events as $event)
-              <h1>{{$event}}</h1>
+                <li class="timeline-item timeline-item-transparent border-transparent">
+                  <span class="timeline-point timeline-point-{{$event->color}}"></span>
+                  <div class="timeline-event">
+                    <div class="timeline-header mb-1">
+                      <h6 class="mb-0">{{$event->title}}</h6>
+                      <small class="text-muted">{{$event->created_at->inUserTimezone()}}</small>
+                    </div>
+                    <p class="mb-0">{{$event->description}}</p>
+                  </div>
+                </li>
             @endforeach
-            <li class="timeline-item timeline-item-transparent">
-              <span class="timeline-point timeline-point-primary"></span>
-              <div class="timeline-event">
-                <div class="timeline-header mb-1">
-                  <h6 class="mb-0">12 Invoices have been paid</h6>
-                  <small class="text-muted">12 min ago</small>
-                </div>
-                <p class="mb-2">Invoices have been paid to the company</p>
-                <div class="d-flex">
-                  <a href="javascript:void(0)" class="me-3">
-                    <img src="{{asset('assets/img/icons/misc/pdf.png')}}" alt="PDF image" width="15" class="me-2">
-                    <span class="fw-medium text-heading">invoices.pdf</span>
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-item timeline-item-transparent">
-              <span class="timeline-point timeline-point-warning"></span>
-              <div class="timeline-event">
-                <div class="timeline-header mb-1">
-                  <h6 class="mb-0">Client Meeting</h6>
-                  <small class="text-muted">45 min ago</small>
-                </div>
-                <p class="mb-2">Project meeting with john @10:15am</p>
-                <div class="d-flex flex-wrap">
-                  <div class="avatar me-3">
-                    <img src="{{ asset('assets/img/avatars/3.png') }}" alt="Avatar" class="rounded-circle" />
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Lester McCarthy (Client)</h6>
-                    <small>CEO of {{ config('variables.creatorName') }}</small>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-item timeline-item-transparent">
-              <span class="timeline-point timeline-point-info"></span>
-              <div class="timeline-event">
-                <div class="timeline-header mb-1">
-                  <h6 class="mb-0">Create a new project for client</h6>
-                  <small class="text-muted">2 Day Ago</small>
-                </div>
-                <p class="mb-2">5 team members in a project</p>
-                <div class="d-flex align-items-center avatar-group">
-                  <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                       data-bs-placement="top" title="Vinnie Mostowy">
-                    <img src="{{ asset('assets/img/avatars/5.png') }}" alt="Avatar" class="rounded-circle">
-                  </div>
-                  <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                       data-bs-placement="top" title="Marrie Patty">
-                    <img src="{{ asset('assets/img/avatars/12.png') }}" alt="Avatar" class="rounded-circle">
-                  </div>
-                  <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                       data-bs-placement="top" title="Jimmy Jackson">
-                    <img src="{{ asset('assets/img/avatars/9.png') }}" alt="Avatar" class="rounded-circle">
-                  </div>
-                  <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                       data-bs-placement="top" title="Kristine Gill">
-                    <img src="{{ asset('assets/img/avatars/6.png') }}" alt="Avatar" class="rounded-circle">
-                  </div>
-                  <div class="avatar pull-up" data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                       data-bs-placement="top" title="Nelson Wilson">
-                    <img src="{{ asset('assets/img/avatars/4.png') }}" alt="Avatar" class="rounded-circle">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-item timeline-item-transparent border-transparent">
-              <span class="timeline-point timeline-point-success"></span>
-              <div class="timeline-event">
-                <div class="timeline-header mb-1">
-                  <h6 class="mb-0">Design Review</h6>
-                  <small class="text-muted">5 days Ago</small>
-                </div>
-                <p class="mb-0">Weekly review of freshly prepared design for our new app.</p>
-              </div>
-            </li>
           </ul>
         </div>
       </div>

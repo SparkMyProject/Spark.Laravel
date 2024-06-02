@@ -2,7 +2,9 @@
 
 namespace App\Models\Authentication;
 
-class UserTimelineEvent
+use Illuminate\Database\Eloquent\Model;
+
+class UserTimelineEvent extends Model
 {
   protected $table = 'user_timeline_events';
   protected $fillable = [

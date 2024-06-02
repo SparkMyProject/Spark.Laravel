@@ -107,6 +107,7 @@ class UsersController extends Controller
     $user->load(['roles' => function ($query) {
       $query->orderBy('priority', 'desc');
     }]);
+    $user->load('timeline');
     return view('content.admin.users.view', ['user' => $user]);
   }
 
