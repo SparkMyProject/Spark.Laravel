@@ -36,7 +36,6 @@
 
     <p class="mb-4">A role provided access to predefined menus and features so that depending on <br> assigned role an
         administrator can have access to what user needs.</p>
-    @include('components._partials.alert-handling')
     @csrf
     <div class="d-flex justify-content-between align-items-center mb-4">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRoleModal">
