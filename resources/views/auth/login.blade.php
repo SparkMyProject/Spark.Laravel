@@ -51,7 +51,9 @@
               </div>
             </div>
           @endif
-
+          @env('local')
+            <x-login-link key="1" label="Webmaster Login"/>
+          @endenv
           {{-- Disabled / Banned alerts, using alerts, rather than withError for form validation --}}
           @if (session('error'))
             <div class="alert alert-danger mb-1 rounded-0" role="alert">
@@ -60,6 +62,8 @@
               </div>
             </div>
           @endif
+
+
           {{-- Form --}}
           <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
             @csrf
