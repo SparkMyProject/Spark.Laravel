@@ -4,6 +4,9 @@
 <div>
   <h1>Hello, World!</h1>
   <div id="calendar"></div>
+  @foreach($events as $event)
+    <p>{{$event}}</p>
+  @endforeach
 </div>
 
 <script>
@@ -16,7 +19,9 @@
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,listWeek'
-      }
+      },
+      // add events
+      events: {!! json_encode($events->toArray()) !!},
     });
     calendar.render();
   })
