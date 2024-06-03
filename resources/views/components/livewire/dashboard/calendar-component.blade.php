@@ -1,5 +1,6 @@
 @vite([
-'resources/assets/vendor/libs/fullcalendar/fullcalendar.js'
+'resources/assets/vendor/libs/fullcalendar/fullcalendar.js',
+'resources/assets/vendor/libs/fullcalendar/fullcalendar.scss'
 ])
 <div>
   <h1>Hello, World!</h1>
