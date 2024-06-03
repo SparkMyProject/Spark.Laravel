@@ -5,6 +5,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://wakatime.com/badge/user/6036bffc-0f57-4851-9af7-e93443368bc2/project/474936ec-85a8-45f9-9132-8c253a1f48ff"><img src="https://wakatime.com/badge/user/6036bffc-0f57-4851-9af7-e93443368bc2/project/474936ec-85a8-45f9-9132-8c253a1f48ff.svg" alt="wakatime"></a>
 </p>
 
 ## About Spark.Laravel
