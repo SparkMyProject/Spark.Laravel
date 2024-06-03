@@ -25,6 +25,7 @@ class CalendarSeeder extends Seeder
       'all_day' => false,
       'url' => 'https://example.com',
       'description' => 'My Description',
+      'user_id' => 1,
     ]);
   }
 }

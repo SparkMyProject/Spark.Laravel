@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('calendar_events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('calendar_id');
+            $table->foreignId('user_id');
             $table->string('title', 128);
             $table->string('label', 128);
             $table->dateTime('start_date');

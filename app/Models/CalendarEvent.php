@@ -25,6 +25,9 @@ class CalendarEvent extends Model
     'description',
   ];
 
+  public function user() {
+    return $this->belongsTo(User::class);
+  }
   public function calendar()
   {
     return $this->belongsTo(Calendar::class);
