@@ -35,8 +35,11 @@
 @endsection
 
 @section('content')
+  <div>
+    @livewire('dashboard.calendar-component')
+  </div>
 
-  @livewire('dashboard.calendar-component')
+
 @endsection
 <script>
   {{--window.events = {!! json_encode($events) !!};--}}
