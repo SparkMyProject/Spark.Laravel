@@ -50,6 +50,6 @@ class CreateTeamForm extends Component
      */
     public function render()
     {
-        return view('jetstream.teams.create-team-form');
+        return view('web.jetstream.teams.create-team-form');
     }
 }

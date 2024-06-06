@@ -121,7 +121,7 @@ class UpdateProfileInformationForm extends Component
    */
   public function render()
   {
-    return view('jetstream.profile.update-profile-information-form');
+    return view('web.jetstream.profile.update-profile-information-form');
   }
 
   public function setDiscordAvatar()

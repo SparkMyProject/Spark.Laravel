@@ -175,6 +175,6 @@ class TwoFactorAuthenticationForm extends Component
      */
     public function render()
     {
-        return view('jetstream.profile.two-factor-authentication-form');
+        return view('web.jetstream.profile.two-factor-authentication-form');
     }
 }

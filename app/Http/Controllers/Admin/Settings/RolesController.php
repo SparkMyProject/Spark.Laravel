@@ -12,7 +12,7 @@ class RolesController extends Controller
   {
     $roles = Role::withCount('users')->withCount('permissions')->orderBy('name')->get();
     $permissions = Permission::orderBy('name')->get();
-    return view('content.admin.settings.roles.index', ['roles' => $roles, 'permissions' => $permissions]);
+    return view('web.admin.settings.roles.index', ['roles' => $roles, 'permissions' => $permissions]);
   }
 
   public function edit($id)
@@ -20,11 +20,11 @@ class RolesController extends Controller
     $role = Role::find($id);
     if (!$role) {
       session()->flash('error', 'Role not found.');
-      return redirect()->route('routes.content.admin.settings.roles.index');
+      return redirect()->route('routes.web.admin.settings.roles.index');
     }
     if ($role->is_system) {
       session()->flash('error', 'Cannot edit system roles.');
-      return redirect()->route('routes.content.admin.settings.roles.index');
+      return redirect()->route('routes.web.admin.settings.roles.index');
     }
     $validated = request()->validate([
       'name' => 'nullable|string|max:20',
@@ -35,7 +35,7 @@ class RolesController extends Controller
 
     $role->update(array_filter($validated));
     session()->flash('success', 'Role updated.');
-    return redirect()->route('routes.content.admin.settings.roles.index');
+    return redirect()->route('routes.web.admin.settings.roles.index');
   }
 
   public function edit_permissions($id)
@@ -43,11 +43,11 @@ class RolesController extends Controller
     $role = Role::find($id);
     if (!$role) {
       session()->flash('error', 'Role not found.');
-      return redirect()->route('routes.content.admin.settings.roles.index');
+      return redirect()->route('routes.web.admin.settings.roles.index');
     }
     if ($role->is_system) {
       session()->flash('error', 'Cannot edit system roles.');
-      return redirect()->route('routes.content.admin.settings.roles.index');
+      return redirect()->route('routes.web.admin.settings.roles.index');
     }
     $validated = request()->validate([
       'permissions' => 'nullable|array',
@@ -58,7 +58,7 @@ class RolesController extends Controller
 
     $role->syncPermissions($permissions);
     session()->flash('success', 'Role permissions updated.');
-    return redirect()->route('routes.content.admin.settings.roles.index');
+    return redirect()->route('routes.web.admin.settings.roles.index');
   }
 
   public function delete($id)
@@ -96,11 +96,11 @@ class RolesController extends Controller
 
     if (Role::where('name', $validated['name'])->exists()) {
       session()->flash('error', 'Role already exists.');
-      return redirect()->route('routes.content.admin.settings.roles.index');
+      return redirect()->route('routes.web.admin.settings.roles.index');
     }
 
     $role = Role::create(array_filter($validated));
     session()->flash('success', 'Role created.');
-    return redirect()->route('routes.content.admin.settings.roles.index');
+    return redirect()->route('routes.web.admin.settings.roles.index');
   }
 }

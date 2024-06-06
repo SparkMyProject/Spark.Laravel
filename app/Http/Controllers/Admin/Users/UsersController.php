@@ -16,7 +16,7 @@ class UsersController extends Controller
       $query->orderBy('priority', 'desc');
     }])->with("oauthUser")->get();
     $roles = Role::orderBy('priority', 'desc')->get();
-    return view('content.admin.users.index', ['users' => $users, 'roles' => $roles]);
+    return view('web.admin.users.index', ['users' => $users, 'roles' => $roles]);
   }
 
   public function disable_user()
@@ -108,7 +108,7 @@ class UsersController extends Controller
       $query->orderBy('priority', 'desc');
     }]);
     $user->load('timeline');
-    return view('content.admin.users.view', ['user' => $user]);
+    return view('web.admin.users.view', ['user' => $user]);
   }
 
   public function edit_roles($id)

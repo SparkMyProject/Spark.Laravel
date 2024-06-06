@@ -39,11 +39,11 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
   Route::group(['middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
     // User & Profile...
     Route::get('/user/profile', function () {
-      return view('jetstream.profile.show', [
+      return view('web.jetstream.profile.show', [
         'request' => request(),
         'user' => request()->user(),
       ]);
-    })->name('jetstream.profile.show');
+    })->name('web.jetstream.profile.show');
 
     Route::group(['middleware' => 'verified'], function () {
       // API...
@@ -53,7 +53,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
             'request' => request(),
             'user' => request()->user(),
           ]);
-        })->name('jetstream.api.index');
+        })->name('web.jetstream.api.index');
       }
 
       // Teams...
@@ -64,7 +64,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
 
         Route::get('/team-invitations/{invitation}', [TeamInvitationController::class, 'accept'])
           ->middleware(['signed'])
-          ->name('team-invitations.accept');
+          ->name('web.team-invitations.accept');
       }
     });
   });

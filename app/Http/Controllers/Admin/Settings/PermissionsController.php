@@ -10,7 +10,7 @@ class PermissionsController extends Controller
   public function index()
   {
     $permissions = Permission::withCount(['roles', 'users'])->get();
-    return view('content.admin.settings.permissions.index', ['permissions' => $permissions]);
+    return view('web.admin.settings.permissions.index', ['permissions' => $permissions]);
   }
 
   public function edit($id)
@@ -18,7 +18,7 @@ class PermissionsController extends Controller
     $permission = Permission::find($id);
     if (!$permission) {
       session()->flash('error', 'Permission not found.');
-      return redirect()->route('routes.content.admin.settings.permissions.index');
+      return redirect()->route('routes.web.admin.settings.permissions.index');
     }
 
     $validated = request()->validate([
@@ -29,7 +29,7 @@ class PermissionsController extends Controller
     $permission->update(array_filter($validated));
     session()->flash('success', 'Permission updated.');
 
-    return redirect()->route('routes.content.admin.settings.permissions.index');
+    return redirect()->route('routes.web.admin.settings.permissions.index');
   }
 
   public function view($id)
@@ -47,9 +47,9 @@ class PermissionsController extends Controller
 
     if (!$permission) {
       session()->flash('error', 'Permission not found.');
-      return redirect()->route('routes.content.admin.settings.permissions.index');
+      return redirect()->route('routes.web.admin.settings.permissions.index');
     }
 
-    return view('content.admin.settings.permissions.view', ['permission' => $permission]);
+    return view('web.admin.settings.permissions.view', ['permission' => $permission]);
   }
 }

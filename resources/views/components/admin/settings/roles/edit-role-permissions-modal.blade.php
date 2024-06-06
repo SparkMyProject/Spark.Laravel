@@ -10,7 +10,7 @@
           <p class="text-muted">Updating user details will receive a privacy audit.</p>
         </div>
         <form id="editRolePermissionsForm" class="row g-3"
-              action="{{route('routes.content.admin.settings.roles.edit-permissions', ['id' => $role->id])}}"
+              action="{{route('routes.web.admin.settings.roles.edit-permissions', ['id' => $role->id])}}"
               method="POST">
           @csrf
           <input type="hidden" name="roleId" value="{{$role->id}}">

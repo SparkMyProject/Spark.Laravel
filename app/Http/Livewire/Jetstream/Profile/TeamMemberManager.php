@@ -269,6 +269,6 @@ class TeamMemberManager extends Component
      */
     public function render()
     {
-        return view('jetstream.teams.team-member-manager');
+        return view('web.teams.team-member-manager');
     }
 }

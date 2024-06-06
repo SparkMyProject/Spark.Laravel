@@ -135,6 +135,6 @@ class LogoutOtherBrowserSessionsForm extends Component
      */
     public function render()
     {
-        return view('jetstream.profile.logout-other-browser-sessions-form');
+        return view('web.jetstream.profile.logout-other-browser-sessions-form');
     }
 }

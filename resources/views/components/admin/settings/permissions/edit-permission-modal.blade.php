@@ -11,7 +11,7 @@
           <h3 class="mb-2">Edit Role Information</h3>
           <p class="text-muted">Updating role details will receive a privacy audit.</p>
         </div>
-        <form id="editRoleForm" class="row g-3" action="{{route('routes.content.admin.settings.permissions.edit', ['id' => $permission->id])}}" method="POST">
+        <form id="editRoleForm" class="row g-3" action="{{route('routes.web.admin.settings.permissions.edit', ['id' => $permission->id])}}" method="POST">
           @csrf
 {{--          <input type="hidden" name="permissionId" value="{{permission->id}}">--}}
           <div class="col-12 col-md-6">

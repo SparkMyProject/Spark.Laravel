@@ -69,6 +69,6 @@ class UpdateTeamNameForm extends Component
      */
     public function render()
     {
-        return view('jetstream.teams.update-team-name-form');
+        return view('web.jetstream.teams.update-team-name-form');
     }
 }

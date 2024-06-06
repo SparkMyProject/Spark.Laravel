@@ -13,11 +13,11 @@ class AuditLogController extends Controller
   public function index()
   {
     $audits = Activity::all()->sortByDesc('created_at');
-    return view('content.admin.settings.auditlog.index', ['auditlogs' => $audits]);
+    return view('web.admin.settings.auditlog.index', ['auditlogs' => $audits]);
   }
   public function view($id)
   {
     $audit = Activity::find($id);
-    return view('content.admin.settings.auditlog.view', ['audit' => $audit]);
+    return view('web.admin.settings.auditlog.view', ['audit' => $audit]);
   }
 }

@@ -11,7 +11,7 @@
           <h3 class="mb-2">Create Role</h3>
           <p class="text-muted">Creating a role will receive a privacy audit.</p>
         </div>
-        <form id="createRoleForm" class="row g-3" action="{{route('routes.content.admin.settings.roles.create')}}" method="POST">
+        <form id="createRoleForm" class="row g-3" action="{{route('routes.web.admin.settings.roles.create')}}" method="POST">
           @csrf
 {{--          <input type="hidden" name="roleId" value="{{$role->id}}">--}}
           <div class="col-12 col-md-6">

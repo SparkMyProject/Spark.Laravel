@@ -4,7 +4,7 @@
       "url": "/dashboard",
       "name": "Dashboard",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "routes.content.dashboard.index",
+      "slug": "routes.web.dashboard.index",
       "permissions": [
         "dashboard.view"
       ]
@@ -13,7 +13,7 @@
       "url": "/dashboard/calendar",
       "name": "Calendar",
       "icon": "menu-icon tf-icons ti ti-calendar",
-      "slug": "routes.content.dashboard.calendar",
+      "slug": "routes.web.dashboard.calendar",
       "permissions": [
         "dashboard.calendar.view"
       ]
@@ -22,7 +22,7 @@
       "url": "/admin",
       "name": "Administration",
       "icon": "menu-icon tf-icons ti ti-lock",
-      "slug": "routes.content.admin",
+      "slug": "routes.web.admin",
       "permissions": [
         "admin.settings.roles.view",
         "admin.settings.permissions.view",
@@ -34,7 +34,7 @@
           "url": "/admin/settings/roles",
           "name": "Manage Roles",
           "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.content.admin.settings.roles.index",
+          "slug": "routes.web.admin.settings.roles.index",
           "permissions": [
             "admin.settings.roles.view"
           ]
@@ -43,7 +43,7 @@
           "url": "/admin/settings/permissions",
           "name": "Manage Permissions",
           "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.content.admin.settings.permissions.index",
+          "slug": "routes.web.admin.settings.permissions.index",
           "permissions": [
             "admin.settings.permissions.view"
           ]
@@ -52,7 +52,7 @@
           "url": "/admin/users",
           "name": "Manage Users",
           "icon": "menu-icon tf-icons ti ti-user",
-          "slug": "routes.content.admin.users.index",
+          "slug": "routes.web.admin.users.index",
           "permissions": [
             "admin.users.view"
           ]
@@ -61,7 +61,7 @@
           "url": "/admin/settings/auditlog",
           "name": "Audit Log",
           "icon": "menu-icon tf-icons ti ti-clipboard",
-          "slug": "routes.content.admin.settings.auditlog.index",
+          "slug": "routes.web.admin.settings.auditlog.index",
           "permissions": [
             "admin.settings.auditlog.view"
           ]
@@ -72,7 +72,7 @@
       "url": "/webmaster",
       "name": "Webmaster",
       "icon": "menu-icon tf-icons ti ti-lock",
-      "slug": "routes.content.admin",
+      "slug": "routes.web.admin",
       "permissions": [
         "webmaster.pulse.view",
         "webmaster.horizon.view"

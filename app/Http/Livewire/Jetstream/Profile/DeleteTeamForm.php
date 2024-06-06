@@ -62,6 +62,6 @@ class DeleteTeamForm extends Component
      */
     public function render()
     {
-        return view('jetstream.teams.delete-team-form');
+        return view('web.jetstream.teams.delete-team-form');
     }
 }

@@ -11,7 +11,7 @@
           <h3 class="mb-2">Edit User Information</h3>
           <p class="text-muted">Updating user details will receive a privacy audit.</p>
         </div>
-        <form id="editUserForm" class="row g-3" action="{{route('routes.content.admin.users.edit')}}" method="POST">
+        <form id="editUserForm" class="row g-3" action="{{route('routes.web.admin.users.edit')}}" method="POST">
           @csrf
           <input type="hidden" name="userId" value="{{$user->id}}">
           <div class="col-12 col-md-6">

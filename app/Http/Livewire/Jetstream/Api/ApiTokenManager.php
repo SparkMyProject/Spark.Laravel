@@ -198,6 +198,6 @@ class ApiTokenManager extends Component
      */
     public function render()
     {
-        return view('jetstream.api.api-token-manager');
+        return view('web.jetstream.api.api-token-manager');
     }
 }

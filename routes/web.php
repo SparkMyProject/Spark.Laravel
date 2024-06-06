@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Storage;
 */
 
 // Main Page Route
-Route::get('/', [FrontPages::class, 'index'])->name('routes.content.pages.landing-page');
+Route::get('/', [FrontPages::class, 'index'])->name('routes.web.pages.landing-page');
 
 Route::get('/exception', function () {
   throw new Exception('This is a test exception.');

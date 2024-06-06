@@ -79,6 +79,6 @@ class DeleteUserForm extends Component
      */
     public function render()
     {
-        return view('jetstream.profile.delete-user-form');
+        return view('web.jetstream.profile.delete-user-form');
     }
 }

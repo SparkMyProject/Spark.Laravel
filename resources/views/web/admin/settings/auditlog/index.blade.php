@@ -70,7 +70,7 @@
             <td>{{ $auditlog->status }}</td>
             <td>
               <a type="button" class="btn btn-sm btn-outline-primary"
-                 href={{route('routes.content.admin.settings.auditlog.view', ['id' => $auditlog->id])}}>View</a>
+                 href={{route('routes.web.admin.settings.auditlog.view', ['id' => $auditlog->id])}}>View</a>
               <button type="button" class="btn btn-sm btn-outline-danger disabled">Delete</button>
             </td>
           </tr>

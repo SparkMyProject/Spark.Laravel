@@ -11,6 +11,6 @@ class Calendar extends Controller
   {
     $events = \App\Models\CalendarEvent::all();
     Debugbar::info($events);
-    return view('content.dashboard.calendar', compact('events'));
+    return view('web.dashboard.calendar', compact('events'));
   }
 }

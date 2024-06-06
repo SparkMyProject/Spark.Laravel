@@ -60,7 +60,7 @@
                    data-bs-target="#deletePermissionModal-{{$permission->id}}">
                 <i class="ti ti-trash ti-sm me-2"></i></btn>
 
-              <a href="{{route('routes.content.admin.settings.permissions.view', ['id' => $permission->id])}}" class="text-body">
+              <a href="{{route('routes.web.admin.settings.permissions.view', ['id' => $permission->id])}}" class="text-body">
                 <i class=" ti ti-eye ti-sm me-2"></i></a>
               {{--              <a href="{{ route('routes.content.admin.settings.permissions.delete', $permission->id) }}" class="btn btn-sm btn-danger">Delete</a>--}}
             </td>

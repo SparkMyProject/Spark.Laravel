@@ -63,6 +63,6 @@ class UpdatePasswordForm extends Component
      */
     public function render()
     {
-        return view('jetstream.profile.update-password-form');
+        return view('web.jetstream.profile.update-password-form');
     }
 }
