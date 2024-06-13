@@ -4,6 +4,7 @@ namespace App\Models\Authentication;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use DateTimeZone;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,6 +30,7 @@ class User extends Authenticatable
   use TwoFactorAuthenticatable;
   use \Spatie\Permission\Traits\HasRoles;
   use CausesActivity;
+  use MustVerifyEmail;
 
 
   use LogsActivity;

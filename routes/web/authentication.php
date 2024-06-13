@@ -14,3 +14,9 @@ Route::get('/authentication/register', [\App\Http\Controllers\Web\Authentication
 
 Route::get('/authentication/discord/redirect', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordRedirect'])->name('routes.authentication.discord.redirect');
 Route::get('/authentication/discord/callback', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordCallback'])->name('routes.authentication.discord.callback');
+
+// Email Verification Routes
+Route::get('/authentication/email/verify', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
+  $request->fulfill();
+  return redirect()->route('routes.web.dashboard.index');
+})->middleware(['auth', 'signed'])->name('routes.web.authentication.email.verify');

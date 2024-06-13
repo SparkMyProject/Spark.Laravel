@@ -2,17 +2,18 @@
 
 namespace App\Providers;
 
-use App\Models\Authentication\User;
-use Carbon\Carbon;
-use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
-use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
-use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\ServiceProvider;
-use App\Http\Kernel as HttpKernel;
 use App\Console\Kernel as ConsoleKernel;
 use App\Exceptions\Handler as ExceptionHandler;
+use App\Http\Kernel as HttpKernel;
+use App\Models\Authentication\User;
+use Carbon\Carbon;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
+use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\ServiceProvider;
 use Laravel\Pulse\Facades\Pulse;
 
 class AppServiceProvider extends ServiceProvider
@@ -49,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
     Gate::define('viewPulse', function (User $user) {
       return $user->can('webmaster.pulse.view');
     });
-    Pulse::user(fn ($user) => [
+    Pulse::user(fn($user) => [
       'name' => $user->username,
       'extra' => $user->email,
       'avatar' => $user->profile_photo_url,
@@ -58,6 +59,14 @@ class AppServiceProvider extends ServiceProvider
     // User Timezones
     Carbon::macro('inUserTimezone', function () {
       return $this->tz(auth()->user()->timezone ?? config('app.display_timezone'));
+    });
+
+    // Email Verification
+    VerifyEmail::toMailUsing(function ($notifiable, $url) {
+      return  (new MailMessage)->subject('Verify your email address')
+        ->line('Please click the button below to verify your email address.')
+        ->action('Verify Email Address', $url)
+        ->line('If you did not create an account, no further action is required.');
   });
   }
 }
