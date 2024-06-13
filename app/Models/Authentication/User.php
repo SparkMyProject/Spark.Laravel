@@ -87,7 +87,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
   public function getFullNameAttribute()
   {
-    return $this->first_name . ' ' . $this->last_name;
+    if ($this->first_name && $this->last_name) {
+      return $this->first_name . ' ' . $this->last_name;
+    } else if ($this->first_name) {
+      return $this->first_name;
+    } else if ($this->last_name) {
+      return $this->last_name;
+    }
   }
 
   public function getActivitylogOptions(): LogOptions
