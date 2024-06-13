@@ -2,9 +2,8 @@
 
 namespace App\Models\Authentication;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use DateTimeZone;
-use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,7 +20,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
   use HasApiTokens;
   use HasFactory;
@@ -30,7 +29,6 @@ class User extends Authenticatable
   use TwoFactorAuthenticatable;
   use \Spatie\Permission\Traits\HasRoles;
   use CausesActivity;
-  use MustVerifyEmail;
 
 
   use LogsActivity;
@@ -152,7 +150,7 @@ class User extends Authenticatable
     return 'https://ui-avatars.com/api/?name=' . urlencode($name) . '&color=7F9CF5&background=EBF4FF';
   }
 
-  public function setDiscordAvatar()
+  public function syncDiscordAvatar()
   {
     if (!$this->oauthUser) {
       return;

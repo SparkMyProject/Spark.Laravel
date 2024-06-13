@@ -36,7 +36,7 @@
           </x-secondary-button>
 
           @if ($this->user->oauthUser)
-            <x-secondary-button class="mt-2 me-2" type="button" wire:click="setDiscordAvatar">
+            <x-secondary-button class="mt-2 me-2" type="button" wire:click="syncDiscordAvatar">
               {{ __('Sync Discord Photo') }}
             </x-secondary-button>
           @endif

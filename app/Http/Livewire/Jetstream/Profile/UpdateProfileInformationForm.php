@@ -124,10 +124,10 @@ class UpdateProfileInformationForm extends Component
     return view('web.jetstream.profile.update-profile-information-form');
   }
 
-  public function setDiscordAvatar()
+  public function syncDiscordAvatar()
   {
     // Call the setDiscordAvatar method on the user model
-    $this->user->setDiscordAvatar();
+    $this->user->syncDiscordAvatar();
 
     // Refresh the component to show the updated profile photo
     // Refresh page
