@@ -3,7 +3,7 @@
     $customizerHidden = 'customizer-hide';
 @endphp
 
-@extends('components/layouts/blankLayout')
+@extends('components.layouts.blankLayout')
 
 @section('title', 'Login')
 

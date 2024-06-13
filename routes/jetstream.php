@@ -11,21 +11,21 @@ use Laravel\Jetstream\Jetstream;
 
 Route::group(['middleware' => config('jetstream.middleware', ['web'])], function () {
   if (Jetstream::hasTermsAndPrivacyPolicyFeature()) {
-    Route::get('/misc/legal/privacy-policy', function () {
+    Route::get('/jetstream/legal/privacy-policy', function () {
       $termsFile = Jetstream::localizedMarkdownPath('policy.md');
 
-      return view('misc.legal.policy', [
+      return view('web.jetstream.legal.policy', [
         'policy' => Str::markdown(file_get_contents($termsFile)),
       ]);
-    })->name('misc.legal.policy.show');
+    })->name('routes.jetstream.legal.policy.show');
 
-    Route::get('/misc/legal/terms-of-service', function () {
+    Route::get('/jetstream/legal/terms-of-service', function () {
       $termsFile = Jetstream::localizedMarkdownPath('terms.md');
 
-      return view('misc.legal.terms', [
+      return view('web.jetstream.legal.terms', [
         'terms' => Str::markdown(file_get_contents($termsFile)),
       ]);
-    })->name('misc.legal.terms.show');
+    })->name('routes.jetstream.legal.terms.show');
   }
 
   $authMiddleware = config('jetstream.guard')
