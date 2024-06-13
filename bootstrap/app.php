@@ -72,5 +72,8 @@ return Application::configure(basePath: $_ENV['APP_BASE_PATH'] ?? dirname(__DIR_
   })
   ->withExceptions(function (Exceptions $exceptions) {
     // Add exception handling configurations here if needed
+
+    // Sentry Logging
+    \Sentry\Laravel\Integration::handles($exceptions);
   })
   ->create();
