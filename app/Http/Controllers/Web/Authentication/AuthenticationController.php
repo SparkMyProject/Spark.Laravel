@@ -120,7 +120,11 @@ class AuthenticationController extends Controller
         'username' => $discordUser->nickname,
         'avatar' => $discordUser->avatar,
       ]);
-      $user->setDiscordAvatar(); // this automatically saves
+
+      $user->markEmailAsVerified();
+
+      $user->syncDiscordAvatar(); // this automatically saves
+
     }
 
     Auth::login($user);

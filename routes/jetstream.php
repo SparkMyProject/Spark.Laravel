@@ -36,7 +36,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
     ? config('jetstream.auth_session')
     : null;
 
-  Route::group(['middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware]))], function () {
+  Route::group(['middleware' => array_values(array_filter([$authMiddleware, $authSessionMiddleware, 'verified']))], function () {
     // User & Profile...
     Route::get('/user/profile', function () {
       return view('web.jetstream.profile.show', [
