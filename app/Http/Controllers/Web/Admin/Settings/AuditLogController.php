@@ -1,11 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Settings;
+namespace App\Http\Controllers\Web\Admin\Settings;
 
-use App\Helpers\ModelHelper;
-use App\Helpers\PermissionsHelper;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Web\Controller;
 use Spatie\Activitylog\Models\Activity;
 
 class AuditLogController extends Controller

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Authentication;
+namespace App\Http\Controllers\Web\Authentication;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Authentication\Hash;
+use App\Http\Controllers\Web\Controller;
 use App\Models\Authentication\OAuthUser;
 use App\Models\Authentication\User;
 use Illuminate\Http\RedirectResponse;

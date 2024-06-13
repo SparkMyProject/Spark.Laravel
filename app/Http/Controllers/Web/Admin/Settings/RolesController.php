@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Settings;
+namespace App\Http\Controllers\Web\Admin\Settings;
 
 use Illuminate\Routing\Controller;
 use Spatie\Permission\Models\Permission;

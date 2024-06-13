@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Users;
+namespace App\Http\Controllers\Web\Admin\Users;
 
 use App\Helpers\PermissionsHelper;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Web\Controller;
 use App\Models\Authentication\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;

@@ -70,7 +70,7 @@
                                     class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span
                                     class="d-none d-md-block">Login/Register</span></a>
                     @else
-                        <a href="{{ route('routes.content.dashboard.index') }}" class="btn btn-primary"><span
+                        <a href="{{ route('routes.web.dashboard.index') }}" class="btn btn-primary"><span
                                     class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span
                                     class="d-none d-md-block">Dashboard</span></a>
                     @endif

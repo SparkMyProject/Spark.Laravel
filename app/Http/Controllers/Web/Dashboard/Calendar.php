@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Web\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Web\Controller;
 use Barryvdh\Debugbar\Facades\Debugbar;
 
 class Calendar extends Controller

@@ -21,7 +21,7 @@
     "maantje/pulse-database": "^0.2.0",
     "nesbot/carbon": "^3.4",
     "resend/resend-laravel": "^0.11.0",
-    "sentry/sentry-laravel": "^4.5",
+    "sentry/sentry-laravel": "^4.6",
     "socialiteproviders/discord": "^4.2",
     "socialiteproviders/manager": "^4.6",
     "socialiteproviders/zoho": "^4.1",
@@ -39,7 +39,7 @@
     "nunomaduro/collision": "^8.1",
     "phpunit/phpunit": "^10.1",
     "pixinvent/vuexy-laravel-bootstrap-jetstream": "^1.4",
-    "spatie/laravel-error-share": "*",
+    "spatie/laravel-error-share": "^1.0",
     "spatie/laravel-ignition": "^2.0"
   },
   "autoload": {

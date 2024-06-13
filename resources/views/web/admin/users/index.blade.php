@@ -221,7 +221,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end m-0">
 
-                                    <a href="{{route("routes.content.admin.users.view", ['id' => $user->id])}}"
+                                    <a href="{{route("routes.web.admin.users.view", ['id' => $user->id])}}"
                                        class="dropdown-item">View</a>
                                     <button {{-- Needs to be button because it is javascript --}}
                                             class="{{$user->account_status == 'Active' ? 'disable' : 'enable'}}-user-button dropdown-item button"

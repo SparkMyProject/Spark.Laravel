@@ -2,14 +2,11 @@
 
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
-use App\Http\Controllers\FrontPages\FrontPages;
-use App\Http\Controllers\language\LanguageController;
 use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\pages\Page2;
+use App\Http\Controllers\Web\FrontPages\FrontPages;
+use App\Http\Controllers\Web\language\LanguageController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Authentication\OAuthUser;
-use App\Models\Authentication\User;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
