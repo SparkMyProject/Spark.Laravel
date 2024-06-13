@@ -66,13 +66,13 @@ class UpdateProfileInformationForm extends Component
     );
 
     if (isset($this->photo)) {
-      return redirect()->route('jetstream.profile.show');
+      return redirect()->route('routes.web.jetstream.profile.show');
     }
 
     $this->dispatch('saved');
 
     $this->dispatch('refresh-navigation-menu');
-    $this->redirect(route('jetstream.profile.show'));
+    $this->redirect(route('routes.web.jetstream.profile.show'));
 
   }
 
@@ -87,7 +87,7 @@ class UpdateProfileInformationForm extends Component
 
     $this->dispatch('refresh-navigation-menu');
     $this->dispatch('saved');
-    $this->redirect(route('jetstream.profile.show'));
+    $this->redirect(route('routes.web.jetstream.profile.show'));
 
 
   }
@@ -133,7 +133,7 @@ class UpdateProfileInformationForm extends Component
     // Refresh page
     $this->dispatch('refresh-navigation-menu');
     $this->dispatch('saved');
-    $this->redirect(route('jetstream.profile.show'));
+    $this->redirect(route('routes.web.jetstream.profile.show'));
 
   }
 }

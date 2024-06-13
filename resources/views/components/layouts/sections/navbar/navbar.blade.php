@@ -81,7 +81,7 @@
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                       <a class="dropdown-item"
-                         href="{{ Route::has('jetstream.profile.show') ? route('jetstream.profile.show') : 'javascript:void(0);' }}">
+                         href="{{ Route::has('routes.web.jetstream.profile.show') ? route('routes.web.jetstream.profile.show') : 'javascript:void(0);' }}">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
@@ -105,14 +105,14 @@
                     </li>
                     <li>
                       <a class="dropdown-item"
-                         href="{{ Route::has('jetstream.profile.show') ? route('jetstream.profile.show') : 'javascript:void(0);' }}">
+                         href="{{ Route::has('routes.web.jetstream.profile.show') ? route('routes.web.jetstream.profile.show') : 'javascript:void(0);' }}">
                         <i class="ti ti-user-check me-2 ti-sm"></i>
                         <span class="align-middle">My Profile</span>
                       </a>
                     </li>
                     @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
                       <li>
-                        <a class="dropdown-item" href="{{ route('jetstream.api.index') }}">
+                        <a class="dropdown-item" href="{{ route('routes.web.jetstream.api.index') }}">
                           <i class='ti ti-key me-2 ti-sm'></i>
                           <span class="align-middle">API Tokens</span>
                         </a>
@@ -139,14 +139,14 @@
                       </li>
                       <li>
                         <a class="dropdown-item"
-                           href="{{ Auth::user() ? route('jetstream.teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
+                           href="{{ Auth::user() ? route('routes.web.jetstream.teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
                           <i class='ti ti-settings me-2'></i>
                           <span class="align-middle">Team Settings</span>
                         </a>
                       </li>
                       @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                         <li>
-                          <a class="dropdown-item" href="{{ route('jetstream.teams.create') }}">
+                          <a class="dropdown-item" href="{{ route('routes.web.jetstream.teams.create') }}">
                             <i class='ti ti-user me-2'></i>
                             <span class="align-middle">Create New Team</span>
                           </a>
