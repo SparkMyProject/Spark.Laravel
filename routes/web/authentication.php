@@ -28,7 +28,7 @@ Route::get('email/verify', [\App\Http\Controllers\Web\Auth\VerifyEmailController
 Route::get('email/verify/{id}/{hash}', [\App\Http\Controllers\Web\Auth\VerifyEmailController::class, 'verifyEmail'])->name('verification.verify');
 Route::post('email/verification-notification', [\App\Http\Controllers\Web\Auth\VerifyEmailController::class, 'resendVerificationEmail'])->name('verification.send');
 
-
+Route::get('/dashboard', [\App\Http\Controllers\Web\DashboardController::class, 'index'])->name('routes.web.dashboard.index')->middleware(['auth', 'verified']);
 Route::get('/authentication/discord/redirect', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordRedirect'])->name('routes.authentication.discord.redirect');
 Route::get('/authentication/discord/callback', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordCallback'])->name('routes.authentication.discord.callback');
 

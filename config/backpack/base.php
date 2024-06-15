@@ -24,7 +24,7 @@ return [
 
   // The prefix used in all base routes (the 'admin' in admin/dashboard)
   // You can make sure all your URLs use this prefix by using the backpack_url() helper instead of url()
-  'route_prefix' => 'dashboard',
+  'route_prefix' => '/',
 
   // The web middleware (group) used in all base & CRUD routes
   // If you've modified your "web" middleware group (ex: removed sessions), you can use a different
@@ -46,7 +46,7 @@ return [
 
   // Set this to false if you would like to skip adding the dashboard routes
   // (you then need to overwrite the login route on your AuthController)
-  'setup_dashboard_routes' => true,
+  'setup_dashboard_routes' => false,
 
   // Set this to false if you would like to skip adding "my account" routes
   // (you then need to manually define the routes in your web.php)
@@ -64,7 +64,7 @@ return [
 
   // When email verification is enabled, automatically add the Verified middleware to Backpack routes?
   // Set false if you want to use your own Verified middleware in `middleware_class`.
-  'setup_email_verification_middleware' => false,
+  'setup_email_verification_middleware' => true,
 
   // How many times in any given time period should the user be allowed to
   // request a new verification email?

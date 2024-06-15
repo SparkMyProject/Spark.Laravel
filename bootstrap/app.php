@@ -19,10 +19,6 @@ return Application::configure(basePath: $_ENV['APP_BASE_PATH'] ?? dirname(__DIR_
         ->group(base_path('routes/web/admin/users.php'));
       Route::middleware('web')
         ->group(base_path('routes/web/authentication.php'));
-      Route::middleware('web')
-        ->group(base_path('routes/jetstream.php'));
-      Route::middleware('web')
-        ->group(base_path('routes/web/dashboard/dashboard.php'));
     }
   )
   ->withMiddleware(function (Middleware $middleware) {
