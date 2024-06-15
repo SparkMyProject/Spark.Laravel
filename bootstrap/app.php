@@ -50,7 +50,7 @@ return Application::configure(basePath: $_ENV['APP_BASE_PATH'] ?? dirname(__DIR_
       'auth.basic' => \App\Http\Middleware\AuthenticateWithBasicAuth::class,
       'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
       'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-      'canCustom' => \App\Http\Middleware\CanMiddleware::class, // Previously Authorize::class
+      'can' => \App\Http\Middleware\CanMiddleware::class, // Previously Authorize::class
       'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
       'password.confirm' => \App\Http\Middleware\RequirePassword::class,
       'precognitive' => \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,

@@ -28,14 +28,14 @@
                 <div class="card-footer">
                 <form method="POST" action="{{ route('verification.send') }}">
                     @csrf
-                    <button type="submit" class="btn btn-primary float-start" tabindex="6">{{ trans('backpack::base.verify_email.resend_verification_link') }}</button>   
+                    <button type="submit" class="btn btn-primary float-start" tabindex="6">{{ trans('backpack::base.verify_email.resend_verification_link') }}</button>
                 </form>
-                <form method="POST" action="{{ backpack_url('logout') }}">
+                <form method="POST" action="{{ route('backpack.auth.logout') }}">
                     @csrf
-                    <button type="submit" class="btn button-secondary float-end" tabindex="7"><i class="la la-lock me-2"></i>{{ trans('backpack::base.logout') }}</button>   
-                </form>     
-                </div>       
-           
+                    <button type="submit" class="btn button-secondary float-end" tabindex="7"><i class="la la-lock me-2"></i>{{ trans('backpack::base.logout') }}</button>
+                </form>
+                </div>
+
         </div>
     </div>
         </div>

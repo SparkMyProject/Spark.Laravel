@@ -55,7 +55,7 @@ class RegisterController extends Controller
     $user = new $user_model_fqn();
     $users_table = $user->getTable();
 
-    // If email and username is required
+    // If primary and secondary are needed
     if ((backpack_authentication_column() == 'username' && backpack_authentication_secondary_column() == 'email') || (backpack_authentication_column() == 'email' &&
         backpack_authentication_secondary_column() == 'username')) {
       return Validator::make($data, [
@@ -64,13 +64,15 @@ class RegisterController extends Controller
         backpack_authentication_secondary_column() => backpack_authentication_secondary_validation(),
         'password' => 'required|min:6|confirmed',
       ]);
-    } else if (!backpack_authentication_secondary_enabled()) { // If only username is required
+    } else if (!backpack_authentication_secondary_enabled()) { // If only primary is needed
       return Validator::make($data, [
         'name' => 'required|max:255',
         backpack_authentication_column() => backpack_authentication_validation(),
         'password' => 'required|min:6|confirmed',
       ]);
     }
+
+    throw new \Exception('Invalid authentication configuration');
   }
 
   /**
@@ -99,11 +101,16 @@ class RegisterController extends Controller
    */
   public function showRegistrationForm()
   {
+    // Check if the user is logged in
+    if (backpack_auth()->check()) {
+      return redirect(route('routes.web.dashboard.index'));
+    }
+
+
     // if registration is closed, deny access
     if (!config('backpack.base.registration_open')) {
       abort(403, trans('backpack::base.registration_closed'));
     }
-
     $this->data['title'] = trans('backpack::base.register'); // set the page title
 
     return view(backpack_view('auth.register'), $this->data);

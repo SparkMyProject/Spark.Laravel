@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-use \Illuminate\Contracts\Auth\Access\Gate;
+
 use Closure;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class CanMiddleware
 {
@@ -55,15 +56,20 @@ class CanMiddleware
     // Check if user is logged in, if not redirect to not authorized page
     if (!auth()->check()) return redirect()->route('routes.misc.errors.not-authorized');
     $user = auth()->user();
-    // Check if user is disabled or banned, if so log them out and redirect to not authorized page (in case a user status is changed while they are logged in)
 
-    if ($user->account_status == 'Disabled') {
-      // An account that is disabled will already have an alert message displayed to them, so we can just redirect them to the dashboard
-      // Check if url is dashboard or profile, if so let them through
-      if ($request->route()->getName() == 'routes.content.dashboard.index' || $request->route()->getName() == 'routes.content.profile.index') {
-        return $next($request);
-      } else {
-        return redirect()->route('routes.content.dashboard.index');
+    // Check for verified email
+    if ($user->email_verified_at == null) {
+      return redirect()->route('verification.notice');
+      // Check if user is disabled or banned, if so log them out and redirect to not authorized page (in case a user status is changed while they are logged in)
+
+      if ($user->account_status == 'Disabled') {
+        // An account that is disabled will already have an alert message displayed to them, so we can just redirect them to the dashboard
+        // Check if url is dashboard or profile, if so let them through
+        if ($request->route()->getName() == 'routes.content.dashboard.index' || $request->route()->getName() == 'routes.content.profile.index') {
+          return $next($request);
+        } else {
+          return redirect()->route('routes.content.dashboard.index');
+        }
       }
     }
 
@@ -72,7 +78,6 @@ class CanMiddleware
       session()->flash('error', 'Your account has been banned. Please contact support for more information.');
       return redirect()->route('routes.misc.errors.not-authorized');
     }
-
 
 
     // Check if user has the correct permissions to access the page
