@@ -14,11 +14,6 @@ Route::post('/dashboard/logout', [\App\Http\Controllers\Web\Auth\LoginController
 Route::get('/dashboard/register', [\App\Http\Controllers\Web\Auth\RegisterController::class, 'showRegistrationForm'])->name('backpack.auth.register');
 Route::post('/dashboard/register', [\App\Http\Controllers\Web\Auth\RegisterController::class, 'register']);
 
-Route::post('/authentication/login', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'authenticate']);
-Route::post('/authentication/logout', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'logout'])->name('routes.authentication.logout');
-
-Route::get('/authentication/register', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'showRegisterForm'])->name('routes.authentication.register');
-
 Route::get('password/reset', [\App\Http\Controllers\Web\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('backpack.auth.password.reset');
 Route::post('password/reset', [\App\Http\Controllers\Web\Auth\ForgotPasswordController::class, 'reset']);
 Route::get('password/reset/{token}', [\App\Http\Controllers\Web\Auth\ResetPasswordController::class, 'showResetForm'])->name('backpack.auth.password.reset.token');
@@ -28,12 +23,6 @@ Route::get('email/verify', [\App\Http\Controllers\Web\Auth\VerifyEmailController
 Route::get('email/verify/{id}/{hash}', [\App\Http\Controllers\Web\Auth\VerifyEmailController::class, 'verifyEmail'])->name('verification.verify');
 Route::post('email/verification-notification', [\App\Http\Controllers\Web\Auth\VerifyEmailController::class, 'resendVerificationEmail'])->name('verification.send');
 
-Route::get('/dashboard', [\App\Http\Controllers\Web\DashboardController::class, 'index'])->name('routes.web.dashboard.index')->middleware(['auth', 'verified']);
+Route::get('/dashboard', [\App\Http\Controllers\Web\Dashboard\DashboardController::class, 'index'])->name('routes.web.dashboard.index')->middleware(['auth', 'verified']);
 Route::get('/authentication/discord/redirect', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordRedirect'])->name('routes.authentication.discord.redirect');
 Route::get('/authentication/discord/callback', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordCallback'])->name('routes.authentication.discord.callback');
-
-// Email Verification Routes
-Route::get('/authentication/email/verify', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
-  $request->fulfill();
-  return redirect()->route('routes.web.dashboard.index');
-})->middleware(['auth', 'signed'])->name('routes.web.authentication.email.verify');

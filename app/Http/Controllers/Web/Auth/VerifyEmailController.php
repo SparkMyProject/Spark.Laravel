@@ -66,6 +66,11 @@ class VerifyEmailController extends Controller
             return $user;
         }
 
+        if ($user->hasVerifiedEmail()) {
+            Alert::info('Your email address is already verified.')->flash();
+            return redirect($this->redirectTo);
+        }
+
         $user->sendEmailVerificationNotification();
         Alert::success('Email verification link sent successfully.')->flash();
 
