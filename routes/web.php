@@ -20,14 +20,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Main Page Route
-Route::get('/', [FrontPages::class, 'index'])->name('routes.web.pages.landing-page');
+//Route::get('/', [FrontPages::class, 'index'])->name('routes.web.pages.landing-page');
 
 Route::get('/exception', function () {
   throw new Exception('This is a test exception.');
 });
 
 // locale
-Route::get('lang/{locale}', [LanguageController::class, 'swap']);
+//Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 // pages (without controller)
 Route::get('/misc/errors/not-authorized', function () {

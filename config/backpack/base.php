@@ -50,7 +50,7 @@ return [
 
   // Set this to false if you would like to skip adding "my account" routes
   // (you then need to manually define the routes in your web.php)
-  'setup_my_account_routes' => true,
+  'setup_my_account_routes' => false,
 
   // Set this to false if you would like to skip adding the password recovery routes
   // (you then need to manually define the routes in your web.php)
@@ -125,10 +125,12 @@ return [
   // If you need to switch to username, you also need to create that column in your db
   'authentication_column' => 'username',
   'authentication_column_name' => 'Username',
+  'authentication_validation' => 'required|string|unique|max:20',
+
   'authentication_secondary_enabled' => true,
   'authentication_secondary_column' => 'email',
   'authentication_secondary_column_name' => 'Email',
-
+  'authentication_secondary_validation' => 'required|email|unique|max:128',
   // Backpack assumes that your "database email column" for operations like Login and Register is called "email".
   // If your database email column have a different name, you can configure it here. Eg: `user_mail`
   'email_column' => 'email',

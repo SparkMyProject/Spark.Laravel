@@ -26,3 +26,7 @@ Route::post('email/verification-notification', [\App\Http\Controllers\Web\Auth\V
 Route::get('/dashboard', [\App\Http\Controllers\Web\Dashboard\DashboardController::class, 'index'])->name('routes.web.dashboard.index')->middleware(['auth', 'verified']);
 Route::get('/authentication/discord/redirect', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordRedirect'])->name('routes.authentication.discord.redirect');
 Route::get('/authentication/discord/callback', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordCallback'])->name('routes.authentication.discord.callback');
+
+Route::get('/edit-account-info', [\App\Http\Controllers\Web\Auth\MyAccountController::class, 'getAccountInfoForm'])->name('backpack.account.info');
+Route::post('/edit-account-info', [\App\Http\Controllers\Web\Auth\MyAccountController::class, 'postAccountInfoForm'])->name('backpack.account.info.store');
+Route::post('/change-password', [\App\Http\Controllers\Web\Auth\MyAccountController::class, 'postChangePasswordForm'])->name('backpack.account.password');

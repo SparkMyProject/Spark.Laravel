@@ -60,20 +60,14 @@ class RegisterController extends Controller
         backpack_authentication_secondary_column() == 'username')) {
       return Validator::make($data, [
         'name' => 'required|max:255',
-        'username' => 'required|max:255|unique:' . $users_table,
-        'email' => 'required|email|max:255|unique:' . $users_table,
+        backpack_authentication_column() => backpack_authentication_validation(),
+        backpack_authentication_secondary_column() => backpack_authentication_secondary_validation(),
         'password' => 'required|min:6|confirmed',
       ]);
-    } else if (backpack_authentication_column() == 'username' && !backpack_authentication_secondary_enabled()) { // If only username is required
+    } else if (!backpack_authentication_secondary_enabled()) { // If only username is required
       return Validator::make($data, [
         'name' => 'required|max:255',
-        'username' => 'required|max:255|unique:' . $users_table,
-        'password' => 'required|min:6|confirmed',
-      ]);
-    } else if (backpack_authentication_column() == 'email' && !backpack_authentication_secondary_enabled()) { // If only email is required
-      return Validator::make($data, [
-        'name' => 'required|max:255',
-        'email' => 'required|email|max:255|unique:' . $users_table,
+        backpack_authentication_column() => backpack_authentication_validation(),
         'password' => 'required|min:6|confirmed',
       ]);
     }

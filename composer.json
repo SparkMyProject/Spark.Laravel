@@ -21,6 +21,7 @@
     "livewire/livewire": "^3.5",
     "maantje/pulse-database": "^0.2.0",
     "nesbot/carbon": "^3.4",
+    "prologue/alerts": "^1.2",
     "resend/resend-laravel": "^0.11.0",
     "sentry/sentry-laravel": "^4.6",
     "socialiteproviders/discord": "^4.2",
