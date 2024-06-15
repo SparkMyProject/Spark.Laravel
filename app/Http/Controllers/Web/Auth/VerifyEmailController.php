@@ -62,7 +62,7 @@ class VerifyEmailController extends Controller
     {
         $user = $this->getUserOrRedirect($request);
 
-        if (is_a($user, \Illuminate\Http\RedirectResponse::class)) {
+        if (is_a($user, \Illuminate\Http\RedirectResponse::class)) { // Redirect if not a user
             return $user;
         }
 

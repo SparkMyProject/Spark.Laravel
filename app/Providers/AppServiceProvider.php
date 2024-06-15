@@ -61,13 +61,13 @@ class AppServiceProvider extends ServiceProvider
       return $this->tz(auth()->user()->timezone ?? config('app.display_timezone'));
     });
 
-    // Email Verification
-    VerifyEmail::toMailUsing(function ($notifiable, $url) {
-      return  (new MailMessage)->subject('Verify your email address')
-        ->line('Please click the button below to verify your email address.')
-        ->action('Verify Email Address', $url)
-        ->line('If you did not create an account, no further action is required.');
-  });
+//    // Email Verification
+//    VerifyEmail::toMailUsing(function ($notifiable, $url) {
+//      return  (new MailMessage)->subject('Verify your email address')
+//        ->line('Please click the button below to verify your email address.')
+//        ->action('Verify Email Address', $url)
+//        ->line('If you did not create an account, no further action is required.');
+//  });
     require_once app_path('Helpers\CustomBackpackHelper.php');
   }
 }
