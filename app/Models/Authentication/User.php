@@ -13,20 +13,17 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+//use Laravel\Fortify\TwoFactorAuthenticatable;
+//use Laravel\Jetstream\HasProfilePhoto;
+//use Laravel\Sanctum\HasApiTokens;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-  use HasApiTokens;
   use HasFactory;
-  use HasProfilePhoto;
   use Notifiable;
-  use TwoFactorAuthenticatable;
   use \Spatie\Permission\Traits\HasRoles;
   use CausesActivity;
 
@@ -41,6 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
   protected $fillable = [
     'username', // Unique, max:20
     'display_name', // nullable, max:30
+    'password',
     'email', // Unique, nullable, max:128
     'profile_photo_path', // default determined by Eloquent, max:2048
     'status', // default: 'Relaxing...', nullable, max:30

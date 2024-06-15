@@ -44,7 +44,7 @@ return Application::configure(basePath: $_ENV['APP_BASE_PATH'] ?? dirname(__DIR_
       \Illuminate\View\Middleware\ShareErrorsFromSession::class,
       \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
       \Illuminate\Routing\Middleware\SubstituteBindings::class,
-      \App\Http\Middleware\LocaleMiddleware::class,
+//      \App\Http\Middleware\LocaleMiddleware::class,
     ]);
 
     $middleware->appendToGroup('api', [

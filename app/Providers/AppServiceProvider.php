@@ -68,5 +68,6 @@ class AppServiceProvider extends ServiceProvider
         ->action('Verify Email Address', $url)
         ->line('If you did not create an account, no further action is required.');
   });
+    require_once app_path('Helpers\CustomBackpackHelper.php');
   }
 }

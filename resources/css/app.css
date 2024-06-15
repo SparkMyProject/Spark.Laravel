@@ -1,9 +1,7 @@
-.btn-anchor {
-  background: none;
-  color: blue;
-  border: none;
-  padding: 0;
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
 }

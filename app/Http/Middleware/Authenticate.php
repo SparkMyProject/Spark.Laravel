@@ -11,6 +11,6 @@ class Authenticate extends \Illuminate\Auth\Middleware\Authenticate
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        return $request->expectsJson() ? null : route('backpack.auth.login');
     }
 }
