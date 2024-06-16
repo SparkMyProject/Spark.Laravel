@@ -52,13 +52,13 @@ class VerifyEmailController extends Controller
    */
   public function verifyEmail(EmailVerificationRequest $request)
   {
-    dd("hello");
     $user = $this->getUserOrRedirect($request);
     if (is_a($user, \Illuminate\Http\RedirectResponse::class)) { // Redirect if not a user
       return $user;
     }
     $request->fulfill();
 
+    Alert::success('Email verified successfully.')->flash();
     return redirect($this->redirectTo);
   }
 
@@ -72,11 +72,6 @@ class VerifyEmailController extends Controller
     if (is_a($user, \Illuminate\Http\RedirectResponse::class)) { // Redirect if not a user
       return $user;
     }
-
-//    if ($user->hasVerifiedEmail()) {
-//      Alert::info('Your email address is already verified.')->flash();
-//      return redirect($this->redirectTo);
-//    }
 
     $user->sendEmailVerificationNotification();
     Alert::success('Email verification link sent successfully.')->flash();
