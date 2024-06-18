@@ -5,14 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 
 // Authentication Routes...
-Route::get('/dashboard/login', [\App\Http\Controllers\Web\Auth\LoginController::class, 'showLoginForm'])->name('backpack.auth.login')->middleware('guest');
-Route::post('/dashboard/login', [\App\Http\Controllers\Web\Auth\LoginController::class, 'login'])->middleware('guest');
-Route::get('/dashboard/logout', [\App\Http\Controllers\Web\Auth\LoginController::class, 'logout'])->name('backpack.auth.logout')->middleware('auth');
-Route::post('/dashboard/logout', [\App\Http\Controllers\Web\Auth\LoginController::class, 'logout'])->middleware('auth');
+Route::get('/authentication/login', [\App\Http\Controllers\Web\Auth\AuthenticationController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/authentication/login', [\App\Http\Controllers\Web\Auth\AuthenticationController::class, 'authenticate'])->middleware('guest');
+Route::get('/authentication/logout', [\App\Http\Controllers\Web\Auth\AuthenticationController::class, 'logout'])->name('backpack.auth.logout')->middleware('auth');
+Route::post('/authentication/logout', [\App\Http\Controllers\Web\Auth\AuthenticationController::class, 'logout'])->middleware('auth');
 
 // Registration Routes...
-Route::get('/dashboard/register', [\App\Http\Controllers\Web\Auth\RegisterController::class, 'showRegistrationForm'])->name('backpack.auth.register')->middleware('guest');
-Route::post('/dashboard/register', [\App\Http\Controllers\Web\Auth\RegisterController::class, 'register'])->middleware('guest');
+Route::get('/authentication/register', [\App\Http\Controllers\Web\Auth\RegisterController::class, 'showRegistrationForm'])->name('backpack.auth.register')->middleware('guest');
+//Route::post('/dashboard/register', [\App\Http\Controllers\Web\Auth\RegisterController::class, 'register'])->middleware('guest');
 
 Route::get('password/reset', [\App\Http\Controllers\Web\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('backpack.auth.password.reset');
 Route::post('password/reset', [\App\Http\Controllers\Web\Auth\ForgotPasswordController::class, 'reset']);
@@ -27,8 +27,8 @@ Route::post('email/verification-notification', [\App\Http\Controllers\Web\Auth\V
   ->middleware('guest');
 
 Route::get('/dashboard', [\App\Http\Controllers\Web\Dashboard\DashboardController::class, 'index'])->name('routes.web.dashboard.index')->can("dashboard.view");
-Route::get('/authentication/discord/redirect', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordRedirect'])->name('routes.authentication.discord.redirect');
-Route::get('/authentication/discord/callback', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordCallback'])->name('routes.authentication.discord.callback');
+Route::get('/authentication/discord/redirect', [\App\Http\Controllers\Web\Auth\AuthenticationController::class, 'discordRedirect'])->name('routes.authentication.discord.redirect');
+Route::get('/authentication/discord/callback', [\App\Http\Controllers\Web\Auth\AuthenticationController::class, 'discordCallback'])->name('routes.authentication.discord.callback');
 
 Route::get('/edit-account-info', [\App\Http\Controllers\Web\Auth\MyAccountController::class, 'getAccountInfoForm'])->name('backpack.account.info');
 Route::post('/edit-account-info', [\App\Http\Controllers\Web\Auth\MyAccountController::class, 'postAccountInfoForm'])->name('backpack.account.info.store');

@@ -1,5 +1,5 @@
 <h2 class="card-title text-center my-4">{{ trans('backpack::base.register') }}</h2>
-<form role="form" method="POST" action="{{ route('backpack.auth.register') }}">
+<form role="form" method="POST" action="{{ route('register') }}">
   @csrf
   <div class="mb-3">
     <label class="form-label" for="name">{{ trans('backpack::base.name') }}</label>

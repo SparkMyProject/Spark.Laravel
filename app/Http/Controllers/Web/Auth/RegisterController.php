@@ -131,7 +131,7 @@ class RegisterController extends Controller
 
     $this->validator($request->all())->validate();
     $user = $this->create($request->all());
-//    event(new Registered($user)); // MustVerifyEmail sends the email verification email already
+    event(new Registered($user)); // MustVerifyEmail sends the email verification email already
     if (config('backpack.base.setup_email_verification_routes')) {
       Cookie::queue('backpack_email_verification', $user->{config('backpack.base.email_column')}, 30);
       return redirect(route('verification.notice'));
