@@ -1,8 +1,3 @@
-/*
-  Add custom scripts here
-*/
-import.meta.glob([
-  '../assets/img/**',
-  // '../assets/json/**',
-  '../assets/vendor/fonts/**'
-]);
+import '../sass/tabler.scss';
+import './bootstrap';
+import './tabler-init';
