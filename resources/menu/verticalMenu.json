@@ -81,7 +81,7 @@
         {
           "url": "/webmaster/pulse",
           "text": "Laravel Pulse",
-          "icon": "menu-icon tf-icons ti ti-bolt",
+          "icon": "menu-icon ti ti-activity-heartbeat",
           "route": "N/A",
           "can": [
             "webmaster.pulse.view"
@@ -90,7 +90,7 @@
         {
           "url": "/webmaster/horizon/dashboard",
           "text": "Laravel Horizon",
-          "icon": "menu-icon tf-icons ti ti-bolt",
+          "icon": "menu-icon ti ti-hospital",
           "route": "N/A",
           "can": [
             "webmaster.horizon.view"
