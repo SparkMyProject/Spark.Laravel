@@ -5,15 +5,15 @@
 
 
 @section('content')
-  <h4 class="mb-4">Permissions List</h4>
-
-  <p class="mb-4">Each category (Basic, Professional, and Business) includes the four predefined roles shown below.</p>
-
+  <div class="page-wrapper">
+    @include('components/_partials/page-title', ['pagetitle' => 'Permissions - View', 'pretitle' => 'Permissions', 'posttitle' => 'Each category (Basic, Professional, and Business) includes the four predefined roles shown below.'])
+    <div class="page-body container-lg card card-lg">
   @include('components/_partials/alert-handling')
 
+
+
   <!-- Permission Table -->
-  <div class="card">
-    <div class="card-datatable table-responsive">
+    <div class="page-body card-datatable table-responsive">
       <table class="datatables-permissions table border-top">
         <thead>
         <tr>
@@ -39,7 +39,7 @@
               </a>
               @include('components/admin/settings/permissions/edit-permission-modal', ['permission' => $permission])
 
-              <btn disabled class="text-light" data-bs-toggle="modal"
+              <btn disabled class="" data-bs-toggle="modal"
                    data-bs-target="#deletePermissionModal-{{$permission->id}}">
                 <i class="ti ti-trash ti-sm me-2"></i></btn>
 
@@ -51,7 +51,6 @@
         @endforeach
         </tbody>
       </table>
-    </div>
   </div>
   <!--/ Permission Table -->
 
