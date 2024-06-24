@@ -27,7 +27,7 @@
             <input type="text" id="icon" name="icon" class="form-control" value="{{$role->icon}}" />
           </div>
           <div class="col-12 col-md-6">
-            <label for="html5-number-input">Number</label>
+            <label class="form-label" for="html5-number-input">Number</label>
             <input type="number" id="priority" name="priority" class="form-control" value="{{$role->priority}}" />
           </div>
 
