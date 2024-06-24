@@ -22,6 +22,7 @@
         administrator can have access to what user needs.'])
 
     <div class="page-body container-xl card">
+      @include('components/_partials/alert-handling', ['br' => true])
 
       <!-- Role cards -->
       <div class="row g-4">
