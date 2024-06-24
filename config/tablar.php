@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'layout' => 'horizontal',
+    'layout' => 'navbar-overlap',
     //boxed, combo, condensed, fluid, fluid-vertical, horizontal, navbar-overlap, navbar-sticky, rtl, vertical, vertical-right, vertical-transparent
 
     'layout_light_sidebar' => null,
@@ -142,57 +142,62 @@ return [
     |
     */
 
-    'menu' => [
-        // Navbar items:
-        [
-            'text' => 'Home',
-            'icon' => 'ti ti-home',
-            'url' => 'home'
-        ],
+  $menuJson = file_get_contents(resource_path('menu/verticalMenu.json')),
+  $menuArray = json_decode($menuJson, true)['menu'],
+  'menu' => $menuArray,
 
-        [
-            'text' => 'Support 1',
-            'url' => '#',
-            'icon' => 'ti ti-help',
-            'active' => ['support1'],
-            'submenu' => [
-                [
-                    'text' => 'Ticket',
-                    'url' => 'support1',
-                    'icon' => 'ti ti-article',
-                ]
-            ],
-        ],
-
-        [
-            'text' => 'Support 2',
-            'url' => '#',
-            'icon' => 'ti ti-help',
-            'active' => ['support2'],
-            'submenu' => [
-                [
-                    'text' => 'Ticket',
-                    'url' => 'support2',
-                    'icon' => 'ti ti-article',
-                ]
-            ],
-        ],
-
-        [
-            'text' => 'Support 3',
-            'url' => '#',
-            'icon' => 'ti ti-help',
-            'active' => ['support3'],
-            'submenu' => [
-                [
-                    'text' => 'Ticket',
-                    'url' => 'support3',
-                    'icon' => 'ti ti-article',
-                ]
-            ],
-        ],
-
-    ],
+//    'menu' => [
+//        // Navbar items:
+//        [
+//            'text' => 'Dashboard',
+//            'icon' => 'menu-icon tf-icons ti ti-smart-home',
+//          'route': 'routes.web.dashboard.index',
+//            'url' => '/dashboard'
+//        ],
+//
+//        [
+//            'text' => 'Support 1',
+//            'url' => '#',
+//            'icon' => 'ti ti-help',
+//            'active' => ['support1'],
+//            'submenu' => [
+//                [
+//                    'text' => 'Ticket',
+//                    'url' => 'support1',
+//                    'icon' => 'ti ti-article',
+//                ]
+//            ],
+//        ],
+//
+//        [
+//            'text' => 'Support 2',
+//            'url' => '#',
+//            'icon' => 'ti ti-help',
+//            'active' => ['support2'],
+//            'submenu' => [
+//                [
+//                    'text' => 'Ticket',
+//                    'url' => 'support2',
+//                    'icon' => 'ti ti-article',
+//                ]
+//            ],
+//        ],
+//
+//        [
+//            'text' => 'Support 3',
+//            'url' => '#',
+//            'icon' => 'ti ti-help',
+//            'active' => ['support3'],
+//            'submenu' => [
+//                [
+//                    'text' => 'Ticket',
+//                    'url' => 'support3',
+//                    'icon' => 'ti ti-article',
+//                ]
+//            ],
+//        ],
+//
+//    ],
 
     /*
     |--------------------------------------------------------------------------

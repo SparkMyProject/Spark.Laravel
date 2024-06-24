@@ -2,28 +2,28 @@
   "menu": [
     {
       "url": "/dashboard",
-      "name": "Dashboard",
+      "text": "Dashboard",
       "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "routes.web.dashboard.index",
-      "permissions": [
+      "route": "routes.web.dashboard.index",
+      "can": [
         "dashboard.view"
       ]
     },
     {
       "url": "/dashboard/calendar",
-      "name": "Calendar",
+      "text": "Calendar",
       "icon": "menu-icon tf-icons ti ti-calendar",
-      "slug": "routes.web.dashboard.calendar",
-      "permissions": [
+      "route": "routes.web.dashboard.calendar",
+      "can": [
         "dashboard.calendar.view"
       ]
     },
     {
       "url": "/admin",
-      "name": "Administration",
+      "text": "Administration",
       "icon": "menu-icon tf-icons ti ti-lock",
-      "slug": "routes.web.admin",
-      "permissions": [
+      "route": "routes.web.admin",
+      "can": [
         "admin.settings.roles.view",
         "admin.settings.permissions.view",
         "admin.users.view",
@@ -32,37 +32,37 @@
       "submenu": [
         {
           "url": "/admin/settings/roles",
-          "name": "Manage Roles",
+          "text": "Manage Roles",
           "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.web.admin.settings.roles.index",
-          "permissions": [
+          "route": "routes.web.admin.settings.roles.index",
+          "can": [
             "admin.settings.roles.view"
           ]
         },
         {
           "url": "/admin/settings/permissions",
-          "name": "Manage Permissions",
+          "text": "Manage Permissions",
           "icon": "menu-icon tf-icons ti ti-lock",
-          "slug": "routes.web.admin.settings.permissions.index",
-          "permissions": [
+          "route": "routes.web.admin.settings.permissions.index",
+          "can": [
             "admin.settings.permissions.view"
           ]
         },
         {
           "url": "/admin/users",
-          "name": "Manage Users",
+          "text": "Manage Users",
           "icon": "menu-icon tf-icons ti ti-user",
-          "slug": "routes.web.admin.users.index",
-          "permissions": [
+          "route": "routes.web.admin.users.index",
+          "can": [
             "admin.users.view"
           ]
         },
         {
           "url": "/admin/settings/auditlog",
-          "name": "Audit Log",
+          "text": "Audit Log",
           "icon": "menu-icon tf-icons ti ti-clipboard",
-          "slug": "routes.web.admin.settings.auditlog.index",
-          "permissions": [
+          "route": "routes.web.admin.settings.auditlog.index",
+          "can": [
             "admin.settings.auditlog.view"
           ]
         }
@@ -70,29 +70,29 @@
     },
     {
       "url": "/webmaster",
-      "name": "Webmaster",
+      "text": "Webmaster",
       "icon": "menu-icon tf-icons ti ti-lock",
-      "slug": "routes.web.admin",
-      "permissions": [
+      "route": "routes.web.admin",
+      "can": [
         "webmaster.pulse.view",
         "webmaster.horizon.view"
       ],
       "submenu": [
         {
           "url": "/webmaster/pulse",
-          "name": "Laravel Pulse",
+          "text": "Laravel Pulse",
           "icon": "menu-icon tf-icons ti ti-bolt",
-          "slug": "N/A",
-          "permissions": [
+          "route": "N/A",
+          "can": [
             "webmaster.pulse.view"
           ]
         },
         {
           "url": "/webmaster/horizon/dashboard",
-          "name": "Laravel Horizon",
+          "text": "Laravel Horizon",
           "icon": "menu-icon tf-icons ti ti-bolt",
-          "slug": "N/A",
-          "permissions": [
+          "route": "N/A",
+          "can": [
             "webmaster.horizon.view"
           ]
         }
