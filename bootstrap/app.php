@@ -13,16 +13,15 @@ return Application::configure(basePath: $_ENV['APP_BASE_PATH'] ?? dirname(__DIR_
     channels: __DIR__ . '/../routes/channels.php',
     health: '/up',
     then: function () {
-      Route::middleware('web')
-        ->group(base_path('routes/web/admin/settings.php'));
-      Route::middleware('web')
-        ->group(base_path('routes/web/admin/users.php'));
-      Route::middleware('web')
-        ->group(base_path('routes/web/authentication.php'));
-      Route::middleware('web')
-        ->group(base_path('routes/jetstream.php'));
-      Route::middleware('web')
-        ->group(base_path('routes/web/dashboard/dashboard.php'));
+      Route::middleware('web')->group(function () {
+        require base_path('routes/web/admin/settings.php');
+        require base_path('routes/web/admin/users.php');
+        require base_path('routes/web/authentication.php');
+        require base_path('routes/jetstream.php');
+        require base_path('routes/web/dashboard/dashboard.php');
+        require base_path('routes/web/misc/errors.php');
+      });
+
     }
   )
   ->withMiddleware(function (Middleware $middleware) {
