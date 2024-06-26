@@ -1,9 +1,4 @@
-@php
-    $customizerHidden = 'customizer-hide';
-    $configData = Helper::appClasses();
-@endphp
-
-@extends('layouts/blankLayout')
+@extends('tablar::auth.layout')
 
 @section('title', 'Forgot Password')
 
@@ -13,67 +8,51 @@
 @endsection
 
 @section('content')
-    <div class="authentication-wrapper authentication-cover authentication-bg">
-        <div class="authentication-inner row">
-            <!-- /Left Text -->
-            <div class="d-none d-lg-flex col-lg-7 p-0">
-                <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/img/illustrations/auth-forgot-password-illustration-'.$configData['style'].'.png') }}"
-                         alt="auth-forgot-password-cover" class="img-fluid my-5 auth-illustration"
-                         data-app-light-img="illustrations/auth-forgot-password-illustration-light.png"
-                         data-app-dark-img="illustrations/auth-forgot-password-illustration-dark.png">
-
-                    <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}"
-                         alt="auth-forgot-password-cover" class="platform-bg"
-                         data-app-light-img="illustrations/bg-shape-image-light.png"
-                         data-app-dark-img="illustrations/bg-shape-image-dark.png">
-                </div>
-            </div>
-            <!-- /Left Text -->
-            <!-- Forgot Password -->
-            <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
-                <div class="w-px-400 mx-auto">
-                    <!-- Logo -->
-                    <div class="app-brand mb-4">
-                        <a href="{{url('/')}}" class="app-brand-link">
-                            <span class="app-brand-logo demo">@include('components._partials.macros',["height"=>20,"withbg"=>'fill: #fff;'])</span>
-                        </a>
-                    </div>
-                    <!-- /Logo -->
-                    <h3 class="mb-1">Forgot Password? 🔒</h3>
-                    <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-
-                    @if (session('status'))
-                        <div class="mb-1 text-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form id="formAuthentication" class="mb-3" action="{{ route('password.email') }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
-                                   name="email" placeholder="john@example.com" autofocus>
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
+  <style>
+    @import url('https://rsms.me/inter/inter.css');
+    :root {
+      --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+    body {
+      font-feature-settings: "cv03", "cv04", "cv11";
+    }
+  </style>
+  <div class="page page-center">
+    <div class="container container-tight py-4">
+      <div class="text-center mb-4">
+        <a href="." class="navbar-brand navbar-brand-autodark">
+          <img src="./static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+        </a>
+      </div>
+      <form class="card card-md" action="{{route('password.email')}}" method="POST" autocomplete="off" novalidate>
+        @csrf
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Forgot password</h2>
+          <p class="text-secondary mb-4">Enter your email address and your password will be reset and emailed to you.</p>
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
+                   name="email" placeholder="john@example.com" autofocus>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
               <span class="fw-medium">{{ $message }}</span>
             </span>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-primary d-grid w-100">Send Reset Link</button>
-                    </form>
-                    <div class="text-center">
-                        @if (Route::has('login'))
-                            <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
-                                <i class="ti ti-chevron-left scaleX-n1-rtl"></i>
-                                Back to login
-                            </a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <!-- /Forgot Password -->
+            @enderror
+          </div>
+          <div class="form-footer">
+            <a href="#" class="btn btn-primary w-100">
+              <!-- Download SVG icon from http://tabler-icons.io/i/mail -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+              Send me new password
+            </a>
+          </div>
         </div>
+      </form>
+
+      <div class="text-center text-secondary mt-3">
+        Forget it, <a href="{{route('routes.web.auth.login')}}">send me back</a> to the sign in screen.
+      </div>
     </div>
+  </div>
+
 @endsection
