@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Admin\Settings;
 
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -26,12 +27,23 @@ class RolesController extends Controller
       session()->flash('error', 'Cannot edit system roles.');
       return redirect()->route('routes.web.admin.settings.roles.index');
     }
+
+    if ($role->priority >= Auth::user()->getHighestRole()->priority) {
+      session()->flash('error', 'You cannot edit a role with a higher priority than your own.');
+      return redirect()->route('routes.web.admin.settings.roles.index');
+    }
+
     $validated = request()->validate([
       'name' => 'nullable|string|max:20',
       'description' => 'nullable|string|max:30',
       'icon' => 'nullable|string|max:30',
       'priority' => 'nullable|integer',
     ]);
+
+    if ($validated['priority'] >= Auth::user()->getHighestRole()->priority) {
+      session()->flash('error', 'You cannot change the priority of a role to be higher than your own.');
+      return redirect()->route('routes.web.admin.settings.roles.index');
+    }
 
     $role->update(array_filter($validated));
     session()->flash('success', 'Role updated.');

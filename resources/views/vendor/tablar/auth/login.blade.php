@@ -79,12 +79,12 @@
         </form>
       </div>
       <div class="hr-text">or</div>
+{{--      Discord SSO--}}
       <div class="card-body">
-        <a href="{{route('routes.web.auth.discord.redirect')}}" class="btn btn-icon w-100 btn-label-discord" style="background: #5865F2">
-          <i class="tf-icons fa-brands fa-discord fs-5" style="margin-right: 5px; "></i>
+        <a href="{{route('routes.web.auth.discord.redirect')}}" class="btn btn-icon w-100 text-white" style="background: #5865F2;">
+        <i class="tf-icons fa-brands fa-discord fs-5" style="margin-right: 5px; "></i>
           Login with Discord
         </a>
-
       </div>
 
     </div>

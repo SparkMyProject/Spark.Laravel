@@ -115,7 +115,7 @@ class User extends Authenticatable implements MustVerifyEmail
   public function getHighestRole()
   {
     // Greater the number, the higher the priority
-    return $this->roles->sortBy('priority')->first();
+    return $this->roles->sortBy('priority')->last();
   }
 
   public function timeline()

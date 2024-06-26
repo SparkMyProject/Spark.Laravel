@@ -83,6 +83,15 @@
         @endif
         <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
       </form>
+      <div class="hr-text">or</div>
+
+      {{--      Discord SSO--}}
+      <div class="card-body">
+        <a href="{{route('routes.web.auth.discord.redirect')}}" class="btn btn-icon w-100 text-white" style="background: #5865F2;">
+          <i class="tf-icons fa-brands fa-discord fs-5" style="margin-right: 5px; "></i>
+          Register with Discord
+        </a>
+      </div>
         <div class="text-center text-muted mt-3">
             Already have account? <a href="{{route('login')}}" tabindex="-1">Sign in</a>
         </div>
