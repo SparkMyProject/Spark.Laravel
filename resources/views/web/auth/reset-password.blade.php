@@ -1,105 +1,50 @@
-@php
-    $customizerHidden = 'customizer-hide';
-    $configData = Helper::appClasses();
-@endphp
-
-@extends('layouts/blankLayout')
-
-@section('title', 'Reset Password')
-
-@section('page-style')
-    <!-- Page -->
-    @vite('resources/assets/vendor/scss/pages/page-auth.scss')
-@endsection
+@extends('tablar::auth.layout')
 
 @section('content')
-    <div class="authentication-wrapper authentication-cover authentication-bg">
-        <div class="authentication-inner row">
-            <!-- /Left Text -->
-            <div class="d-none d-lg-flex col-lg-7 p-0">
-                <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/img/illustrations/auth-forgot-password-illustration-'.$configData['style'].'.png') }}"
-                         alt="auth-forgot-password-cover" class="img-fluid my-5 auth-illustration"
-                         data-app-light-img="illustrations/auth-forgot-password-illustration-light.png"
-                         data-app-dark-img="illustrations/auth-forgot-password-illustration-dark.png">
-
-                    <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}"
-                         alt="auth-forgot-password-cover" class="platform-bg"
-                         data-app-light-img="illustrations/bg-shape-image-light.png"
-                         data-app-dark-img="illustrations/bg-shape-image-dark.png">
-                </div>
+  <div class="page page-center">
+      <div class="container container-tight py-4">
+        <div class="row">
+          <div class="col col-login mx-auto">
+            <div class="text-center mb-6">
+              <a href="{{url('/')}}"><img src="{{asset('assets/brand/tabler.svg')}}" class="h-6" alt=""></a>
             </div>
-            <!-- /Left Text -->
-            <!-- Reset Password -->
-            <div class="d-flex col-12 col-lg-5 align-items-center p-sm-5 p-4">
-                <div class="w-px-400 mx-auto">
-                    <!-- Logo -->
-                    <div class="app-brand mb-4">
-                        <a href="{{url('/')}}" class="app-brand-link">
-                            <span class="app-brand-logo demo">@include('components._partials.macros',["height"=>20,"withbg"=>'fill: #fff;'])</span>
-                        </a>
-                    </div>
-                    <!-- /Logo -->
-                    <h3 class="mb-1">Reset Password 🔒</h3>
-                    <form id="formAuthentication" class="mb-3" action="{{ route('password.update') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                   name="email" placeholder="john@example.com" value="{{Request()->email}}" readonly />
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3 form-password-toggle">
-                            <label class="form-label" for="password">New Password</label>
-                            <div class="input-group input-group-merge @error('password') is-invalid @enderror">
-                                <input type="password" id="password"
-                                       class="form-control @error('password') is-invalid @enderror" name="password"
-                                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                       aria-describedby="password" autofocus />
-                                <span class="input-group-text cursor-pointer">
-                <i class="ti ti-eye-off"></i>
-              </span>
-                            </div>
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-              <span class="fw-medium">{{ $message }}</span>
-            </span>
-                            @enderror
-                        </div>
-                        <div class="mb-3 form-password-toggle">
-                            <label class="form-label" for="confirm-password">Confirm Password</label>
-                            <div class="input-group input-group-merge">
-                                <input type="password" id="confirm-password" class="form-control"
-                                       name="password_confirmation"
-                                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                       aria-describedby="password" />
-                                <span class="input-group-text cursor-pointer">
-                <i class="ti ti-eye-off"></i>
-              </span>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary d-grid w-100 mb-3">
-                            Set new password
-                        </button>
-                        <div class="text-center">
-                            @if (Route::has('login'))
-                                <a href="{{ route('login') }}">
-                                    <i class="ti ti-chevron-left scaleX-n1-rtl"></i>
-                                    Back to login
-                                </a>
-                            @endif
-                        </div>
-                    </form>
+            <form class="card" action="{{ route('password.update') }}" method="POST">
+              @csrf
+              <input type="hidden" name="token" value="{{ $request->route('token') }}">
+              <div class="card-body card-md">
+                <div class="card-title">Reset Password</div>
+                <div class="form-group">
+                  <label class="form-label">Email address</label>
+                  <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter email" value="{{Request()->email}}" readonly>
+                  @error('email')
+                  <span class="invalid-feedback" role="alert">
+                                    <span class="fw-medium">{{ $message }}</span>
+                                </span>
+                  @enderror
                 </div>
+                <div class="form-group">
+                  <label class="form-label">New Password</label>
+                  <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
+                  @error('password')
+                  <span class="invalid-feedback" role="alert">
+                                    <span class="fw-medium">{{ $message }}</span>
+                                </span>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirm-password" name="password_confirmation" placeholder="Confirm Password">
+                </div>
+                <div class="form-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Set new password</button>
+                </div>
+              </div>
+            </form>
+            <div class="text-center text-muted">
+              Forget it, <a href="{{ route('login') }}">send me back</a> to the sign in screen.
             </div>
-            <!-- /Reset Password -->
+          </div>
         </div>
     </div>
+  </div>
 @endsection

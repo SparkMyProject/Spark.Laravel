@@ -20,11 +20,11 @@
   <div class="page page-center">
     <div class="container container-tight py-4">
       <div class="text-center mb-4">
-        <a href="." class="navbar-brand navbar-brand-autodark">
-          <img src="./static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
-        </a>
+        <a href="" class="navbar-brand navbar-brand-autodark">
+          <img src="{{asset(config('tablar.auth_logo.img.path','assets/logo.svg'))}}" height="36"
+               alt=""></a>
       </div>
-      <form class="card card-md" action="{{route('password.email')}}" method="POST" autocomplete="off" novalidate>
+      <form class="card card-md" action="{{route('password.email')}}" method="POST" autocomplete="off">
         @csrf
         <div class="card-body">
           <h2 class="card-title text-center mb-4">Forgot password</h2>
