@@ -18,7 +18,26 @@ class UsersController extends Controller
     $roles = Role::orderBy('priority', 'desc')->get();
     return view('web.admin.users.index', ['users' => $users, 'roles' => $roles]);
   }
+  public function reset_password($id) {
+    dd($id);
+    $user = User::find($id);
 
+    if (!$user) {
+      session()->flash('error', 'User not found.');
+      return redirect()->route('routes.web.admin.users.index');
+    }
+    if ($user->id == Auth::user()->id) {
+      session()->flash('error', 'Cannot reset your own password.');
+      return redirect()->route('routes.web.admin.users.index');
+    }
+    if ($user->getHighestRole()->priority >= Auth::user()->getHighestRole()->priority) {
+      session()->flash('error', 'You cannot reset the password of a user with a higher role than your own.');
+      return redirect()->route('routes.web.admin.users.index');
+    }
+
+    // Send password reset email
+    $user->sendPasswordResetNotification($user->createToken('Password Reset')->accessToken);
+  }
   public function disable_user()
   {
     $user = \App\Models\Authentication\User::find(request('userId'));

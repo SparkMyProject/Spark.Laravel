@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Web\Admin\Settings;
 
-use App\Models\Authentication\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
@@ -15,25 +14,6 @@ class RolesController extends Controller
     $roles = Role::withCount('users')->withCount('permissions')->orderBy('name')->get();
     $permissions = Permission::orderBy('name')->get();
     return view('web.admin.settings.roles.index', ['roles' => $roles, 'permissions' => $permissions]);
-  }
-  public function reset_password($id) {
-    $user = User::find($id);
-
-    if (!$user) {
-      session()->flash('error', 'User not found.');
-      return redirect()->route('routes.web.admin.users.index');
-    }
-    if ($user->id == Auth::user()->id) {
-      session()->flash('error', 'Cannot reset your own password.');
-      return redirect()->route('routes.web.admin.users.index');
-    }
-    if ($user->getHighestRole()->priority >= Auth::user()->getHighestRole()->priority) {
-      session()->flash('error', 'You cannot reset the password of a user with a higher role than your own.');
-      return redirect()->route('routes.web.admin.users.index');
-    }
-
-    // Send password reset email
-    $user->sendPasswordResetNotification($user->createToken('Password Reset')->accessToken);
   }
 
   public function edit($id)

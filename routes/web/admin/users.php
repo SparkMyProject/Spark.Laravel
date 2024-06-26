@@ -9,3 +9,5 @@ Route::post('/admin/users/disable', [\App\Http\Controllers\Web\Admin\Users\Users
 Route::post('/admin/users/enable', [\App\Http\Controllers\Web\Admin\Users\UsersController::class, 'enable_user'])->name('routes.web.admin.users.enable')->middleware("canCustom:admin.users.enable");
 Route::post('/admin/users/edit', [\App\Http\Controllers\Web\Admin\Users\UsersController::class, 'edit_user'])->name('routes.web.admin.users.edit')->middleware("canCustom:admin.users.edit");
 Route::post('/admin/users/edit-roles/{id}', [\App\Http\Controllers\Web\Admin\Users\UsersController::class, 'edit_roles'])->name('routes.web.admin.users.edit-roles')->middleware("canCustom:admin.users.edit-roles");
+
+Route::post('/admin/users/reset-password', [\App\Http\Controllers\Web\Admin\Users\UsersController::class, 'reset_password'])->name('routes.web.admin.users.reset-password')->middleware("canCustom:admin.users.reset-password");

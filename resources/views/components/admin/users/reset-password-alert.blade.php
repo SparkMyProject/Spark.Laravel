@@ -1,7 +1,5 @@
 
 <script>
-
-  // TODO: Fix Swal console error with this.
   document.addEventListener('DOMContentLoaded', (event) => {
     let resetPasswordButton = document.querySelectorAll('.reset-password-button');
     resetPasswordButton.forEach((button) => {
@@ -35,13 +33,19 @@
             })
               .then(response => {
                 if (!response.ok) {
-                  throw new Error('Network response was not ok');
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "A server error has occurred. Please try again.",
+                    customClass: {
+                      confirmButton: 'btn btn-primary'
+                    }
+                  });
+                  return;
                 }
-                return response.json();
-              })
-              .then(data => {
+                data = response.json();
                 // Handle server response here
-                if (data["code"] == 200) {
+                if (data["code"] === 200) {
                   Swal.fire({
                     icon: 'success',
                     title: 'User\'s password has been reset..',

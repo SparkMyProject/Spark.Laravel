@@ -15,9 +15,6 @@ Route::get('/auth/register', [\App\Http\Controllers\Web\Authentication\Authentic
 Route::get('/auth/discord/redirect', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordRedirect'])->name('routes.web.auth.discord.redirect');
 Route::get('/auth/discord/callback', [\App\Http\Controllers\Web\Authentication\AuthenticationController::class, 'discordCallback'])->name('routes.web.auth.discord.callback');
 
-//Route::get('/reset-password/{token}', function (string $token) {
-//  return view('auth.reset-password', ['token' => $token]);
-//})->middleware('guest')->name('routes.web.auth.reset-password');
 // Email Verification Routes
 Route::get('/auth/email/verify', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
   $request->fulfill();
