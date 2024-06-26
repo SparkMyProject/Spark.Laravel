@@ -22,7 +22,7 @@
               @include('components._partials.alert-handling')
               <div class="user-avatar-section">
                 <div class=" d-flex align-items-center flex-column">
-                  <img class="img-fluid rounded-circle mb-3 pt-1 mt-4" src="{{ Auth::user()->profile_photo_url }}" height="100"
+                  <img class="img-fluid rounded-circle mb-3 pt-1 mt-4" src="{{ $user->profile_photo_url }}" height="100"
                        width="100" alt="User avatar" />
                   <div class="user-info text-center">
 
