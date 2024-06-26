@@ -21,7 +21,7 @@ class AuthenticationController extends Controller
 
   public function showLoginForm()
   {
-    return view('auth.login');
+    return view('web.auth.login');
 
   }
 
@@ -30,7 +30,7 @@ class AuthenticationController extends Controller
    */
   public function showRegisterForm()
   {
-    return view('auth.register');
+    return view('web.auth.register');
   }
 
   /**

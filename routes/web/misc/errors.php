@@ -1,7 +1,9 @@
 <?php
 
 // pages (without controller)
-use Illuminate\Routing\Route;
+
+
+use Illuminate\Support\Facades\Route;
 
 Route::get('/misc/errors/not-authorized', function () {
   return view('misc.errors.not-authorized');
