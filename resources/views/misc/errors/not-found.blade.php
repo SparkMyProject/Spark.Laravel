@@ -1,32 +1,46 @@
-@php
-$customizerHidden = 'customizer-hide';
-$configData = Helper::appClasses();
-@endphp
-
-@extends('components/layouts/blankLayout')
+@extends('tablar::auth.layout')
 
 @section('title', 'Error - Pages')
 
-@section('page-style')
-<!-- Page -->
-@vite(['resources/assets/vendor/scss/pages/page-misc.scss'])
-@endsection
-
 
 @section('content')
-<!-- Error -->
-<div class="container-xxl container-p-y">
-  <div class="misc-wrapper">
-    <h2 class="mb-1 mt-4">Page Not Found :(</h2>
-    <p class="mb-4 mx-2">Oops! 😖 The requested URL was not found on this server.</p>
-    <a href="{{url('/')}}" class="btn btn-primary mb-4">Back to home</a>
-    <div class="mt-4">
-      <img src="{{ asset('assets/img/illustrations/page-misc-error.png') }}" alt="page-misc-error" width="225" class="img-fluid">
+  <style>
+    @import url('https://rsms.me/inter/inter.css');
+
+    :root {
+      --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+
+    body {
+      font-feature-settings: "cv03", "cv04", "cv11";
+    }
+  </style>
+<div>
+
+  <div class=" border-top-wide border-primary d-flex flex-column">
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="empty">
+          <div class="empty-header">404</div>
+          <p class="empty-title">Oops… You just found an error page</p>
+          <p class="empty-subtitle text-secondary">
+            We are sorry but the page you are looking for was not found
+          </p>
+          <div class="empty-action">
+            <a href="{{route('routes.web.dashboard.index')}}" class="btn btn-primary">
+              <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 12l14 0"/>
+                <path d="M5 12l6 6"/>
+                <path d="M5 12l6 -6"/>
+              </svg>
+              Take me home
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<div class="container-fluid misc-bg-wrapper">
-  <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="page-misc-error" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
-</div>
-<!-- /Error -->
 @endsection

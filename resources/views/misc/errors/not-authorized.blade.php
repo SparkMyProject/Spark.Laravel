@@ -1,34 +1,46 @@
-@php
-  $customizerHidden = 'customizer-hide';
-  $configData = Helper::appClasses();
-@endphp
+@extends('tablar::auth.layout')
 
-@extends('components.layouts.blankLayout')
-
-@section('title', 'Not Authorized - Pages')
-
-@section('page-style')
-  <!-- Page -->
-  @vite(['resources/assets/vendor/scss/pages/page-misc.scss'])
-@endsection
+@section('title', 'Not Authorized')
 
 
 @section('content')
-  <!-- Not Authorized -->
-  <div class="container-xxl container-p-y">
-    <div class="misc-wrapper">
-      <h2 class="mb-1 mx-2">You are not authorized!</h2>
-      <p class="mb-4 mx-2">You do not have permission to view this page using the credentials that you have provided while login. <br> Please contact your site administrator.
-      </p>
-      <a href="{{url('/')}}" class="btn btn-primary mb-4">Back to home</a>
-      <div class="mt-4">
-        <img src="{{ asset('assets/img/illustrations/page-misc-you-are-not-authorized.png') }}" alt="page-misc-not-authorized" width="170" class="img-fluid">
+  <style>
+    @import url('https://rsms.me/inter/inter.css');
+
+    :root {
+      --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+
+    body {
+      font-feature-settings: "cv03", "cv04", "cv11";
+    }
+  </style>
+  <div>
+
+    <div class=" border-top-wide border-primary d-flex flex-column">
+      <div class="page page-center">
+        <div class="container-tight py-4">
+          <div class="empty">
+            <div class="empty-header">500</div>
+            <p class="empty-title">Oops… You just found an error page</p>
+            <p class="empty-subtitle text-secondary">
+              We are sorry but you do not have access to this resource.
+            </p>
+            <div class="empty-action">
+              <a href="{{route('routes.web.dashboard.index')}}" class="btn btn-primary">
+                <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 12l14 0"/>
+                  <path d="M5 12l6 6"/>
+                  <path d="M5 12l6 -6"/>
+                </svg>
+                Take me home
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid misc-bg-wrapper">
-    <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="page-misc-not-authorized"
-         data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
-  </div>
-  <!-- /Not Authorized -->
 @endsection
