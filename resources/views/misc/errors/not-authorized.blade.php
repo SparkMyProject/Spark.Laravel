@@ -1,8 +1,15 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 @extends('tablar::auth.layout')
 
 @section('title', 'Not Authorized')
 
-
+@php
+if (Auth::user()) {
+  $homeRoute = route('routes.web.dashboard.index');
+} else {
+  $homeRoute = route('routes.web.auth.login');
+}
+@endphp
 @section('content')
   <style>
     @import url('https://rsms.me/inter/inter.css');
@@ -21,13 +28,13 @@
       <div class="page page-center">
         <div class="container-tight py-4">
           <div class="empty">
-            <div class="empty-header">500</div>
+            <div class="empty-header">Unauthorized</div>
             <p class="empty-title">Oops… You just found an error page</p>
             <p class="empty-subtitle text-secondary">
               We are sorry but you do not have access to this resource.
             </p>
             <div class="empty-action">
-              <a href="{{route('routes.web.dashboard.index')}}" class="btn btn-primary">
+              <a href="{{$homeRoute}}" class="btn btn-primary">
                 <!-- Download SVG icon from http://tabler-icons.io/i/arrow-left -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                      stroke-linecap="round" stroke-linejoin="round">
